@@ -102,3 +102,10 @@ The explanation is a trace of the system's own rule logic. It is not an independ
 ## Knowledge base management
 
 The Streamlit **Manage knowledge base** service supports validated rule editing, rule creation/deletion, existing profile fact editing, and JSON import/export. Each change is validated before the active JSON file is replaced. Back up the knowledge-base JSON before making major changes. On hosting platforms with ephemeral storage, local edits may not survive a redeployment.
+
+
+## Consultation history and reports
+
+The Streamlit **History & reports** service lets users save a consultation or quick symptom check, review saved evidence and possible conditions, download an individual Markdown report, and export all saved records as JSON. Users can also delete an individual saved record.
+
+History is stored locally in `data/consultation_history.json`. The application stores structured symptom evidence and screening results, but does not store the original free-text description. The store retains up to 500 records by default. This local-file approach is suitable for a single-user prototype; it is not multi-user database storage. On Streamlit hosting or other platforms with ephemeral storage, history may be lost when the app restarts or is redeployed. Use the JSON export to keep a separate backup.
