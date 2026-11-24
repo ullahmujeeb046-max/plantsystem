@@ -16,7 +16,7 @@
 |---|---|---|
 | 1 | Repository audit and architecture roadmap | Complete (audit and plan only) |
 | 2 | Knowledge base engineering and validation | Complete — validator and full test workflow passed on GitHub Actions |
-| 3 | Modular inference engine | In progress — modular forward/backward chaining added and integrated; CI passed |
+| 3 | Modular inference engine | Complete — chaining, priority/category metadata, input validation, traces, regression tests, and CI passed |
 | 4 | Natural-language processing and evidence handling | Not started |
 | 5 | Consultation and response engine | Not started |
 | 6 | Professional Streamlit UI | Not started |
@@ -209,3 +209,28 @@ GitHub Actions run https://github.com/ullahmujeeb046-max/plantsystem/actions/run
 - Review tie-breaking and heuristic-weight semantics with the academic project requirements.
 
 Phase 3 remains in progress until these remaining design and test tasks are addressed.
+
+
+## Phase 3 — Core Inference Engine (completed)
+
+### Additional implementation
+
+- Added explicit `category: "symptom_pattern"` and `priority` metadata to all 100 existing rules. Priority values retain the existing heuristic weight values; this does not reinterpret them as probabilities or expert-validated clinical confidence.
+- Extended the knowledge-base validator to validate optional category and priority fields and their allowed value types/ranges.
+- Strengthened inference input validation: a single string is not accepted as an iterable of facts; empty/non-string facts and blank backward goals are rejected with clear errors.
+- Expanded the forward trace to include rule category, priority, explanation, matched conditions, missing conditions, and total evaluated rule count.
+- Expanded backward-chain proof records with category and evaluated-rule count.
+- Added regression coverage using the actual repository knowledge base for the Early blight pattern, plus tests for metadata, invalid input, explicit priority behavior, and trace details.
+
+### Verification
+
+GitHub Actions run https://github.com/ullahmujeeb046-max/plantsystem/actions/runs/45428753249 completed successfully:
+
+- Knowledge-base validator: success.
+- Full unittest discovery: success.
+
+Phase 3 is marked complete based on the successful CI run.
+
+### Known scope boundary
+
+The current backward-chaining implementation is goal-directed over direct symptom-to-diagnosis rules. It does not yet recursively prove intermediate facts because the existing tomato knowledge base contains direct symptom antecedents and diagnosis conclusions rather than a multi-level fact dependency graph. Contradictory positive/negative evidence is also deferred to the NLP/evidence phases. Conflict resolution selects a primary supporting rule per conclusion; it does not choose one diagnosis over another when separate diagnoses both have matching rules.
