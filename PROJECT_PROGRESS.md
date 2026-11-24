@@ -19,8 +19,8 @@
 | 3 | Modular inference engine | Complete — chaining, priority/category metadata, input validation, traces, regression tests, and CI passed |
 | 4 | Natural-language processing and evidence handling | Complete — phrase extraction, negation, uncertainty, contradiction handling, integration, tests, and CI passed |
 | 5 | Consultation and response engine | Complete — interactive evidence collection, follow-up questions, response builder, tests, and CI passed |
-| 6 | Professional Streamlit UI | In progress — interactive consultation, quick symptom check, and disease-information pages implemented; CI verification pending |
-| 7 | Knowledge base management | Not started |
+| 6 | Professional Streamlit UI | Complete — three service pages, consultation integration, compile check, unit tests, and CI passed; browser visual review remains outstanding |
+| 7 | Knowledge base management | In progress — validated rule/profile editing and JSON import/export implemented; UI workflow verification pending |
 | 8 | Testing, explainability, and rule analyzer | Not started |
 | 9 | History, reports, and storage | Not started |
 | 10 | Final audit, documentation, and deployment readiness | Not started |
@@ -305,3 +305,30 @@ The UI has been implemented in source code but has not been manually launched in
 ### Verification status
 
 The latest GitHub Actions workflow was triggered by the UI and compile-check changes. Phase 6 remains in progress until the latest workflow completes successfully.
+
+## Phase 7 — Knowledge Base Management (implementation in progress)
+
+### Implemented
+
+- Added `knowledge_base/manager.py` with validated operations to add, edit, and delete rules; update existing profile assertions; and import/export JSON.
+- Every write validates the complete candidate knowledge base before replacing the active file. Invalid edits/imports are rejected without overwriting the current file.
+- Writes use a temporary file and atomic replacement to reduce the risk of a partially written knowledge base.
+- Added a Streamlit management workspace with:
+  - Rule selection and editing.
+  - New rule creation with symptom, profile, weight, priority, and explanation fields.
+  - Confirm-before-delete workflow.
+  - Existing profile fact editing.
+  - JSON download and validated JSON import.
+- Added isolated temporary-file tests for rule CRUD, profile fact editing, invalid changes, and import/export.
+
+### Safety boundaries
+
+- Profile creation/deletion and assertion creation/deletion are not exposed in the UI because profiles require a complete set of required predicates and may be referenced by rules.
+- Rule IDs remain stable during edits.
+- Rule weights and priorities remain heuristic metadata, not calibrated disease probabilities.
+- On hosted platforms with ephemeral or read-only storage, file edits may not persist across redeployments. A persistent database or managed storage integration is a later deployment concern.
+
+### Verification status
+
+- Knowledge-base manager service and its test suite passed in separate GitHub Actions runs.
+- The full workflow including the new Streamlit page is running. Phase 7 remains in progress until that workflow completes successfully.
