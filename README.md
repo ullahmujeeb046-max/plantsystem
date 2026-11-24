@@ -87,3 +87,18 @@ streamlit run app.py
 ```
 
 Streamlit opens the interface in your browser (usually at `http://localhost:8501`). The web interface imports and uses the same `TomatoExpertSystem` class and knowledge base; it does not duplicate the rules or inference engine.
+
+
+## Explainability and evidence trace
+
+The inference engine records the conditions checked for every IF-THEN rule. In the Streamlit interface, expand **Why did the system suggest this?** under a possible condition to review:
+- Which rules fully matched the confirmed symptoms.
+- Which observed facts supported those rules.
+- Which symptom facts are still missing from related incomplete rules.
+- How many rules were evaluated and fully matched.
+
+The explanation is a trace of the system's own rule logic. It is not an independent scientific validation of the diagnosis, and a rule-match score is not a disease probability.
+
+## Knowledge base management
+
+The Streamlit **Manage knowledge base** service supports validated rule editing, rule creation/deletion, existing profile fact editing, and JSON import/export. Each change is validated before the active JSON file is replaced. Back up the knowledge-base JSON before making major changes. On hosting platforms with ephemeral storage, local edits may not survive a redeployment.
