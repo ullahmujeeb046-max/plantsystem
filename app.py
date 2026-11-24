@@ -385,16 +385,6 @@ else:
             st.warning("Review warnings: " + " ".join(current_report["warnings"][:5]))
 
 
-with st.sidebar:
-    st.divider()
-    st.subheader("Knowledge base")
-    counts = system.validate_knowledge_base()
-    st.metric("IF-THEN rules", counts["rule_count"])
-    st.metric("Assertions / facts", counts["assertion_count"])
-    st.caption("Crop covered: Tomato")
-    st.caption("Student expert-system prototype")
-
-
 else:
     st.header("Consultation history and reports")
     st.write("Review saved screening sessions and download individual reports or a JSON backup.")
@@ -460,3 +450,13 @@ else:
                     st.error(str(error))
     else:
         st.info("No saved consultations yet. Save a consultation or quick symptom check to see it here.")
+
+
+with st.sidebar:
+    st.divider()
+    st.subheader("Knowledge base")
+    counts = system.validate_knowledge_base()
+    st.metric("IF-THEN rules", counts["rule_count"])
+    st.metric("Assertions / facts", counts["assertion_count"])
+    st.caption("Crop covered: Tomato")
+    st.caption("Student expert-system prototype")
