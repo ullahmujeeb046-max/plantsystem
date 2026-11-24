@@ -61,6 +61,34 @@ class InferenceEngineTests(unittest.TestCase):
         self.assertEqual(result["selected_rules"]["early_blight"]["id"], "R2")
         self.assertEqual(len(result["conclusions"]["early_blight"]), 2)
 
+    def test_trace_includes_category_priority_and_explanation(self):
+        result = self.engine.forward_chain({"spots"})
+        row = next(item for item in result["trace"] if item["rule_id"] == "R1")
+        self.assertEqual(row["category"], "uncategorized")
+        self.assertEqual(row["priority"], 0.8)
+        self.assertEqual(row["explanation"], "Spots with rings.")
+        self.assertEqual(result["evaluated_rule_count"], 3)
+
+    def test_invalid_fact_input_is_rejected(self):
+        with self.assertRaises(TypeError):
+            self.engine.forward_chain("spots")
+        with self.assertRaises(ValueError):
+            self.engine.forward_chain({"spots", ""})
+
+    def test_empty_backward_goal_is_rejected(self):
+        with self.assertRaises(ValueError):
+            self.engine.backward_chain(" ", {"spots"})
+
+    def test_explicit_priority_overrides_legacy_weight(self):
+        rules = [
+            {"id": "A", "if_all_symptoms": ["spots"], "then_diagnosis": "x",
+             "weight": 0.99, "priority": 0.2},
+            {"id": "B", "if_all_symptoms": ["spots"], "then_diagnosis": "x",
+             "weight": 0.4, "priority": 0.8},
+        ]
+        result = InferenceEngine(rules).forward_chain({"spots"})
+        self.assertEqual(result["selected_rules"]["x"]["id"], "B")
+
 
 if __name__ == "__main__":
     unittest.main()
