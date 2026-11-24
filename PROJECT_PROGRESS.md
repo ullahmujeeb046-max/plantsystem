@@ -23,7 +23,7 @@
 | 7 | Knowledge base management | Complete — validated rule/profile editing, safe JSON import/export, isolated tests, and full CI passed |
 | 8 | Testing, explainability, and rule analyzer | Complete — explanation reports, UI evidence trace, regression tests, compile check, and full CI passed; browser end-to-end tests and real-world accuracy validation remain future work |
 | 9 | History, reports, and storage | Complete — local JSON history, save/review/delete, Markdown reports, JSON export, isolated tests, compile check, and full CI passed; hosted persistence limitations documented |
-| 10 | Final audit, documentation, and deployment readiness | Not started |
+| 10 | Final audit, documentation, and deployment readiness | In progress — repository cleanup, dependency/CI smoke testing, deployment configuration, and documentation updates implemented; final workflow verification pending |
 
 A phase is not marked complete until its implementation and required verification are finished. Phase 1 is complete because it is a repository inspection and planning phase; no feature implementation is claimed here.
 
@@ -389,3 +389,41 @@ GitHub Actions run https://github.com/ullahmujeeb046-max/plantsystem/actions/run
 ### Phase 9 — Verification completed
 
 GitHub Actions run https://github.com/ullahmujeeb046-max/plantsystem/actions/runs/45431886610 completed successfully. Knowledge-base validation, application compilation, and full unittest discovery all passed. Phase 9 is complete. No browser-based end-to-end test or hosted persistence test was performed; local JSON storage remains subject to the hosting filesystem limitations described above.
+
+
+## Phase 10 — Final Audit, Documentation, and Deployment Readiness (implementation in progress)
+
+### Final audit and cleanup
+
+- Reviewed the repository tree, application navigation, core inference/consultation modules, NLP evidence extraction, storage service, documentation, requirements, and CI workflow.
+- Added a root `.gitignore` for Python bytecode/cache files, virtual environments, local history data, temporary files, editor files, environment files, and Streamlit secrets.
+- Removed the two tracked Python bytecode files from version control.
+- Added `.streamlit/config.toml` with headless server configuration and disabled anonymous usage-statistics collection.
+- Constrained Streamlit dependency to the supported major-version range `>=1.32,<2.0`.
+
+### CI and startup verification
+
+- Updated GitHub Actions to install the actual application requirements before validation and tests.
+- Added `tests/test_app_smoke.py` using Streamlit's AppTest to check that the application starts without a Streamlit exception.
+- Existing knowledge-base validation, Python compilation, and all unit tests remain in the workflow.
+- The application smoke-test workflow passed on commit `775a23c17112bfb4ad298f99538305a6c676793b`.
+
+### Documentation and deployment guidance
+
+- Rewrote README with current project structure, feature list, local installation/run commands, validation/test commands, deployment checklist, and limitations.
+- Updated `DEMO_GUIDE.md` for all five Streamlit services and presentation flow.
+- Documented Streamlit Community Cloud entry point as `app.py`, dependency installation from root `requirements.txt`, no current secrets requirement, and the local JSON persistence limitation.
+- No production deployment was performed.
+
+### Known limitations retained and disclosed
+
+- No browser-based end-to-end test against the deployed service has been performed.
+- Consultation history and knowledge-base edits use local JSON files; hosted ephemeral storage can lose them after restarts/redeployments.
+- There is no authentication, multi-user isolation, or encryption for local history.
+- No independent expert-reviewed agricultural benchmark exists; diagnostic accuracy is not claimed.
+- The current NLP remains phrase-based English matching with limited negation/uncertainty scope.
+- The knowledge base remains educational content requiring review by qualified agricultural specialists.
+
+### Verification status
+
+The updated README and demo guide have been committed. The final full CI workflow for the latest documentation/configuration commit must complete successfully before Phase 10 is marked complete.
