@@ -18,7 +18,7 @@
 | 2 | Knowledge base engineering and validation | Complete — validator and full test workflow passed on GitHub Actions |
 | 3 | Modular inference engine | Complete — chaining, priority/category metadata, input validation, traces, regression tests, and CI passed |
 | 4 | Natural-language processing and evidence handling | Complete — phrase extraction, negation, uncertainty, contradiction handling, integration, tests, and CI passed |
-| 5 | Consultation and response engine | Not started |
+| 5 | Consultation and response engine | In progress — interactive evidence collection, focused follow-up questions, and plain-language response builder committed; CI pending |
 | 6 | Professional Streamlit UI | Not started |
 | 7 | Knowledge base management | Not started |
 | 8 | Testing, explainability, and rule analyzer | Not started |
@@ -260,3 +260,21 @@ GitHub Actions run https://github.com/ullahmujeeb046-max/plantsystem/actions/run
 ### Phase 4 — Verification completed
 
 GitHub Actions run https://github.com/ullahmujeeb046-max/plantsystem/actions/runs/45429118207 completed successfully after the NLP test suite was committed. The workflow's knowledge-base validation and full unittest discovery steps passed. Phase 4 is marked complete based on this CI result.
+
+## Phase 5 — Consultation and Response Engine (implementation in progress)
+
+### Implemented
+
+- `core/consultation.py`: starts a consultation from a symptom description, stores positive/negative/uncertain/contradictory evidence, and selects a follow-up symptom question from partially matched knowledge-base rules.
+- Follow-up answers accept yes, no, or unsure. A negative or unsure answer is not treated as confirmed positive evidence.
+- Each consultation turn returns current evidence, the current rule-based screening results, the next question, and a completion flag.
+- `services/response_builder.py`: creates a plain-language summary, lists evidence states, reports possible conditions, and includes a safety disclaimer.
+- `tests/test_consultation.py`: covers starting a consultation, follow-up answers, invalid input, and response summaries.
+
+### Limitations
+
+The consultation currently selects follow-up questions from rules that already have at least one confirmed matching symptom. It does not yet maintain persistent sessions, provide a multi-user web chat, or use a trained language model. If there are no partially matched rules, it stops asking questions and reports that the current evidence is insufficient. The response builder summarizes rule results and does not independently validate agricultural advice.
+
+### Verification status
+
+GitHub Actions run https://github.com/ullahmujeeb046-max/plantsystem/actions/runs/45429920128 was triggered by the consultation tests. Phase 5 remains in progress until the workflow completes successfully.
