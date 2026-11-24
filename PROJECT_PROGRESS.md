@@ -17,7 +17,7 @@
 | 1 | Repository audit and architecture roadmap | Complete (audit and plan only) |
 | 2 | Knowledge base engineering and validation | Complete — validator and full test workflow passed on GitHub Actions |
 | 3 | Modular inference engine | Complete — chaining, priority/category metadata, input validation, traces, regression tests, and CI passed |
-| 4 | Natural-language processing and evidence handling | In progress — lightweight phrase NLP, negation, uncertainty, contradiction detection, and tests committed; latest CI run pending |
+| 4 | Natural-language processing and evidence handling | Complete — phrase extraction, negation, uncertainty, contradiction handling, integration, tests, and CI passed |
 | 5 | Consultation and response engine | Not started |
 | 6 | Professional Streamlit UI | Not started |
 | 7 | Knowledge base management | Not started |
@@ -256,3 +256,7 @@ This is lightweight dictionary-based NLP, not unrestricted natural-language unde
 ### Verification status
 
 GitHub Actions run https://github.com/ullahmujeeb046-max/plantsystem/actions/runs/45429118207 was triggered by the NLP test commit. At the time of this update, the run is still in progress. Phase 4 is therefore not complete until the workflow finishes successfully and any failures are fixed.
+
+### Phase 4 — Verification completed
+
+GitHub Actions run https://github.com/ullahmujeeb046-max/plantsystem/actions/runs/45429118207 completed successfully after the NLP test suite was committed. The workflow's knowledge-base validation and full unittest discovery steps passed. Phase 4 is marked complete based on this CI result.
