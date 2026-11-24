@@ -15,7 +15,7 @@
 | Phase | Scope | Status |
 |---|---|---|
 | 1 | Repository audit and architecture roadmap | Complete (audit and plan only) |
-| 2 | Knowledge base engineering and validation | Not started |
+| 2 | Knowledge base engineering and validation | In progress — validator, tests, and documentation committed; Python test execution pending |
 | 3 | Modular inference engine | Not started |
 | 4 | Natural-language processing and evidence handling | Not started |
 | 5 | Consultation and response engine | Not started |
@@ -146,3 +146,31 @@ Planned work:
 3. Review the existing 100 rules and 300 assertions without discarding useful data.
 4. Preserve provenance/knowledge-source metadata and clearly label information that needs expert verification.
 5. Add validation tests and only then migrate the knowledge base to the validated structure.
+
+
+## Phase 2 — Knowledge Base Engineering (implementation in progress)
+
+### Repository changes committed
+
+- `knowledge_base/validator.py`: standard-library JSON loader and structural/reference validator.
+- `tests/test_knowledge_base.py`: seven automated test cases for the current data and deliberately invalid knowledge-base examples.
+- `knowledge_base/README.md`: current data model, field definitions, validation commands, provenance caveats, and safe extension guidance.
+
+### Validation design
+
+The validator checks required top-level, rule, assertion, and profile fields; duplicate rule/assertion IDs; duplicate subject/predicate facts; empty or repeated rule antecedents; unknown symptom references; missing conclusion profiles; invalid weights; and declared count mismatches. It reports errors separately from review warnings and does not mutate the JSON source.
+
+The existing JSON knowledge base has been preserved without adding invented disease facts or changing the current 100 rules and 300 assertions. The validator explicitly treats the current data as a legacy v1 structure and warns that a schema version is not yet declared. Rule category/priority/action-reference/test-scenario semantics are deferred until they can be defined without assigning unsupported agricultural meaning.
+
+### Static data inspection
+
+A separate inspection of the current JSON structure found 100 rules, 300 assertions, 20 profiles, unique rule IDs, unique assertion IDs, and no missing profile predicates or rule-to-symptom/conclusion references. This was a structural inspection of repository data, not execution of the Python validator.
+
+### Verification still required
+
+- The Python validator and seven new unit tests have **not yet been executed** in a Python runtime.
+- Existing regression tests have not been executed.
+- Therefore Phase 2 remains **in progress**, not complete. Next verification should run:
+  `python -m knowledge_base.validator`
+  and
+  `python -m unittest discover -s tests -v`.
