@@ -4,6 +4,7 @@ from expert_system import TomatoExpertSystem
 from core.consultation import ConsultationEngine
 from services.response_builder import build_consultation_response
 from knowledge_base.manager import KnowledgeBaseManager
+from services.explainability import build_explanation_report
 
 st.set_page_config(
     page_title="Tomato Plant Disease Expert",
@@ -47,6 +48,33 @@ def show_diagnoses(diagnosis):
                 st.write("**General management:** " + item["management"])
             if item.get("prevention"):
                 st.write("**Prevention:** " + item["prevention"])
+            with st.expander("Why did the system suggest this?"):
+                facts = diagnosis.get("recognized_symptoms", [])
+                inference = system.inference_engine.forward_chain(facts)
+                report = build_explanation_report(inference, [item["id"]])
+                explanation = report["diagnoses"][0]
+                st.caption(
+                    f"Evaluated {report['evaluated_rule_count']} rules; "
+                    f"{report['fired_rule_count']} fully matched."
+                )
+                if explanation["supporting_rules"]:
+                    st.write("**Supporting rules**")
+                    for support in explanation["supporting_rules"]:
+                        st.write(
+                            f"- {support['rule_id']}: "
+                            + ", ".join(support["matched_conditions"])
+                        )
+                        if support["explanation"]:
+                            st.caption(support["explanation"])
+                else:
+                    st.info("No complete rule currently supports this condition.")
+                if explanation["missing_evidence"]:
+                    st.write("**Evidence still missing from related rules:**")
+                    st.write(", ".join(explanation["missing_evidence"]))
+                st.caption(
+                    "A rule match explains why this condition is listed; "
+                    "it does not confirm the disease."
+                )
 
 
 def show_evidence(evidence):
