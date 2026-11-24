@@ -156,6 +156,31 @@ class TomatoExpertSystem:
         """Attempt to prove a diagnosis from observed symptoms and show gaps."""
         return self.inference_engine.backward_chain(goal, observed)
 
+    def diagnose_from_facts(self, observed):
+        """Rank diagnoses from an explicit set of confirmed symptom facts."""
+        fired, conclusions = self.forward_chain(observed)
+        ranked = []
+        for pid, matched_rules in conclusions.items():
+            profile = self.profiles[pid]
+            raw = sum(rule["weight"] for rule in matched_rules) / len(matched_rules)
+            coverage = min(1.0, len(matched_rules) / 3.0)
+            score = round(min(0.99, raw * (0.65 + 0.35 * coverage)) * 100)
+            ranked.append({
+                "id": pid,
+                "name": profile["has_common_name"],
+                "score": score,
+                "matched_rules": [rule["id"] for rule in matched_rules],
+                "explanation": matched_rules[0]["explanation"],
+                "management": profile["management"],
+                "prevention": profile["prevention"]
+            })
+        ranked.sort(key=lambda item: (item["score"], len(item["matched_rules"])), reverse=True)
+        return {
+            "recognized_symptoms": sorted(set(observed)),
+            "fired_rule_count": len(fired),
+            "diagnoses": ranked
+        }
+
     def diagnose(self, user_text):
         observed = self.extract_symptoms(user_text)
         fired, conclusions = self.forward_chain(observed)
