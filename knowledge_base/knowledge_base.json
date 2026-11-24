@@ -1,0 +1,2968 @@
+{
+  "project": "Tomato Plant Disease Diagnosis Expert System",
+  "scope": "Tomato plant symptoms; includes diseases and two physiological disorders.",
+  "rules": [
+    {
+      "id": "R001",
+      "name": "Early blight pattern 1",
+      "if_all_symptoms": [
+        "dark brown spots",
+        "concentric rings"
+      ],
+      "then_diagnosis": "early_blight",
+      "weight": 0.78,
+      "explanation": "Observed symptoms match a known early blight pattern."
+    },
+    {
+      "id": "R002",
+      "name": "Early blight pattern 2",
+      "if_all_symptoms": [
+        "concentric rings",
+        "yellowing lower leaves"
+      ],
+      "then_diagnosis": "early_blight",
+      "weight": 0.82,
+      "explanation": "Observed symptoms match a known early blight pattern."
+    },
+    {
+      "id": "R003",
+      "name": "Early blight pattern 3",
+      "if_all_symptoms": [
+        "dark brown spots",
+        "yellowing lower leaves",
+        "leaf drop"
+      ],
+      "then_diagnosis": "early_blight",
+      "weight": 0.88,
+      "explanation": "Observed symptoms match a known early blight pattern."
+    },
+    {
+      "id": "R004",
+      "name": "Early blight pattern 4",
+      "if_all_symptoms": [
+        "yellowing lower leaves",
+        "leaf drop",
+        "stem lesions"
+      ],
+      "then_diagnosis": "early_blight",
+      "weight": 0.84,
+      "explanation": "Observed symptoms match a known early blight pattern."
+    },
+    {
+      "id": "R005",
+      "name": "Early blight pattern 5",
+      "if_all_symptoms": [
+        "dark brown spots",
+        "leaf drop",
+        "stem lesions"
+      ],
+      "then_diagnosis": "early_blight",
+      "weight": 0.8,
+      "explanation": "Observed symptoms match a known early blight pattern."
+    },
+    {
+      "id": "R006",
+      "name": "Late blight pattern 1",
+      "if_all_symptoms": [
+        "water-soaked leaf lesions",
+        "rapidly spreading brown patches"
+      ],
+      "then_diagnosis": "late_blight",
+      "weight": 0.78,
+      "explanation": "Observed symptoms match a known late blight pattern."
+    },
+    {
+      "id": "R007",
+      "name": "Late blight pattern 2",
+      "if_all_symptoms": [
+        "rapidly spreading brown patches",
+        "white fuzzy growth underside"
+      ],
+      "then_diagnosis": "late_blight",
+      "weight": 0.82,
+      "explanation": "Observed symptoms match a known late blight pattern."
+    },
+    {
+      "id": "R008",
+      "name": "Late blight pattern 3",
+      "if_all_symptoms": [
+        "water-soaked leaf lesions",
+        "white fuzzy growth underside",
+        "brown stem lesions"
+      ],
+      "then_diagnosis": "late_blight",
+      "weight": 0.88,
+      "explanation": "Observed symptoms match a known late blight pattern."
+    },
+    {
+      "id": "R009",
+      "name": "Late blight pattern 4",
+      "if_all_symptoms": [
+        "white fuzzy growth underside",
+        "brown stem lesions",
+        "firm brown fruit lesions"
+      ],
+      "then_diagnosis": "late_blight",
+      "weight": 0.84,
+      "explanation": "Observed symptoms match a known late blight pattern."
+    },
+    {
+      "id": "R010",
+      "name": "Late blight pattern 5",
+      "if_all_symptoms": [
+        "water-soaked leaf lesions",
+        "brown stem lesions",
+        "firm brown fruit lesions"
+      ],
+      "then_diagnosis": "late_blight",
+      "weight": 0.8,
+      "explanation": "Observed symptoms match a known late blight pattern."
+    },
+    {
+      "id": "R011",
+      "name": "Septoria leaf spot pattern 1",
+      "if_all_symptoms": [
+        "many small circular spots",
+        "gray centers in leaf spots"
+      ],
+      "then_diagnosis": "septoria_leaf_spot",
+      "weight": 0.78,
+      "explanation": "Observed symptoms match a known septoria leaf spot pattern."
+    },
+    {
+      "id": "R012",
+      "name": "Septoria leaf spot pattern 2",
+      "if_all_symptoms": [
+        "gray centers in leaf spots",
+        "dark borders around spots"
+      ],
+      "then_diagnosis": "septoria_leaf_spot",
+      "weight": 0.82,
+      "explanation": "Observed symptoms match a known septoria leaf spot pattern."
+    },
+    {
+      "id": "R013",
+      "name": "Septoria leaf spot pattern 3",
+      "if_all_symptoms": [
+        "many small circular spots",
+        "dark borders around spots",
+        "yellowing lower leaves"
+      ],
+      "then_diagnosis": "septoria_leaf_spot",
+      "weight": 0.88,
+      "explanation": "Observed symptoms match a known septoria leaf spot pattern."
+    },
+    {
+      "id": "R014",
+      "name": "Septoria leaf spot pattern 4",
+      "if_all_symptoms": [
+        "dark borders around spots",
+        "yellowing lower leaves",
+        "lower leaf drop"
+      ],
+      "then_diagnosis": "septoria_leaf_spot",
+      "weight": 0.84,
+      "explanation": "Observed symptoms match a known septoria leaf spot pattern."
+    },
+    {
+      "id": "R015",
+      "name": "Septoria leaf spot pattern 5",
+      "if_all_symptoms": [
+        "many small circular spots",
+        "yellowing lower leaves",
+        "lower leaf drop"
+      ],
+      "then_diagnosis": "septoria_leaf_spot",
+      "weight": 0.8,
+      "explanation": "Observed symptoms match a known septoria leaf spot pattern."
+    },
+    {
+      "id": "R016",
+      "name": "Bacterial spot pattern 1",
+      "if_all_symptoms": [
+        "small dark leaf spots",
+        "yellow halos around spots"
+      ],
+      "then_diagnosis": "bacterial_spot",
+      "weight": 0.78,
+      "explanation": "Observed symptoms match a known bacterial spot pattern."
+    },
+    {
+      "id": "R017",
+      "name": "Bacterial spot pattern 2",
+      "if_all_symptoms": [
+        "yellow halos around spots",
+        "raised scabby fruit spots"
+      ],
+      "then_diagnosis": "bacterial_spot",
+      "weight": 0.82,
+      "explanation": "Observed symptoms match a known bacterial spot pattern."
+    },
+    {
+      "id": "R018",
+      "name": "Bacterial spot pattern 3",
+      "if_all_symptoms": [
+        "small dark leaf spots",
+        "raised scabby fruit spots",
+        "water-soaked lesions"
+      ],
+      "then_diagnosis": "bacterial_spot",
+      "weight": 0.88,
+      "explanation": "Observed symptoms match a known bacterial spot pattern."
+    },
+    {
+      "id": "R019",
+      "name": "Bacterial spot pattern 4",
+      "if_all_symptoms": [
+        "raised scabby fruit spots",
+        "water-soaked lesions",
+        "leaf yellowing"
+      ],
+      "then_diagnosis": "bacterial_spot",
+      "weight": 0.84,
+      "explanation": "Observed symptoms match a known bacterial spot pattern."
+    },
+    {
+      "id": "R020",
+      "name": "Bacterial spot pattern 5",
+      "if_all_symptoms": [
+        "small dark leaf spots",
+        "water-soaked lesions",
+        "leaf yellowing"
+      ],
+      "then_diagnosis": "bacterial_spot",
+      "weight": 0.8,
+      "explanation": "Observed symptoms match a known bacterial spot pattern."
+    },
+    {
+      "id": "R021",
+      "name": "Bacterial wilt pattern 1",
+      "if_all_symptoms": [
+        "sudden plant wilting",
+        "leaves remain green while wilting"
+      ],
+      "then_diagnosis": "bacterial_wilt",
+      "weight": 0.78,
+      "explanation": "Observed symptoms match a known bacterial wilt pattern."
+    },
+    {
+      "id": "R022",
+      "name": "Bacterial wilt pattern 2",
+      "if_all_symptoms": [
+        "leaves remain green while wilting",
+        "vascular tissue brown"
+      ],
+      "then_diagnosis": "bacterial_wilt",
+      "weight": 0.82,
+      "explanation": "Observed symptoms match a known bacterial wilt pattern."
+    },
+    {
+      "id": "R023",
+      "name": "Bacterial wilt pattern 3",
+      "if_all_symptoms": [
+        "sudden plant wilting",
+        "vascular tissue brown",
+        "one-sided wilting"
+      ],
+      "then_diagnosis": "bacterial_wilt",
+      "weight": 0.88,
+      "explanation": "Observed symptoms match a known bacterial wilt pattern."
+    },
+    {
+      "id": "R024",
+      "name": "Bacterial wilt pattern 4",
+      "if_all_symptoms": [
+        "vascular tissue brown",
+        "one-sided wilting",
+        "plant does not recover overnight"
+      ],
+      "then_diagnosis": "bacterial_wilt",
+      "weight": 0.84,
+      "explanation": "Observed symptoms match a known bacterial wilt pattern."
+    },
+    {
+      "id": "R025",
+      "name": "Bacterial wilt pattern 5",
+      "if_all_symptoms": [
+        "sudden plant wilting",
+        "one-sided wilting",
+        "plant does not recover overnight"
+      ],
+      "then_diagnosis": "bacterial_wilt",
+      "weight": 0.8,
+      "explanation": "Observed symptoms match a known bacterial wilt pattern."
+    },
+    {
+      "id": "R026",
+      "name": "Fusarium wilt pattern 1",
+      "if_all_symptoms": [
+        "yellowing starts on lower leaves",
+        "one-sided yellowing"
+      ],
+      "then_diagnosis": "fusarium_wilt",
+      "weight": 0.78,
+      "explanation": "Observed symptoms match a known fusarium wilt pattern."
+    },
+    {
+      "id": "R027",
+      "name": "Fusarium wilt pattern 2",
+      "if_all_symptoms": [
+        "one-sided yellowing",
+        "wilting during warm hours"
+      ],
+      "then_diagnosis": "fusarium_wilt",
+      "weight": 0.82,
+      "explanation": "Observed symptoms match a known fusarium wilt pattern."
+    },
+    {
+      "id": "R028",
+      "name": "Fusarium wilt pattern 3",
+      "if_all_symptoms": [
+        "yellowing starts on lower leaves",
+        "wilting during warm hours",
+        "brown vascular tissue"
+      ],
+      "then_diagnosis": "fusarium_wilt",
+      "weight": 0.88,
+      "explanation": "Observed symptoms match a known fusarium wilt pattern."
+    },
+    {
+      "id": "R029",
+      "name": "Fusarium wilt pattern 4",
+      "if_all_symptoms": [
+        "wilting during warm hours",
+        "brown vascular tissue",
+        "progressive plant decline"
+      ],
+      "then_diagnosis": "fusarium_wilt",
+      "weight": 0.84,
+      "explanation": "Observed symptoms match a known fusarium wilt pattern."
+    },
+    {
+      "id": "R030",
+      "name": "Fusarium wilt pattern 5",
+      "if_all_symptoms": [
+        "yellowing starts on lower leaves",
+        "brown vascular tissue",
+        "progressive plant decline"
+      ],
+      "then_diagnosis": "fusarium_wilt",
+      "weight": 0.8,
+      "explanation": "Observed symptoms match a known fusarium wilt pattern."
+    },
+    {
+      "id": "R031",
+      "name": "Verticillium wilt pattern 1",
+      "if_all_symptoms": [
+        "V-shaped yellow lesions",
+        "lower leaf yellowing"
+      ],
+      "then_diagnosis": "verticillium_wilt",
+      "weight": 0.78,
+      "explanation": "Observed symptoms match a known verticillium wilt pattern."
+    },
+    {
+      "id": "R032",
+      "name": "Verticillium wilt pattern 2",
+      "if_all_symptoms": [
+        "lower leaf yellowing",
+        "wilting in warm weather"
+      ],
+      "then_diagnosis": "verticillium_wilt",
+      "weight": 0.82,
+      "explanation": "Observed symptoms match a known verticillium wilt pattern."
+    },
+    {
+      "id": "R033",
+      "name": "Verticillium wilt pattern 3",
+      "if_all_symptoms": [
+        "V-shaped yellow lesions",
+        "wilting in warm weather",
+        "brown vascular tissue"
+      ],
+      "then_diagnosis": "verticillium_wilt",
+      "weight": 0.88,
+      "explanation": "Observed symptoms match a known verticillium wilt pattern."
+    },
+    {
+      "id": "R034",
+      "name": "Verticillium wilt pattern 4",
+      "if_all_symptoms": [
+        "wilting in warm weather",
+        "brown vascular tissue",
+        "slow stunted growth"
+      ],
+      "then_diagnosis": "verticillium_wilt",
+      "weight": 0.84,
+      "explanation": "Observed symptoms match a known verticillium wilt pattern."
+    },
+    {
+      "id": "R035",
+      "name": "Verticillium wilt pattern 5",
+      "if_all_symptoms": [
+        "V-shaped yellow lesions",
+        "brown vascular tissue",
+        "slow stunted growth"
+      ],
+      "then_diagnosis": "verticillium_wilt",
+      "weight": 0.8,
+      "explanation": "Observed symptoms match a known verticillium wilt pattern."
+    },
+    {
+      "id": "R036",
+      "name": "Powdery mildew pattern 1",
+      "if_all_symptoms": [
+        "white powdery leaf coating",
+        "white patches on upper leaf surface"
+      ],
+      "then_diagnosis": "powdery_mildew",
+      "weight": 0.78,
+      "explanation": "Observed symptoms match a known powdery mildew pattern."
+    },
+    {
+      "id": "R037",
+      "name": "Powdery mildew pattern 2",
+      "if_all_symptoms": [
+        "white patches on upper leaf surface",
+        "leaf yellowing"
+      ],
+      "then_diagnosis": "powdery_mildew",
+      "weight": 0.82,
+      "explanation": "Observed symptoms match a known powdery mildew pattern."
+    },
+    {
+      "id": "R038",
+      "name": "Powdery mildew pattern 3",
+      "if_all_symptoms": [
+        "white powdery leaf coating",
+        "leaf yellowing",
+        "leaf curling"
+      ],
+      "then_diagnosis": "powdery_mildew",
+      "weight": 0.88,
+      "explanation": "Observed symptoms match a known powdery mildew pattern."
+    },
+    {
+      "id": "R039",
+      "name": "Powdery mildew pattern 4",
+      "if_all_symptoms": [
+        "leaf yellowing",
+        "leaf curling",
+        "premature leaf drop"
+      ],
+      "then_diagnosis": "powdery_mildew",
+      "weight": 0.84,
+      "explanation": "Observed symptoms match a known powdery mildew pattern."
+    },
+    {
+      "id": "R040",
+      "name": "Powdery mildew pattern 5",
+      "if_all_symptoms": [
+        "white powdery leaf coating",
+        "leaf curling",
+        "premature leaf drop"
+      ],
+      "then_diagnosis": "powdery_mildew",
+      "weight": 0.8,
+      "explanation": "Observed symptoms match a known powdery mildew pattern."
+    },
+    {
+      "id": "R041",
+      "name": "Gray mold pattern 1",
+      "if_all_symptoms": [
+        "gray fuzzy mold",
+        "soft water-soaked lesions"
+      ],
+      "then_diagnosis": "gray_mold",
+      "weight": 0.78,
+      "explanation": "Observed symptoms match a known gray mold pattern."
+    },
+    {
+      "id": "R042",
+      "name": "Gray mold pattern 2",
+      "if_all_symptoms": [
+        "soft water-soaked lesions",
+        "brown stem cankers"
+      ],
+      "then_diagnosis": "gray_mold",
+      "weight": 0.82,
+      "explanation": "Observed symptoms match a known gray mold pattern."
+    },
+    {
+      "id": "R043",
+      "name": "Gray mold pattern 3",
+      "if_all_symptoms": [
+        "gray fuzzy mold",
+        "brown stem cankers",
+        "flowers turn brown"
+      ],
+      "then_diagnosis": "gray_mold",
+      "weight": 0.88,
+      "explanation": "Observed symptoms match a known gray mold pattern."
+    },
+    {
+      "id": "R044",
+      "name": "Gray mold pattern 4",
+      "if_all_symptoms": [
+        "brown stem cankers",
+        "flowers turn brown",
+        "fruit rot near stem"
+      ],
+      "then_diagnosis": "gray_mold",
+      "weight": 0.84,
+      "explanation": "Observed symptoms match a known gray mold pattern."
+    },
+    {
+      "id": "R045",
+      "name": "Gray mold pattern 5",
+      "if_all_symptoms": [
+        "gray fuzzy mold",
+        "flowers turn brown",
+        "fruit rot near stem"
+      ],
+      "then_diagnosis": "gray_mold",
+      "weight": 0.8,
+      "explanation": "Observed symptoms match a known gray mold pattern."
+    },
+    {
+      "id": "R046",
+      "name": "Anthracnose pattern 1",
+      "if_all_symptoms": [
+        "sunken circular fruit lesions",
+        "dark fruit spots"
+      ],
+      "then_diagnosis": "anthracnose",
+      "weight": 0.78,
+      "explanation": "Observed symptoms match a known anthracnose pattern."
+    },
+    {
+      "id": "R047",
+      "name": "Anthracnose pattern 2",
+      "if_all_symptoms": [
+        "dark fruit spots",
+        "salmon-colored spore masses"
+      ],
+      "then_diagnosis": "anthracnose",
+      "weight": 0.82,
+      "explanation": "Observed symptoms match a known anthracnose pattern."
+    },
+    {
+      "id": "R048",
+      "name": "Anthracnose pattern 3",
+      "if_all_symptoms": [
+        "sunken circular fruit lesions",
+        "salmon-colored spore masses",
+        "fruit rot during ripening"
+      ],
+      "then_diagnosis": "anthracnose",
+      "weight": 0.88,
+      "explanation": "Observed symptoms match a known anthracnose pattern."
+    },
+    {
+      "id": "R049",
+      "name": "Anthracnose pattern 4",
+      "if_all_symptoms": [
+        "salmon-colored spore masses",
+        "fruit rot during ripening",
+        "small leaf lesions"
+      ],
+      "then_diagnosis": "anthracnose",
+      "weight": 0.84,
+      "explanation": "Observed symptoms match a known anthracnose pattern."
+    },
+    {
+      "id": "R050",
+      "name": "Anthracnose pattern 5",
+      "if_all_symptoms": [
+        "sunken circular fruit lesions",
+        "fruit rot during ripening",
+        "small leaf lesions"
+      ],
+      "then_diagnosis": "anthracnose",
+      "weight": 0.8,
+      "explanation": "Observed symptoms match a known anthracnose pattern."
+    },
+    {
+      "id": "R051",
+      "name": "Target spot pattern 1",
+      "if_all_symptoms": [
+        "brown circular leaf spots",
+        "concentric target-like rings"
+      ],
+      "then_diagnosis": "target_spot",
+      "weight": 0.78,
+      "explanation": "Observed symptoms match a known target spot pattern."
+    },
+    {
+      "id": "R052",
+      "name": "Target spot pattern 2",
+      "if_all_symptoms": [
+        "concentric target-like rings",
+        "yellowing leaves"
+      ],
+      "then_diagnosis": "target_spot",
+      "weight": 0.82,
+      "explanation": "Observed symptoms match a known target spot pattern."
+    },
+    {
+      "id": "R053",
+      "name": "Target spot pattern 3",
+      "if_all_symptoms": [
+        "brown circular leaf spots",
+        "yellowing leaves",
+        "leaf blight"
+      ],
+      "then_diagnosis": "target_spot",
+      "weight": 0.88,
+      "explanation": "Observed symptoms match a known target spot pattern."
+    },
+    {
+      "id": "R054",
+      "name": "Target spot pattern 4",
+      "if_all_symptoms": [
+        "yellowing leaves",
+        "leaf blight",
+        "fruit lesions"
+      ],
+      "then_diagnosis": "target_spot",
+      "weight": 0.84,
+      "explanation": "Observed symptoms match a known target spot pattern."
+    },
+    {
+      "id": "R055",
+      "name": "Target spot pattern 5",
+      "if_all_symptoms": [
+        "brown circular leaf spots",
+        "leaf blight",
+        "fruit lesions"
+      ],
+      "then_diagnosis": "target_spot",
+      "weight": 0.8,
+      "explanation": "Observed symptoms match a known target spot pattern."
+    },
+    {
+      "id": "R056",
+      "name": "Tomato mosaic virus pattern 1",
+      "if_all_symptoms": [
+        "mosaic light and dark green leaves",
+        "leaf distortion"
+      ],
+      "then_diagnosis": "tomato_mosaic_virus",
+      "weight": 0.78,
+      "explanation": "Observed symptoms match a known tomato mosaic virus pattern."
+    },
+    {
+      "id": "R057",
+      "name": "Tomato mosaic virus pattern 2",
+      "if_all_symptoms": [
+        "leaf distortion",
+        "narrow shoestring leaves"
+      ],
+      "then_diagnosis": "tomato_mosaic_virus",
+      "weight": 0.82,
+      "explanation": "Observed symptoms match a known tomato mosaic virus pattern."
+    },
+    {
+      "id": "R058",
+      "name": "Tomato mosaic virus pattern 3",
+      "if_all_symptoms": [
+        "mosaic light and dark green leaves",
+        "narrow shoestring leaves",
+        "stunted growth"
+      ],
+      "then_diagnosis": "tomato_mosaic_virus",
+      "weight": 0.88,
+      "explanation": "Observed symptoms match a known tomato mosaic virus pattern."
+    },
+    {
+      "id": "R059",
+      "name": "Tomato mosaic virus pattern 4",
+      "if_all_symptoms": [
+        "narrow shoestring leaves",
+        "stunted growth",
+        "uneven fruit ripening"
+      ],
+      "then_diagnosis": "tomato_mosaic_virus",
+      "weight": 0.84,
+      "explanation": "Observed symptoms match a known tomato mosaic virus pattern."
+    },
+    {
+      "id": "R060",
+      "name": "Tomato mosaic virus pattern 5",
+      "if_all_symptoms": [
+        "mosaic light and dark green leaves",
+        "stunted growth",
+        "uneven fruit ripening"
+      ],
+      "then_diagnosis": "tomato_mosaic_virus",
+      "weight": 0.8,
+      "explanation": "Observed symptoms match a known tomato mosaic virus pattern."
+    },
+    {
+      "id": "R061",
+      "name": "Tomato yellow leaf curl virus pattern 1",
+      "if_all_symptoms": [
+        "upward leaf curling",
+        "yellow leaf margins"
+      ],
+      "then_diagnosis": "tomato_yellow_leaf_curl_virus",
+      "weight": 0.78,
+      "explanation": "Observed symptoms match a known tomato yellow leaf curl virus pattern."
+    },
+    {
+      "id": "R062",
+      "name": "Tomato yellow leaf curl virus pattern 2",
+      "if_all_symptoms": [
+        "yellow leaf margins",
+        "small leaves"
+      ],
+      "then_diagnosis": "tomato_yellow_leaf_curl_virus",
+      "weight": 0.82,
+      "explanation": "Observed symptoms match a known tomato yellow leaf curl virus pattern."
+    },
+    {
+      "id": "R063",
+      "name": "Tomato yellow leaf curl virus pattern 3",
+      "if_all_symptoms": [
+        "upward leaf curling",
+        "small leaves",
+        "stunted plant growth"
+      ],
+      "then_diagnosis": "tomato_yellow_leaf_curl_virus",
+      "weight": 0.88,
+      "explanation": "Observed symptoms match a known tomato yellow leaf curl virus pattern."
+    },
+    {
+      "id": "R064",
+      "name": "Tomato yellow leaf curl virus pattern 4",
+      "if_all_symptoms": [
+        "small leaves",
+        "stunted plant growth",
+        "poor fruit set"
+      ],
+      "then_diagnosis": "tomato_yellow_leaf_curl_virus",
+      "weight": 0.84,
+      "explanation": "Observed symptoms match a known tomato yellow leaf curl virus pattern."
+    },
+    {
+      "id": "R065",
+      "name": "Tomato yellow leaf curl virus pattern 5",
+      "if_all_symptoms": [
+        "upward leaf curling",
+        "stunted plant growth",
+        "poor fruit set"
+      ],
+      "then_diagnosis": "tomato_yellow_leaf_curl_virus",
+      "weight": 0.8,
+      "explanation": "Observed symptoms match a known tomato yellow leaf curl virus pattern."
+    },
+    {
+      "id": "R066",
+      "name": "Tomato spotted wilt pattern 1",
+      "if_all_symptoms": [
+        "bronze young leaves",
+        "dark rings on fruit"
+      ],
+      "then_diagnosis": "spotted_wilt_virus",
+      "weight": 0.78,
+      "explanation": "Observed symptoms match a known tomato spotted wilt pattern."
+    },
+    {
+      "id": "R067",
+      "name": "Tomato spotted wilt pattern 2",
+      "if_all_symptoms": [
+        "dark rings on fruit",
+        "necrotic leaf spots"
+      ],
+      "then_diagnosis": "spotted_wilt_virus",
+      "weight": 0.82,
+      "explanation": "Observed symptoms match a known tomato spotted wilt pattern."
+    },
+    {
+      "id": "R068",
+      "name": "Tomato spotted wilt pattern 3",
+      "if_all_symptoms": [
+        "bronze young leaves",
+        "necrotic leaf spots",
+        "stunted growth"
+      ],
+      "then_diagnosis": "spotted_wilt_virus",
+      "weight": 0.88,
+      "explanation": "Observed symptoms match a known tomato spotted wilt pattern."
+    },
+    {
+      "id": "R069",
+      "name": "Tomato spotted wilt pattern 4",
+      "if_all_symptoms": [
+        "necrotic leaf spots",
+        "stunted growth",
+        "wilting shoot tips"
+      ],
+      "then_diagnosis": "spotted_wilt_virus",
+      "weight": 0.84,
+      "explanation": "Observed symptoms match a known tomato spotted wilt pattern."
+    },
+    {
+      "id": "R070",
+      "name": "Tomato spotted wilt pattern 5",
+      "if_all_symptoms": [
+        "bronze young leaves",
+        "stunted growth",
+        "wilting shoot tips"
+      ],
+      "then_diagnosis": "spotted_wilt_virus",
+      "weight": 0.8,
+      "explanation": "Observed symptoms match a known tomato spotted wilt pattern."
+    },
+    {
+      "id": "R071",
+      "name": "Root-knot nematode pattern 1",
+      "if_all_symptoms": [
+        "root galls",
+        "knotted swollen roots"
+      ],
+      "then_diagnosis": "root_knot_nematode",
+      "weight": 0.78,
+      "explanation": "Observed symptoms match a known root-knot nematode pattern."
+    },
+    {
+      "id": "R072",
+      "name": "Root-knot nematode pattern 2",
+      "if_all_symptoms": [
+        "knotted swollen roots",
+        "stunted growth"
+      ],
+      "then_diagnosis": "root_knot_nematode",
+      "weight": 0.82,
+      "explanation": "Observed symptoms match a known root-knot nematode pattern."
+    },
+    {
+      "id": "R073",
+      "name": "Root-knot nematode pattern 3",
+      "if_all_symptoms": [
+        "root galls",
+        "stunted growth",
+        "wilting despite moist soil"
+      ],
+      "then_diagnosis": "root_knot_nematode",
+      "weight": 0.88,
+      "explanation": "Observed symptoms match a known root-knot nematode pattern."
+    },
+    {
+      "id": "R074",
+      "name": "Root-knot nematode pattern 4",
+      "if_all_symptoms": [
+        "stunted growth",
+        "wilting despite moist soil",
+        "poor nutrient uptake"
+      ],
+      "then_diagnosis": "root_knot_nematode",
+      "weight": 0.84,
+      "explanation": "Observed symptoms match a known root-knot nematode pattern."
+    },
+    {
+      "id": "R075",
+      "name": "Root-knot nematode pattern 5",
+      "if_all_symptoms": [
+        "root galls",
+        "wilting despite moist soil",
+        "poor nutrient uptake"
+      ],
+      "then_diagnosis": "root_knot_nematode",
+      "weight": 0.8,
+      "explanation": "Observed symptoms match a known root-knot nematode pattern."
+    },
+    {
+      "id": "R076",
+      "name": "Gray leaf spot pattern 1",
+      "if_all_symptoms": [
+        "small gray leaf lesions",
+        "rectangular spots between veins"
+      ],
+      "then_diagnosis": "gray_leaf_spot",
+      "weight": 0.78,
+      "explanation": "Observed symptoms match a known gray leaf spot pattern."
+    },
+    {
+      "id": "R077",
+      "name": "Gray leaf spot pattern 2",
+      "if_all_symptoms": [
+        "rectangular spots between veins",
+        "yellowing leaves"
+      ],
+      "then_diagnosis": "gray_leaf_spot",
+      "weight": 0.82,
+      "explanation": "Observed symptoms match a known gray leaf spot pattern."
+    },
+    {
+      "id": "R078",
+      "name": "Gray leaf spot pattern 3",
+      "if_all_symptoms": [
+        "small gray leaf lesions",
+        "yellowing leaves",
+        "leaf blight"
+      ],
+      "then_diagnosis": "gray_leaf_spot",
+      "weight": 0.88,
+      "explanation": "Observed symptoms match a known gray leaf spot pattern."
+    },
+    {
+      "id": "R079",
+      "name": "Gray leaf spot pattern 4",
+      "if_all_symptoms": [
+        "yellowing leaves",
+        "leaf blight",
+        "lower canopy leaf drop"
+      ],
+      "then_diagnosis": "gray_leaf_spot",
+      "weight": 0.84,
+      "explanation": "Observed symptoms match a known gray leaf spot pattern."
+    },
+    {
+      "id": "R080",
+      "name": "Gray leaf spot pattern 5",
+      "if_all_symptoms": [
+        "small gray leaf lesions",
+        "leaf blight",
+        "lower canopy leaf drop"
+      ],
+      "then_diagnosis": "gray_leaf_spot",
+      "weight": 0.8,
+      "explanation": "Observed symptoms match a known gray leaf spot pattern."
+    },
+    {
+      "id": "R081",
+      "name": "Southern blight pattern 1",
+      "if_all_symptoms": [
+        "white fungal growth at soil line",
+        "small tan round fungal bodies"
+      ],
+      "then_diagnosis": "southern_blight",
+      "weight": 0.78,
+      "explanation": "Observed symptoms match a known southern blight pattern."
+    },
+    {
+      "id": "R082",
+      "name": "Southern blight pattern 2",
+      "if_all_symptoms": [
+        "small tan round fungal bodies",
+        "stem rot near soil"
+      ],
+      "then_diagnosis": "southern_blight",
+      "weight": 0.82,
+      "explanation": "Observed symptoms match a known southern blight pattern."
+    },
+    {
+      "id": "R083",
+      "name": "Southern blight pattern 3",
+      "if_all_symptoms": [
+        "white fungal growth at soil line",
+        "stem rot near soil",
+        "sudden wilting"
+      ],
+      "then_diagnosis": "southern_blight",
+      "weight": 0.88,
+      "explanation": "Observed symptoms match a known southern blight pattern."
+    },
+    {
+      "id": "R084",
+      "name": "Southern blight pattern 4",
+      "if_all_symptoms": [
+        "stem rot near soil",
+        "sudden wilting",
+        "lower stem girdling"
+      ],
+      "then_diagnosis": "southern_blight",
+      "weight": 0.84,
+      "explanation": "Observed symptoms match a known southern blight pattern."
+    },
+    {
+      "id": "R085",
+      "name": "Southern blight pattern 5",
+      "if_all_symptoms": [
+        "white fungal growth at soil line",
+        "sudden wilting",
+        "lower stem girdling"
+      ],
+      "then_diagnosis": "southern_blight",
+      "weight": 0.8,
+      "explanation": "Observed symptoms match a known southern blight pattern."
+    },
+    {
+      "id": "R086",
+      "name": "Bacterial canker pattern 1",
+      "if_all_symptoms": [
+        "one-sided leaf wilting",
+        "brown leaf margins"
+      ],
+      "then_diagnosis": "bacterial_canker",
+      "weight": 0.78,
+      "explanation": "Observed symptoms match a known bacterial canker pattern."
+    },
+    {
+      "id": "R087",
+      "name": "Bacterial canker pattern 2",
+      "if_all_symptoms": [
+        "brown leaf margins",
+        "stem cankers"
+      ],
+      "then_diagnosis": "bacterial_canker",
+      "weight": 0.82,
+      "explanation": "Observed symptoms match a known bacterial canker pattern."
+    },
+    {
+      "id": "R088",
+      "name": "Bacterial canker pattern 3",
+      "if_all_symptoms": [
+        "one-sided leaf wilting",
+        "stem cankers",
+        "vascular discoloration"
+      ],
+      "then_diagnosis": "bacterial_canker",
+      "weight": 0.88,
+      "explanation": "Observed symptoms match a known bacterial canker pattern."
+    },
+    {
+      "id": "R089",
+      "name": "Bacterial canker pattern 4",
+      "if_all_symptoms": [
+        "stem cankers",
+        "vascular discoloration",
+        "bird's-eye fruit spots"
+      ],
+      "then_diagnosis": "bacterial_canker",
+      "weight": 0.84,
+      "explanation": "Observed symptoms match a known bacterial canker pattern."
+    },
+    {
+      "id": "R090",
+      "name": "Bacterial canker pattern 5",
+      "if_all_symptoms": [
+        "one-sided leaf wilting",
+        "vascular discoloration",
+        "bird's-eye fruit spots"
+      ],
+      "then_diagnosis": "bacterial_canker",
+      "weight": 0.8,
+      "explanation": "Observed symptoms match a known bacterial canker pattern."
+    },
+    {
+      "id": "R091",
+      "name": "Blossom-end rot (physiological disorder) pattern 1",
+      "if_all_symptoms": [
+        "dark sunken patch at blossom end",
+        "leathery fruit bottom"
+      ],
+      "then_diagnosis": "blossom_end_rot",
+      "weight": 0.78,
+      "explanation": "Observed symptoms match a known blossom-end rot (physiological disorder) pattern."
+    },
+    {
+      "id": "R092",
+      "name": "Blossom-end rot (physiological disorder) pattern 2",
+      "if_all_symptoms": [
+        "leathery fruit bottom",
+        "fruit rot opposite stem"
+      ],
+      "then_diagnosis": "blossom_end_rot",
+      "weight": 0.82,
+      "explanation": "Observed symptoms match a known blossom-end rot (physiological disorder) pattern."
+    },
+    {
+      "id": "R093",
+      "name": "Blossom-end rot (physiological disorder) pattern 3",
+      "if_all_symptoms": [
+        "dark sunken patch at blossom end",
+        "fruit rot opposite stem",
+        "irregular soil moisture"
+      ],
+      "then_diagnosis": "blossom_end_rot",
+      "weight": 0.88,
+      "explanation": "Observed symptoms match a known blossom-end rot (physiological disorder) pattern."
+    },
+    {
+      "id": "R094",
+      "name": "Blossom-end rot (physiological disorder) pattern 4",
+      "if_all_symptoms": [
+        "fruit rot opposite stem",
+        "irregular soil moisture",
+        "rapid fruit growth"
+      ],
+      "then_diagnosis": "blossom_end_rot",
+      "weight": 0.84,
+      "explanation": "Observed symptoms match a known blossom-end rot (physiological disorder) pattern."
+    },
+    {
+      "id": "R095",
+      "name": "Blossom-end rot (physiological disorder) pattern 5",
+      "if_all_symptoms": [
+        "dark sunken patch at blossom end",
+        "irregular soil moisture",
+        "rapid fruit growth"
+      ],
+      "then_diagnosis": "blossom_end_rot",
+      "weight": 0.8,
+      "explanation": "Observed symptoms match a known blossom-end rot (physiological disorder) pattern."
+    },
+    {
+      "id": "R096",
+      "name": "Sunscald (physiological disorder) pattern 1",
+      "if_all_symptoms": [
+        "pale white patch on exposed fruit",
+        "papery fruit skin"
+      ],
+      "then_diagnosis": "sunscald",
+      "weight": 0.78,
+      "explanation": "Observed symptoms match a known sunscald (physiological disorder) pattern."
+    },
+    {
+      "id": "R097",
+      "name": "Sunscald (physiological disorder) pattern 2",
+      "if_all_symptoms": [
+        "papery fruit skin",
+        "sunken dry fruit lesion"
+      ],
+      "then_diagnosis": "sunscald",
+      "weight": 0.82,
+      "explanation": "Observed symptoms match a known sunscald (physiological disorder) pattern."
+    },
+    {
+      "id": "R098",
+      "name": "Sunscald (physiological disorder) pattern 3",
+      "if_all_symptoms": [
+        "pale white patch on exposed fruit",
+        "sunken dry fruit lesion",
+        "sudden fruit exposure to sun"
+      ],
+      "then_diagnosis": "sunscald",
+      "weight": 0.88,
+      "explanation": "Observed symptoms match a known sunscald (physiological disorder) pattern."
+    },
+    {
+      "id": "R099",
+      "name": "Sunscald (physiological disorder) pattern 4",
+      "if_all_symptoms": [
+        "sunken dry fruit lesion",
+        "sudden fruit exposure to sun",
+        "leaf loss exposing fruit"
+      ],
+      "then_diagnosis": "sunscald",
+      "weight": 0.84,
+      "explanation": "Observed symptoms match a known sunscald (physiological disorder) pattern."
+    },
+    {
+      "id": "R100",
+      "name": "Sunscald (physiological disorder) pattern 5",
+      "if_all_symptoms": [
+        "pale white patch on exposed fruit",
+        "sudden fruit exposure to sun",
+        "leaf loss exposing fruit"
+      ],
+      "then_diagnosis": "sunscald",
+      "weight": 0.8,
+      "explanation": "Observed symptoms match a known sunscald (physiological disorder) pattern."
+    }
+  ],
+  "assertions": [
+    {
+      "id": "A001",
+      "subject": "early_blight",
+      "predicate": "has_common_name",
+      "value": "Early blight"
+    },
+    {
+      "id": "A002",
+      "subject": "early_blight",
+      "predicate": "crop",
+      "value": "tomato"
+    },
+    {
+      "id": "A003",
+      "subject": "early_blight",
+      "predicate": "domain",
+      "value": "plant_health"
+    },
+    {
+      "id": "A004",
+      "subject": "early_blight",
+      "predicate": "symptom_1",
+      "value": "dark brown spots"
+    },
+    {
+      "id": "A005",
+      "subject": "early_blight",
+      "predicate": "symptom_2",
+      "value": "concentric rings"
+    },
+    {
+      "id": "A006",
+      "subject": "early_blight",
+      "predicate": "symptom_3",
+      "value": "yellowing lower leaves"
+    },
+    {
+      "id": "A007",
+      "subject": "early_blight",
+      "predicate": "symptom_4",
+      "value": "leaf drop"
+    },
+    {
+      "id": "A008",
+      "subject": "early_blight",
+      "predicate": "symptom_5",
+      "value": "stem lesions"
+    },
+    {
+      "id": "A009",
+      "subject": "early_blight",
+      "predicate": "management",
+      "value": "Remove infected lower leaves, improve airflow, avoid overhead watering, rotate crops; use locally approved fungicide if needed."
+    },
+    {
+      "id": "A010",
+      "subject": "early_blight",
+      "predicate": "prevention",
+      "value": "Avoid wetting foliage and remove crop debris."
+    },
+    {
+      "id": "A011",
+      "subject": "early_blight",
+      "predicate": "diagnosis_type",
+      "value": "disease_or_disorder"
+    },
+    {
+      "id": "A012",
+      "subject": "early_blight",
+      "predicate": "host",
+      "value": "tomato plant"
+    },
+    {
+      "id": "A013",
+      "subject": "early_blight",
+      "predicate": "evidence_required",
+      "value": "multiple compatible symptoms"
+    },
+    {
+      "id": "A014",
+      "subject": "early_blight",
+      "predicate": "advisory_level",
+      "value": "educational; confirm locally"
+    },
+    {
+      "id": "A015",
+      "subject": "early_blight",
+      "predicate": "knowledge_source_type",
+      "value": "curated prototype knowledge"
+    },
+    {
+      "id": "A016",
+      "subject": "late_blight",
+      "predicate": "has_common_name",
+      "value": "Late blight"
+    },
+    {
+      "id": "A017",
+      "subject": "late_blight",
+      "predicate": "crop",
+      "value": "tomato"
+    },
+    {
+      "id": "A018",
+      "subject": "late_blight",
+      "predicate": "domain",
+      "value": "plant_health"
+    },
+    {
+      "id": "A019",
+      "subject": "late_blight",
+      "predicate": "symptom_1",
+      "value": "water-soaked leaf lesions"
+    },
+    {
+      "id": "A020",
+      "subject": "late_blight",
+      "predicate": "symptom_2",
+      "value": "rapidly spreading brown patches"
+    },
+    {
+      "id": "A021",
+      "subject": "late_blight",
+      "predicate": "symptom_3",
+      "value": "white fuzzy growth underside"
+    },
+    {
+      "id": "A022",
+      "subject": "late_blight",
+      "predicate": "symptom_4",
+      "value": "brown stem lesions"
+    },
+    {
+      "id": "A023",
+      "subject": "late_blight",
+      "predicate": "symptom_5",
+      "value": "firm brown fruit lesions"
+    },
+    {
+      "id": "A024",
+      "subject": "late_blight",
+      "predicate": "management",
+      "value": "Remove and destroy infected plants, avoid handling wet plants, improve airflow, and seek local extension guidance promptly."
+    },
+    {
+      "id": "A025",
+      "subject": "late_blight",
+      "predicate": "prevention",
+      "value": "Use disease-free transplants and avoid prolonged leaf wetness."
+    },
+    {
+      "id": "A026",
+      "subject": "late_blight",
+      "predicate": "diagnosis_type",
+      "value": "disease_or_disorder"
+    },
+    {
+      "id": "A027",
+      "subject": "late_blight",
+      "predicate": "host",
+      "value": "tomato plant"
+    },
+    {
+      "id": "A028",
+      "subject": "late_blight",
+      "predicate": "evidence_required",
+      "value": "multiple compatible symptoms"
+    },
+    {
+      "id": "A029",
+      "subject": "late_blight",
+      "predicate": "advisory_level",
+      "value": "educational; confirm locally"
+    },
+    {
+      "id": "A030",
+      "subject": "late_blight",
+      "predicate": "knowledge_source_type",
+      "value": "curated prototype knowledge"
+    },
+    {
+      "id": "A031",
+      "subject": "septoria_leaf_spot",
+      "predicate": "has_common_name",
+      "value": "Septoria leaf spot"
+    },
+    {
+      "id": "A032",
+      "subject": "septoria_leaf_spot",
+      "predicate": "crop",
+      "value": "tomato"
+    },
+    {
+      "id": "A033",
+      "subject": "septoria_leaf_spot",
+      "predicate": "domain",
+      "value": "plant_health"
+    },
+    {
+      "id": "A034",
+      "subject": "septoria_leaf_spot",
+      "predicate": "symptom_1",
+      "value": "many small circular spots"
+    },
+    {
+      "id": "A035",
+      "subject": "septoria_leaf_spot",
+      "predicate": "symptom_2",
+      "value": "gray centers in leaf spots"
+    },
+    {
+      "id": "A036",
+      "subject": "septoria_leaf_spot",
+      "predicate": "symptom_3",
+      "value": "dark borders around spots"
+    },
+    {
+      "id": "A037",
+      "subject": "septoria_leaf_spot",
+      "predicate": "symptom_4",
+      "value": "yellowing lower leaves"
+    },
+    {
+      "id": "A038",
+      "subject": "septoria_leaf_spot",
+      "predicate": "symptom_5",
+      "value": "lower leaf drop"
+    },
+    {
+      "id": "A039",
+      "subject": "septoria_leaf_spot",
+      "predicate": "management",
+      "value": "Remove affected leaves, mulch soil to reduce splash, rotate crops, and keep foliage dry."
+    },
+    {
+      "id": "A040",
+      "subject": "septoria_leaf_spot",
+      "predicate": "prevention",
+      "value": "Rotate crops and remove infected plant debris."
+    },
+    {
+      "id": "A041",
+      "subject": "septoria_leaf_spot",
+      "predicate": "diagnosis_type",
+      "value": "disease_or_disorder"
+    },
+    {
+      "id": "A042",
+      "subject": "septoria_leaf_spot",
+      "predicate": "host",
+      "value": "tomato plant"
+    },
+    {
+      "id": "A043",
+      "subject": "septoria_leaf_spot",
+      "predicate": "evidence_required",
+      "value": "multiple compatible symptoms"
+    },
+    {
+      "id": "A044",
+      "subject": "septoria_leaf_spot",
+      "predicate": "advisory_level",
+      "value": "educational; confirm locally"
+    },
+    {
+      "id": "A045",
+      "subject": "septoria_leaf_spot",
+      "predicate": "knowledge_source_type",
+      "value": "curated prototype knowledge"
+    },
+    {
+      "id": "A046",
+      "subject": "bacterial_spot",
+      "predicate": "has_common_name",
+      "value": "Bacterial spot"
+    },
+    {
+      "id": "A047",
+      "subject": "bacterial_spot",
+      "predicate": "crop",
+      "value": "tomato"
+    },
+    {
+      "id": "A048",
+      "subject": "bacterial_spot",
+      "predicate": "domain",
+      "value": "plant_health"
+    },
+    {
+      "id": "A049",
+      "subject": "bacterial_spot",
+      "predicate": "symptom_1",
+      "value": "small dark leaf spots"
+    },
+    {
+      "id": "A050",
+      "subject": "bacterial_spot",
+      "predicate": "symptom_2",
+      "value": "yellow halos around spots"
+    },
+    {
+      "id": "A051",
+      "subject": "bacterial_spot",
+      "predicate": "symptom_3",
+      "value": "raised scabby fruit spots"
+    },
+    {
+      "id": "A052",
+      "subject": "bacterial_spot",
+      "predicate": "symptom_4",
+      "value": "water-soaked lesions"
+    },
+    {
+      "id": "A053",
+      "subject": "bacterial_spot",
+      "predicate": "symptom_5",
+      "value": "leaf yellowing"
+    },
+    {
+      "id": "A054",
+      "subject": "bacterial_spot",
+      "predicate": "management",
+      "value": "Avoid working with wet plants, remove heavily affected debris, use clean seed/transplants, and consult local guidance."
+    },
+    {
+      "id": "A055",
+      "subject": "bacterial_spot",
+      "predicate": "prevention",
+      "value": "Use pathogen-free seed and avoid overhead irrigation."
+    },
+    {
+      "id": "A056",
+      "subject": "bacterial_spot",
+      "predicate": "diagnosis_type",
+      "value": "disease_or_disorder"
+    },
+    {
+      "id": "A057",
+      "subject": "bacterial_spot",
+      "predicate": "host",
+      "value": "tomato plant"
+    },
+    {
+      "id": "A058",
+      "subject": "bacterial_spot",
+      "predicate": "evidence_required",
+      "value": "multiple compatible symptoms"
+    },
+    {
+      "id": "A059",
+      "subject": "bacterial_spot",
+      "predicate": "advisory_level",
+      "value": "educational; confirm locally"
+    },
+    {
+      "id": "A060",
+      "subject": "bacterial_spot",
+      "predicate": "knowledge_source_type",
+      "value": "curated prototype knowledge"
+    },
+    {
+      "id": "A061",
+      "subject": "bacterial_wilt",
+      "predicate": "has_common_name",
+      "value": "Bacterial wilt"
+    },
+    {
+      "id": "A062",
+      "subject": "bacterial_wilt",
+      "predicate": "crop",
+      "value": "tomato"
+    },
+    {
+      "id": "A063",
+      "subject": "bacterial_wilt",
+      "predicate": "domain",
+      "value": "plant_health"
+    },
+    {
+      "id": "A064",
+      "subject": "bacterial_wilt",
+      "predicate": "symptom_1",
+      "value": "sudden plant wilting"
+    },
+    {
+      "id": "A065",
+      "subject": "bacterial_wilt",
+      "predicate": "symptom_2",
+      "value": "leaves remain green while wilting"
+    },
+    {
+      "id": "A066",
+      "subject": "bacterial_wilt",
+      "predicate": "symptom_3",
+      "value": "vascular tissue brown"
+    },
+    {
+      "id": "A067",
+      "subject": "bacterial_wilt",
+      "predicate": "symptom_4",
+      "value": "one-sided wilting"
+    },
+    {
+      "id": "A068",
+      "subject": "bacterial_wilt",
+      "predicate": "symptom_5",
+      "value": "plant does not recover overnight"
+    },
+    {
+      "id": "A069",
+      "subject": "bacterial_wilt",
+      "predicate": "management",
+      "value": "Remove affected plants with roots; improve drainage and use resistant varieties where available."
+    },
+    {
+      "id": "A070",
+      "subject": "bacterial_wilt",
+      "predicate": "prevention",
+      "value": "Use clean transplants and rotate with non-host crops."
+    },
+    {
+      "id": "A071",
+      "subject": "bacterial_wilt",
+      "predicate": "diagnosis_type",
+      "value": "disease_or_disorder"
+    },
+    {
+      "id": "A072",
+      "subject": "bacterial_wilt",
+      "predicate": "host",
+      "value": "tomato plant"
+    },
+    {
+      "id": "A073",
+      "subject": "bacterial_wilt",
+      "predicate": "evidence_required",
+      "value": "multiple compatible symptoms"
+    },
+    {
+      "id": "A074",
+      "subject": "bacterial_wilt",
+      "predicate": "advisory_level",
+      "value": "educational; confirm locally"
+    },
+    {
+      "id": "A075",
+      "subject": "bacterial_wilt",
+      "predicate": "knowledge_source_type",
+      "value": "curated prototype knowledge"
+    },
+    {
+      "id": "A076",
+      "subject": "fusarium_wilt",
+      "predicate": "has_common_name",
+      "value": "Fusarium wilt"
+    },
+    {
+      "id": "A077",
+      "subject": "fusarium_wilt",
+      "predicate": "crop",
+      "value": "tomato"
+    },
+    {
+      "id": "A078",
+      "subject": "fusarium_wilt",
+      "predicate": "domain",
+      "value": "plant_health"
+    },
+    {
+      "id": "A079",
+      "subject": "fusarium_wilt",
+      "predicate": "symptom_1",
+      "value": "yellowing starts on lower leaves"
+    },
+    {
+      "id": "A080",
+      "subject": "fusarium_wilt",
+      "predicate": "symptom_2",
+      "value": "one-sided yellowing"
+    },
+    {
+      "id": "A081",
+      "subject": "fusarium_wilt",
+      "predicate": "symptom_3",
+      "value": "wilting during warm hours"
+    },
+    {
+      "id": "A082",
+      "subject": "fusarium_wilt",
+      "predicate": "symptom_4",
+      "value": "brown vascular tissue"
+    },
+    {
+      "id": "A083",
+      "subject": "fusarium_wilt",
+      "predicate": "symptom_5",
+      "value": "progressive plant decline"
+    },
+    {
+      "id": "A084",
+      "subject": "fusarium_wilt",
+      "predicate": "management",
+      "value": "Remove affected plants, use resistant cultivars, and avoid moving contaminated soil."
+    },
+    {
+      "id": "A085",
+      "subject": "fusarium_wilt",
+      "predicate": "prevention",
+      "value": "Choose resistant varieties and maintain clean tools."
+    },
+    {
+      "id": "A086",
+      "subject": "fusarium_wilt",
+      "predicate": "diagnosis_type",
+      "value": "disease_or_disorder"
+    },
+    {
+      "id": "A087",
+      "subject": "fusarium_wilt",
+      "predicate": "host",
+      "value": "tomato plant"
+    },
+    {
+      "id": "A088",
+      "subject": "fusarium_wilt",
+      "predicate": "evidence_required",
+      "value": "multiple compatible symptoms"
+    },
+    {
+      "id": "A089",
+      "subject": "fusarium_wilt",
+      "predicate": "advisory_level",
+      "value": "educational; confirm locally"
+    },
+    {
+      "id": "A090",
+      "subject": "fusarium_wilt",
+      "predicate": "knowledge_source_type",
+      "value": "curated prototype knowledge"
+    },
+    {
+      "id": "A091",
+      "subject": "verticillium_wilt",
+      "predicate": "has_common_name",
+      "value": "Verticillium wilt"
+    },
+    {
+      "id": "A092",
+      "subject": "verticillium_wilt",
+      "predicate": "crop",
+      "value": "tomato"
+    },
+    {
+      "id": "A093",
+      "subject": "verticillium_wilt",
+      "predicate": "domain",
+      "value": "plant_health"
+    },
+    {
+      "id": "A094",
+      "subject": "verticillium_wilt",
+      "predicate": "symptom_1",
+      "value": "V-shaped yellow lesions"
+    },
+    {
+      "id": "A095",
+      "subject": "verticillium_wilt",
+      "predicate": "symptom_2",
+      "value": "lower leaf yellowing"
+    },
+    {
+      "id": "A096",
+      "subject": "verticillium_wilt",
+      "predicate": "symptom_3",
+      "value": "wilting in warm weather"
+    },
+    {
+      "id": "A097",
+      "subject": "verticillium_wilt",
+      "predicate": "symptom_4",
+      "value": "brown vascular tissue"
+    },
+    {
+      "id": "A098",
+      "subject": "verticillium_wilt",
+      "predicate": "symptom_5",
+      "value": "slow stunted growth"
+    },
+    {
+      "id": "A099",
+      "subject": "verticillium_wilt",
+      "predicate": "management",
+      "value": "Use resistant varieties, rotate with non-host crops, and remove severely affected plants."
+    },
+    {
+      "id": "A100",
+      "subject": "verticillium_wilt",
+      "predicate": "prevention",
+      "value": "Use clean planting material and long rotations where practical."
+    },
+    {
+      "id": "A101",
+      "subject": "verticillium_wilt",
+      "predicate": "diagnosis_type",
+      "value": "disease_or_disorder"
+    },
+    {
+      "id": "A102",
+      "subject": "verticillium_wilt",
+      "predicate": "host",
+      "value": "tomato plant"
+    },
+    {
+      "id": "A103",
+      "subject": "verticillium_wilt",
+      "predicate": "evidence_required",
+      "value": "multiple compatible symptoms"
+    },
+    {
+      "id": "A104",
+      "subject": "verticillium_wilt",
+      "predicate": "advisory_level",
+      "value": "educational; confirm locally"
+    },
+    {
+      "id": "A105",
+      "subject": "verticillium_wilt",
+      "predicate": "knowledge_source_type",
+      "value": "curated prototype knowledge"
+    },
+    {
+      "id": "A106",
+      "subject": "powdery_mildew",
+      "predicate": "has_common_name",
+      "value": "Powdery mildew"
+    },
+    {
+      "id": "A107",
+      "subject": "powdery_mildew",
+      "predicate": "crop",
+      "value": "tomato"
+    },
+    {
+      "id": "A108",
+      "subject": "powdery_mildew",
+      "predicate": "domain",
+      "value": "plant_health"
+    },
+    {
+      "id": "A109",
+      "subject": "powdery_mildew",
+      "predicate": "symptom_1",
+      "value": "white powdery leaf coating"
+    },
+    {
+      "id": "A110",
+      "subject": "powdery_mildew",
+      "predicate": "symptom_2",
+      "value": "white patches on upper leaf surface"
+    },
+    {
+      "id": "A111",
+      "subject": "powdery_mildew",
+      "predicate": "symptom_3",
+      "value": "leaf yellowing"
+    },
+    {
+      "id": "A112",
+      "subject": "powdery_mildew",
+      "predicate": "symptom_4",
+      "value": "leaf curling"
+    },
+    {
+      "id": "A113",
+      "subject": "powdery_mildew",
+      "predicate": "symptom_5",
+      "value": "premature leaf drop"
+    },
+    {
+      "id": "A114",
+      "subject": "powdery_mildew",
+      "predicate": "management",
+      "value": "Remove severely affected leaves, improve airflow, and use locally approved treatments according to label."
+    },
+    {
+      "id": "A115",
+      "subject": "powdery_mildew",
+      "predicate": "prevention",
+      "value": "Space plants well and monitor foliage regularly."
+    },
+    {
+      "id": "A116",
+      "subject": "powdery_mildew",
+      "predicate": "diagnosis_type",
+      "value": "disease_or_disorder"
+    },
+    {
+      "id": "A117",
+      "subject": "powdery_mildew",
+      "predicate": "host",
+      "value": "tomato plant"
+    },
+    {
+      "id": "A118",
+      "subject": "powdery_mildew",
+      "predicate": "evidence_required",
+      "value": "multiple compatible symptoms"
+    },
+    {
+      "id": "A119",
+      "subject": "powdery_mildew",
+      "predicate": "advisory_level",
+      "value": "educational; confirm locally"
+    },
+    {
+      "id": "A120",
+      "subject": "powdery_mildew",
+      "predicate": "knowledge_source_type",
+      "value": "curated prototype knowledge"
+    },
+    {
+      "id": "A121",
+      "subject": "gray_mold",
+      "predicate": "has_common_name",
+      "value": "Gray mold"
+    },
+    {
+      "id": "A122",
+      "subject": "gray_mold",
+      "predicate": "crop",
+      "value": "tomato"
+    },
+    {
+      "id": "A123",
+      "subject": "gray_mold",
+      "predicate": "domain",
+      "value": "plant_health"
+    },
+    {
+      "id": "A124",
+      "subject": "gray_mold",
+      "predicate": "symptom_1",
+      "value": "gray fuzzy mold"
+    },
+    {
+      "id": "A125",
+      "subject": "gray_mold",
+      "predicate": "symptom_2",
+      "value": "soft water-soaked lesions"
+    },
+    {
+      "id": "A126",
+      "subject": "gray_mold",
+      "predicate": "symptom_3",
+      "value": "brown stem cankers"
+    },
+    {
+      "id": "A127",
+      "subject": "gray_mold",
+      "predicate": "symptom_4",
+      "value": "flowers turn brown"
+    },
+    {
+      "id": "A128",
+      "subject": "gray_mold",
+      "predicate": "symptom_5",
+      "value": "fruit rot near stem"
+    },
+    {
+      "id": "A129",
+      "subject": "gray_mold",
+      "predicate": "management",
+      "value": "Remove infected plant parts, reduce humidity, improve ventilation, and avoid wounds."
+    },
+    {
+      "id": "A130",
+      "subject": "gray_mold",
+      "predicate": "prevention",
+      "value": "Provide good ventilation and remove senescent plant material."
+    },
+    {
+      "id": "A131",
+      "subject": "gray_mold",
+      "predicate": "diagnosis_type",
+      "value": "disease_or_disorder"
+    },
+    {
+      "id": "A132",
+      "subject": "gray_mold",
+      "predicate": "host",
+      "value": "tomato plant"
+    },
+    {
+      "id": "A133",
+      "subject": "gray_mold",
+      "predicate": "evidence_required",
+      "value": "multiple compatible symptoms"
+    },
+    {
+      "id": "A134",
+      "subject": "gray_mold",
+      "predicate": "advisory_level",
+      "value": "educational; confirm locally"
+    },
+    {
+      "id": "A135",
+      "subject": "gray_mold",
+      "predicate": "knowledge_source_type",
+      "value": "curated prototype knowledge"
+    },
+    {
+      "id": "A136",
+      "subject": "anthracnose",
+      "predicate": "has_common_name",
+      "value": "Anthracnose"
+    },
+    {
+      "id": "A137",
+      "subject": "anthracnose",
+      "predicate": "crop",
+      "value": "tomato"
+    },
+    {
+      "id": "A138",
+      "subject": "anthracnose",
+      "predicate": "domain",
+      "value": "plant_health"
+    },
+    {
+      "id": "A139",
+      "subject": "anthracnose",
+      "predicate": "symptom_1",
+      "value": "sunken circular fruit lesions"
+    },
+    {
+      "id": "A140",
+      "subject": "anthracnose",
+      "predicate": "symptom_2",
+      "value": "dark fruit spots"
+    },
+    {
+      "id": "A141",
+      "subject": "anthracnose",
+      "predicate": "symptom_3",
+      "value": "salmon-colored spore masses"
+    },
+    {
+      "id": "A142",
+      "subject": "anthracnose",
+      "predicate": "symptom_4",
+      "value": "fruit rot during ripening"
+    },
+    {
+      "id": "A143",
+      "subject": "anthracnose",
+      "predicate": "symptom_5",
+      "value": "small leaf lesions"
+    },
+    {
+      "id": "A144",
+      "subject": "anthracnose",
+      "predicate": "management",
+      "value": "Harvest promptly, remove infected fruit, avoid overhead watering, and rotate crops."
+    },
+    {
+      "id": "A145",
+      "subject": "anthracnose",
+      "predicate": "prevention",
+      "value": "Use clean seed/transplants and avoid fruit contact with soil."
+    },
+    {
+      "id": "A146",
+      "subject": "anthracnose",
+      "predicate": "diagnosis_type",
+      "value": "disease_or_disorder"
+    },
+    {
+      "id": "A147",
+      "subject": "anthracnose",
+      "predicate": "host",
+      "value": "tomato plant"
+    },
+    {
+      "id": "A148",
+      "subject": "anthracnose",
+      "predicate": "evidence_required",
+      "value": "multiple compatible symptoms"
+    },
+    {
+      "id": "A149",
+      "subject": "anthracnose",
+      "predicate": "advisory_level",
+      "value": "educational; confirm locally"
+    },
+    {
+      "id": "A150",
+      "subject": "anthracnose",
+      "predicate": "knowledge_source_type",
+      "value": "curated prototype knowledge"
+    },
+    {
+      "id": "A151",
+      "subject": "target_spot",
+      "predicate": "has_common_name",
+      "value": "Target spot"
+    },
+    {
+      "id": "A152",
+      "subject": "target_spot",
+      "predicate": "crop",
+      "value": "tomato"
+    },
+    {
+      "id": "A153",
+      "subject": "target_spot",
+      "predicate": "domain",
+      "value": "plant_health"
+    },
+    {
+      "id": "A154",
+      "subject": "target_spot",
+      "predicate": "symptom_1",
+      "value": "brown circular leaf spots"
+    },
+    {
+      "id": "A155",
+      "subject": "target_spot",
+      "predicate": "symptom_2",
+      "value": "concentric target-like rings"
+    },
+    {
+      "id": "A156",
+      "subject": "target_spot",
+      "predicate": "symptom_3",
+      "value": "yellowing leaves"
+    },
+    {
+      "id": "A157",
+      "subject": "target_spot",
+      "predicate": "symptom_4",
+      "value": "leaf blight"
+    },
+    {
+      "id": "A158",
+      "subject": "target_spot",
+      "predicate": "symptom_5",
+      "value": "fruit lesions"
+    },
+    {
+      "id": "A159",
+      "subject": "target_spot",
+      "predicate": "management",
+      "value": "Remove affected foliage, improve airflow, reduce leaf wetness, and seek local crop-protection advice."
+    },
+    {
+      "id": "A160",
+      "subject": "target_spot",
+      "predicate": "prevention",
+      "value": "Rotate crops and reduce prolonged leaf wetness."
+    },
+    {
+      "id": "A161",
+      "subject": "target_spot",
+      "predicate": "diagnosis_type",
+      "value": "disease_or_disorder"
+    },
+    {
+      "id": "A162",
+      "subject": "target_spot",
+      "predicate": "host",
+      "value": "tomato plant"
+    },
+    {
+      "id": "A163",
+      "subject": "target_spot",
+      "predicate": "evidence_required",
+      "value": "multiple compatible symptoms"
+    },
+    {
+      "id": "A164",
+      "subject": "target_spot",
+      "predicate": "advisory_level",
+      "value": "educational; confirm locally"
+    },
+    {
+      "id": "A165",
+      "subject": "target_spot",
+      "predicate": "knowledge_source_type",
+      "value": "curated prototype knowledge"
+    },
+    {
+      "id": "A166",
+      "subject": "tomato_mosaic_virus",
+      "predicate": "has_common_name",
+      "value": "Tomato mosaic virus"
+    },
+    {
+      "id": "A167",
+      "subject": "tomato_mosaic_virus",
+      "predicate": "crop",
+      "value": "tomato"
+    },
+    {
+      "id": "A168",
+      "subject": "tomato_mosaic_virus",
+      "predicate": "domain",
+      "value": "plant_health"
+    },
+    {
+      "id": "A169",
+      "subject": "tomato_mosaic_virus",
+      "predicate": "symptom_1",
+      "value": "mosaic light and dark green leaves"
+    },
+    {
+      "id": "A170",
+      "subject": "tomato_mosaic_virus",
+      "predicate": "symptom_2",
+      "value": "leaf distortion"
+    },
+    {
+      "id": "A171",
+      "subject": "tomato_mosaic_virus",
+      "predicate": "symptom_3",
+      "value": "narrow shoestring leaves"
+    },
+    {
+      "id": "A172",
+      "subject": "tomato_mosaic_virus",
+      "predicate": "symptom_4",
+      "value": "stunted growth"
+    },
+    {
+      "id": "A173",
+      "subject": "tomato_mosaic_virus",
+      "predicate": "symptom_5",
+      "value": "uneven fruit ripening"
+    },
+    {
+      "id": "A174",
+      "subject": "tomato_mosaic_virus",
+      "predicate": "management",
+      "value": "Remove infected plants, disinfect tools and hands, and control weeds that may host the virus."
+    },
+    {
+      "id": "A175",
+      "subject": "tomato_mosaic_virus",
+      "predicate": "prevention",
+      "value": "Use certified seed and sanitize tools between plants."
+    },
+    {
+      "id": "A176",
+      "subject": "tomato_mosaic_virus",
+      "predicate": "diagnosis_type",
+      "value": "disease_or_disorder"
+    },
+    {
+      "id": "A177",
+      "subject": "tomato_mosaic_virus",
+      "predicate": "host",
+      "value": "tomato plant"
+    },
+    {
+      "id": "A178",
+      "subject": "tomato_mosaic_virus",
+      "predicate": "evidence_required",
+      "value": "multiple compatible symptoms"
+    },
+    {
+      "id": "A179",
+      "subject": "tomato_mosaic_virus",
+      "predicate": "advisory_level",
+      "value": "educational; confirm locally"
+    },
+    {
+      "id": "A180",
+      "subject": "tomato_mosaic_virus",
+      "predicate": "knowledge_source_type",
+      "value": "curated prototype knowledge"
+    },
+    {
+      "id": "A181",
+      "subject": "tomato_yellow_leaf_curl_virus",
+      "predicate": "has_common_name",
+      "value": "Tomato yellow leaf curl virus"
+    },
+    {
+      "id": "A182",
+      "subject": "tomato_yellow_leaf_curl_virus",
+      "predicate": "crop",
+      "value": "tomato"
+    },
+    {
+      "id": "A183",
+      "subject": "tomato_yellow_leaf_curl_virus",
+      "predicate": "domain",
+      "value": "plant_health"
+    },
+    {
+      "id": "A184",
+      "subject": "tomato_yellow_leaf_curl_virus",
+      "predicate": "symptom_1",
+      "value": "upward leaf curling"
+    },
+    {
+      "id": "A185",
+      "subject": "tomato_yellow_leaf_curl_virus",
+      "predicate": "symptom_2",
+      "value": "yellow leaf margins"
+    },
+    {
+      "id": "A186",
+      "subject": "tomato_yellow_leaf_curl_virus",
+      "predicate": "symptom_3",
+      "value": "small leaves"
+    },
+    {
+      "id": "A187",
+      "subject": "tomato_yellow_leaf_curl_virus",
+      "predicate": "symptom_4",
+      "value": "stunted plant growth"
+    },
+    {
+      "id": "A188",
+      "subject": "tomato_yellow_leaf_curl_virus",
+      "predicate": "symptom_5",
+      "value": "poor fruit set"
+    },
+    {
+      "id": "A189",
+      "subject": "tomato_yellow_leaf_curl_virus",
+      "predicate": "management",
+      "value": "Remove severely infected plants and manage whiteflies using integrated pest management."
+    },
+    {
+      "id": "A190",
+      "subject": "tomato_yellow_leaf_curl_virus",
+      "predicate": "prevention",
+      "value": "Use resistant varieties and insect-proof nursery practices."
+    },
+    {
+      "id": "A191",
+      "subject": "tomato_yellow_leaf_curl_virus",
+      "predicate": "diagnosis_type",
+      "value": "disease_or_disorder"
+    },
+    {
+      "id": "A192",
+      "subject": "tomato_yellow_leaf_curl_virus",
+      "predicate": "host",
+      "value": "tomato plant"
+    },
+    {
+      "id": "A193",
+      "subject": "tomato_yellow_leaf_curl_virus",
+      "predicate": "evidence_required",
+      "value": "multiple compatible symptoms"
+    },
+    {
+      "id": "A194",
+      "subject": "tomato_yellow_leaf_curl_virus",
+      "predicate": "advisory_level",
+      "value": "educational; confirm locally"
+    },
+    {
+      "id": "A195",
+      "subject": "tomato_yellow_leaf_curl_virus",
+      "predicate": "knowledge_source_type",
+      "value": "curated prototype knowledge"
+    },
+    {
+      "id": "A196",
+      "subject": "spotted_wilt_virus",
+      "predicate": "has_common_name",
+      "value": "Tomato spotted wilt"
+    },
+    {
+      "id": "A197",
+      "subject": "spotted_wilt_virus",
+      "predicate": "crop",
+      "value": "tomato"
+    },
+    {
+      "id": "A198",
+      "subject": "spotted_wilt_virus",
+      "predicate": "domain",
+      "value": "plant_health"
+    },
+    {
+      "id": "A199",
+      "subject": "spotted_wilt_virus",
+      "predicate": "symptom_1",
+      "value": "bronze young leaves"
+    },
+    {
+      "id": "A200",
+      "subject": "spotted_wilt_virus",
+      "predicate": "symptom_2",
+      "value": "dark rings on fruit"
+    },
+    {
+      "id": "A201",
+      "subject": "spotted_wilt_virus",
+      "predicate": "symptom_3",
+      "value": "necrotic leaf spots"
+    },
+    {
+      "id": "A202",
+      "subject": "spotted_wilt_virus",
+      "predicate": "symptom_4",
+      "value": "stunted growth"
+    },
+    {
+      "id": "A203",
+      "subject": "spotted_wilt_virus",
+      "predicate": "symptom_5",
+      "value": "wilting shoot tips"
+    },
+    {
+      "id": "A204",
+      "subject": "spotted_wilt_virus",
+      "predicate": "management",
+      "value": "Remove infected plants and manage thrips with integrated pest management."
+    },
+    {
+      "id": "A205",
+      "subject": "spotted_wilt_virus",
+      "predicate": "prevention",
+      "value": "Control thrips and remove weed hosts."
+    },
+    {
+      "id": "A206",
+      "subject": "spotted_wilt_virus",
+      "predicate": "diagnosis_type",
+      "value": "disease_or_disorder"
+    },
+    {
+      "id": "A207",
+      "subject": "spotted_wilt_virus",
+      "predicate": "host",
+      "value": "tomato plant"
+    },
+    {
+      "id": "A208",
+      "subject": "spotted_wilt_virus",
+      "predicate": "evidence_required",
+      "value": "multiple compatible symptoms"
+    },
+    {
+      "id": "A209",
+      "subject": "spotted_wilt_virus",
+      "predicate": "advisory_level",
+      "value": "educational; confirm locally"
+    },
+    {
+      "id": "A210",
+      "subject": "spotted_wilt_virus",
+      "predicate": "knowledge_source_type",
+      "value": "curated prototype knowledge"
+    },
+    {
+      "id": "A211",
+      "subject": "root_knot_nematode",
+      "predicate": "has_common_name",
+      "value": "Root-knot nematode"
+    },
+    {
+      "id": "A212",
+      "subject": "root_knot_nematode",
+      "predicate": "crop",
+      "value": "tomato"
+    },
+    {
+      "id": "A213",
+      "subject": "root_knot_nematode",
+      "predicate": "domain",
+      "value": "plant_health"
+    },
+    {
+      "id": "A214",
+      "subject": "root_knot_nematode",
+      "predicate": "symptom_1",
+      "value": "root galls"
+    },
+    {
+      "id": "A215",
+      "subject": "root_knot_nematode",
+      "predicate": "symptom_2",
+      "value": "knotted swollen roots"
+    },
+    {
+      "id": "A216",
+      "subject": "root_knot_nematode",
+      "predicate": "symptom_3",
+      "value": "stunted growth"
+    },
+    {
+      "id": "A217",
+      "subject": "root_knot_nematode",
+      "predicate": "symptom_4",
+      "value": "wilting despite moist soil"
+    },
+    {
+      "id": "A218",
+      "subject": "root_knot_nematode",
+      "predicate": "symptom_5",
+      "value": "poor nutrient uptake"
+    },
+    {
+      "id": "A219",
+      "subject": "root_knot_nematode",
+      "predicate": "management",
+      "value": "Remove infected roots, rotate with non-host crops, and seek local nematode management advice."
+    },
+    {
+      "id": "A220",
+      "subject": "root_knot_nematode",
+      "predicate": "prevention",
+      "value": "Use clean transplants and resistant rootstocks where suitable."
+    },
+    {
+      "id": "A221",
+      "subject": "root_knot_nematode",
+      "predicate": "diagnosis_type",
+      "value": "disease_or_disorder"
+    },
+    {
+      "id": "A222",
+      "subject": "root_knot_nematode",
+      "predicate": "host",
+      "value": "tomato plant"
+    },
+    {
+      "id": "A223",
+      "subject": "root_knot_nematode",
+      "predicate": "evidence_required",
+      "value": "multiple compatible symptoms"
+    },
+    {
+      "id": "A224",
+      "subject": "root_knot_nematode",
+      "predicate": "advisory_level",
+      "value": "educational; confirm locally"
+    },
+    {
+      "id": "A225",
+      "subject": "root_knot_nematode",
+      "predicate": "knowledge_source_type",
+      "value": "curated prototype knowledge"
+    },
+    {
+      "id": "A226",
+      "subject": "gray_leaf_spot",
+      "predicate": "has_common_name",
+      "value": "Gray leaf spot"
+    },
+    {
+      "id": "A227",
+      "subject": "gray_leaf_spot",
+      "predicate": "crop",
+      "value": "tomato"
+    },
+    {
+      "id": "A228",
+      "subject": "gray_leaf_spot",
+      "predicate": "domain",
+      "value": "plant_health"
+    },
+    {
+      "id": "A229",
+      "subject": "gray_leaf_spot",
+      "predicate": "symptom_1",
+      "value": "small gray leaf lesions"
+    },
+    {
+      "id": "A230",
+      "subject": "gray_leaf_spot",
+      "predicate": "symptom_2",
+      "value": "rectangular spots between veins"
+    },
+    {
+      "id": "A231",
+      "subject": "gray_leaf_spot",
+      "predicate": "symptom_3",
+      "value": "yellowing leaves"
+    },
+    {
+      "id": "A232",
+      "subject": "gray_leaf_spot",
+      "predicate": "symptom_4",
+      "value": "leaf blight"
+    },
+    {
+      "id": "A233",
+      "subject": "gray_leaf_spot",
+      "predicate": "symptom_5",
+      "value": "lower canopy leaf drop"
+    },
+    {
+      "id": "A234",
+      "subject": "gray_leaf_spot",
+      "predicate": "management",
+      "value": "Remove infected debris, improve airflow, and avoid overhead irrigation."
+    },
+    {
+      "id": "A235",
+      "subject": "gray_leaf_spot",
+      "predicate": "prevention",
+      "value": "Rotate crops and maintain sanitation."
+    },
+    {
+      "id": "A236",
+      "subject": "gray_leaf_spot",
+      "predicate": "diagnosis_type",
+      "value": "disease_or_disorder"
+    },
+    {
+      "id": "A237",
+      "subject": "gray_leaf_spot",
+      "predicate": "host",
+      "value": "tomato plant"
+    },
+    {
+      "id": "A238",
+      "subject": "gray_leaf_spot",
+      "predicate": "evidence_required",
+      "value": "multiple compatible symptoms"
+    },
+    {
+      "id": "A239",
+      "subject": "gray_leaf_spot",
+      "predicate": "advisory_level",
+      "value": "educational; confirm locally"
+    },
+    {
+      "id": "A240",
+      "subject": "gray_leaf_spot",
+      "predicate": "knowledge_source_type",
+      "value": "curated prototype knowledge"
+    },
+    {
+      "id": "A241",
+      "subject": "southern_blight",
+      "predicate": "has_common_name",
+      "value": "Southern blight"
+    },
+    {
+      "id": "A242",
+      "subject": "southern_blight",
+      "predicate": "crop",
+      "value": "tomato"
+    },
+    {
+      "id": "A243",
+      "subject": "southern_blight",
+      "predicate": "domain",
+      "value": "plant_health"
+    },
+    {
+      "id": "A244",
+      "subject": "southern_blight",
+      "predicate": "symptom_1",
+      "value": "white fungal growth at soil line"
+    },
+    {
+      "id": "A245",
+      "subject": "southern_blight",
+      "predicate": "symptom_2",
+      "value": "small tan round fungal bodies"
+    },
+    {
+      "id": "A246",
+      "subject": "southern_blight",
+      "predicate": "symptom_3",
+      "value": "stem rot near soil"
+    },
+    {
+      "id": "A247",
+      "subject": "southern_blight",
+      "predicate": "symptom_4",
+      "value": "sudden wilting"
+    },
+    {
+      "id": "A248",
+      "subject": "southern_blight",
+      "predicate": "symptom_5",
+      "value": "lower stem girdling"
+    },
+    {
+      "id": "A249",
+      "subject": "southern_blight",
+      "predicate": "management",
+      "value": "Remove affected plants and surrounding contaminated soil; improve drainage and seek local advice."
+    },
+    {
+      "id": "A250",
+      "subject": "southern_blight",
+      "predicate": "prevention",
+      "value": "Avoid moving contaminated soil and use crop rotation."
+    },
+    {
+      "id": "A251",
+      "subject": "southern_blight",
+      "predicate": "diagnosis_type",
+      "value": "disease_or_disorder"
+    },
+    {
+      "id": "A252",
+      "subject": "southern_blight",
+      "predicate": "host",
+      "value": "tomato plant"
+    },
+    {
+      "id": "A253",
+      "subject": "southern_blight",
+      "predicate": "evidence_required",
+      "value": "multiple compatible symptoms"
+    },
+    {
+      "id": "A254",
+      "subject": "southern_blight",
+      "predicate": "advisory_level",
+      "value": "educational; confirm locally"
+    },
+    {
+      "id": "A255",
+      "subject": "southern_blight",
+      "predicate": "knowledge_source_type",
+      "value": "curated prototype knowledge"
+    },
+    {
+      "id": "A256",
+      "subject": "bacterial_canker",
+      "predicate": "has_common_name",
+      "value": "Bacterial canker"
+    },
+    {
+      "id": "A257",
+      "subject": "bacterial_canker",
+      "predicate": "crop",
+      "value": "tomato"
+    },
+    {
+      "id": "A258",
+      "subject": "bacterial_canker",
+      "predicate": "domain",
+      "value": "plant_health"
+    },
+    {
+      "id": "A259",
+      "subject": "bacterial_canker",
+      "predicate": "symptom_1",
+      "value": "one-sided leaf wilting"
+    },
+    {
+      "id": "A260",
+      "subject": "bacterial_canker",
+      "predicate": "symptom_2",
+      "value": "brown leaf margins"
+    },
+    {
+      "id": "A261",
+      "subject": "bacterial_canker",
+      "predicate": "symptom_3",
+      "value": "stem cankers"
+    },
+    {
+      "id": "A262",
+      "subject": "bacterial_canker",
+      "predicate": "symptom_4",
+      "value": "vascular discoloration"
+    },
+    {
+      "id": "A263",
+      "subject": "bacterial_canker",
+      "predicate": "symptom_5",
+      "value": "bird's-eye fruit spots"
+    },
+    {
+      "id": "A264",
+      "subject": "bacterial_canker",
+      "predicate": "management",
+      "value": "Remove infected plants, disinfect tools, avoid handling wet plants, and use clean seed."
+    },
+    {
+      "id": "A265",
+      "subject": "bacterial_canker",
+      "predicate": "prevention",
+      "value": "Use certified seed and strict tool sanitation."
+    },
+    {
+      "id": "A266",
+      "subject": "bacterial_canker",
+      "predicate": "diagnosis_type",
+      "value": "disease_or_disorder"
+    },
+    {
+      "id": "A267",
+      "subject": "bacterial_canker",
+      "predicate": "host",
+      "value": "tomato plant"
+    },
+    {
+      "id": "A268",
+      "subject": "bacterial_canker",
+      "predicate": "evidence_required",
+      "value": "multiple compatible symptoms"
+    },
+    {
+      "id": "A269",
+      "subject": "bacterial_canker",
+      "predicate": "advisory_level",
+      "value": "educational; confirm locally"
+    },
+    {
+      "id": "A270",
+      "subject": "bacterial_canker",
+      "predicate": "knowledge_source_type",
+      "value": "curated prototype knowledge"
+    },
+    {
+      "id": "A271",
+      "subject": "blossom_end_rot",
+      "predicate": "has_common_name",
+      "value": "Blossom-end rot (physiological disorder)"
+    },
+    {
+      "id": "A272",
+      "subject": "blossom_end_rot",
+      "predicate": "crop",
+      "value": "tomato"
+    },
+    {
+      "id": "A273",
+      "subject": "blossom_end_rot",
+      "predicate": "domain",
+      "value": "plant_health"
+    },
+    {
+      "id": "A274",
+      "subject": "blossom_end_rot",
+      "predicate": "symptom_1",
+      "value": "dark sunken patch at blossom end"
+    },
+    {
+      "id": "A275",
+      "subject": "blossom_end_rot",
+      "predicate": "symptom_2",
+      "value": "leathery fruit bottom"
+    },
+    {
+      "id": "A276",
+      "subject": "blossom_end_rot",
+      "predicate": "symptom_3",
+      "value": "fruit rot opposite stem"
+    },
+    {
+      "id": "A277",
+      "subject": "blossom_end_rot",
+      "predicate": "symptom_4",
+      "value": "irregular soil moisture"
+    },
+    {
+      "id": "A278",
+      "subject": "blossom_end_rot",
+      "predicate": "symptom_5",
+      "value": "rapid fruit growth"
+    },
+    {
+      "id": "A279",
+      "subject": "blossom_end_rot",
+      "predicate": "management",
+      "value": "Maintain even soil moisture, mulch, and avoid excessive nitrogen; assess soil calcium and pH before amendments."
+    },
+    {
+      "id": "A280",
+      "subject": "blossom_end_rot",
+      "predicate": "prevention",
+      "value": "Use consistent irrigation and avoid root damage."
+    },
+    {
+      "id": "A281",
+      "subject": "blossom_end_rot",
+      "predicate": "diagnosis_type",
+      "value": "disease_or_disorder"
+    },
+    {
+      "id": "A282",
+      "subject": "blossom_end_rot",
+      "predicate": "host",
+      "value": "tomato plant"
+    },
+    {
+      "id": "A283",
+      "subject": "blossom_end_rot",
+      "predicate": "evidence_required",
+      "value": "multiple compatible symptoms"
+    },
+    {
+      "id": "A284",
+      "subject": "blossom_end_rot",
+      "predicate": "advisory_level",
+      "value": "educational; confirm locally"
+    },
+    {
+      "id": "A285",
+      "subject": "blossom_end_rot",
+      "predicate": "knowledge_source_type",
+      "value": "curated prototype knowledge"
+    },
+    {
+      "id": "A286",
+      "subject": "sunscald",
+      "predicate": "has_common_name",
+      "value": "Sunscald (physiological disorder)"
+    },
+    {
+      "id": "A287",
+      "subject": "sunscald",
+      "predicate": "crop",
+      "value": "tomato"
+    },
+    {
+      "id": "A288",
+      "subject": "sunscald",
+      "predicate": "domain",
+      "value": "plant_health"
+    },
+    {
+      "id": "A289",
+      "subject": "sunscald",
+      "predicate": "symptom_1",
+      "value": "pale white patch on exposed fruit"
+    },
+    {
+      "id": "A290",
+      "subject": "sunscald",
+      "predicate": "symptom_2",
+      "value": "papery fruit skin"
+    },
+    {
+      "id": "A291",
+      "subject": "sunscald",
+      "predicate": "symptom_3",
+      "value": "sunken dry fruit lesion"
+    },
+    {
+      "id": "A292",
+      "subject": "sunscald",
+      "predicate": "symptom_4",
+      "value": "sudden fruit exposure to sun"
+    },
+    {
+      "id": "A293",
+      "subject": "sunscald",
+      "predicate": "symptom_5",
+      "value": "leaf loss exposing fruit"
+    },
+    {
+      "id": "A294",
+      "subject": "sunscald",
+      "predicate": "management",
+      "value": "Maintain healthy foliage, avoid excessive pruning, and harvest ripe fruit promptly."
+    },
+    {
+      "id": "A295",
+      "subject": "sunscald",
+      "predicate": "prevention",
+      "value": "Keep adequate leaf cover and avoid severe pruning."
+    },
+    {
+      "id": "A296",
+      "subject": "sunscald",
+      "predicate": "diagnosis_type",
+      "value": "disease_or_disorder"
+    },
+    {
+      "id": "A297",
+      "subject": "sunscald",
+      "predicate": "host",
+      "value": "tomato plant"
+    },
+    {
+      "id": "A298",
+      "subject": "sunscald",
+      "predicate": "evidence_required",
+      "value": "multiple compatible symptoms"
+    },
+    {
+      "id": "A299",
+      "subject": "sunscald",
+      "predicate": "advisory_level",
+      "value": "educational; confirm locally"
+    },
+    {
+      "id": "A300",
+      "subject": "sunscald",
+      "predicate": "knowledge_source_type",
+      "value": "curated prototype knowledge"
+    }
+  ]
+}
