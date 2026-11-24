@@ -15,8 +15,8 @@
 | Phase | Scope | Status |
 |---|---|---|
 | 1 | Repository audit and architecture roadmap | Complete (audit and plan only) |
-| 2 | Knowledge base engineering and validation | In progress — validator, tests, and documentation committed; Python test execution pending |
-| 3 | Modular inference engine | Not started |
+| 2 | Knowledge base engineering and validation | Complete — validator and full test workflow passed on GitHub Actions |
+| 3 | Modular inference engine | In progress — modular forward/backward chaining added and integrated; CI passed |
 | 4 | Natural-language processing and evidence handling | Not started |
 | 5 | Consultation and response engine | Not started |
 | 6 | Professional Streamlit UI | Not started |
@@ -174,3 +174,38 @@ A separate inspection of the current JSON structure found 100 rules, 300 asserti
   `python -m knowledge_base.validator`
   and
   `python -m unittest discover -s tests -v`.
+
+
+## Phase 2 — Verification completed
+
+A GitHub Actions workflow was added at `.github/workflows/tests.yml`. On the current repository commit, the workflow completed successfully:
+
+- Knowledge-base validator step: success.
+- Full unittest discovery step: success.
+- Workflow run: https://github.com/ullahmujeeb046-max/plantsystem/actions/runs/45428309399
+
+Phase 2 is now marked complete based on this executed CI result.
+
+## Phase 3 — Core Inference Engine (implementation in progress)
+
+### Implemented
+
+- `core/inference.py`: a separate symbolic inference engine that accepts the existing IF-THEN rules and observed facts.
+- Forward chaining: evaluates each rule against the supplied facts, fires only rules whose complete antecedents are present, and records per-rule matched/missing conditions.
+- Backward chaining: starts from a requested diagnosis goal and inspects only rules that can conclude that goal. It reports whether observed facts prove the goal and lists missing symptom evidence instead of assuming it.
+- Conflict resolution: when multiple matched rules support one conclusion, selects the highest-weight rule as the primary explanation while retaining all supporting rules. Legacy `weight` is used as the fallback priority until explicit priority metadata is designed.
+- `expert_system.py` now delegates forward chaining to the modular engine while preserving its existing return format for the current diagnosis UI. A public `backward_chain(goal, observed)` method is also available.
+- `tests/test_inference_engine.py`: tests for forward chaining, multiple conclusions, missing evidence traces, backward proof, unknown goals, and conflict resolution.
+
+### Verification
+
+GitHub Actions run https://github.com/ullahmujeeb046-max/plantsystem/actions/runs/45428309399 completed successfully. Both the knowledge-base validator and the full unittest discovery command passed after the inference engine was integrated into the existing expert system.
+
+### Remaining Phase 3 work
+
+- Add explicit structured rule categories and priorities after defining a compatible knowledge-base schema.
+- Add more complete inference trace records and validation of inference inputs.
+- Add regression scenarios using actual tomato knowledge-base cases, including ambiguous and competing diagnoses.
+- Review tie-breaking and heuristic-weight semantics with the academic project requirements.
+
+Phase 3 remains in progress until these remaining design and test tasks are addressed.
