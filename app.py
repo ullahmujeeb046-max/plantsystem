@@ -188,16 +188,6 @@ else:
             st.warning("This is general educational information, not a confirmed diagnosis. Ask a local agricultural specialist before applying treatments.")
 
 
-with st.sidebar:
-    st.divider()
-    st.subheader("Knowledge base")
-    counts = system.validate_knowledge_base()
-    st.metric("IF-THEN rules", counts["rule_count"])
-    st.metric("Assertions / facts", counts["assertion_count"])
-    st.caption("Crop covered: Tomato")
-    st.caption("Student expert-system prototype")
-
-
 else:
     st.header("Knowledge base management")
     st.write("Review and maintain IF-THEN rules and profile facts. Every change is validated before it is saved.")
@@ -335,3 +325,13 @@ else:
         current_report = manager.validate(data)
         if current_report["warnings"]:
             st.warning("Review warnings: " + " ".join(current_report["warnings"][:5]))
+
+
+with st.sidebar:
+    st.divider()
+    st.subheader("Knowledge base")
+    counts = system.validate_knowledge_base()
+    st.metric("IF-THEN rules", counts["rule_count"])
+    st.metric("Assertions / facts", counts["assertion_count"])
+    st.caption("Crop covered: Tomato")
+    st.caption("Student expert-system prototype")
