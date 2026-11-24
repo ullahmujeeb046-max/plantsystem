@@ -3,6 +3,7 @@ import re
 from pathlib import Path
 from collections import defaultdict
 from core.inference import InferenceEngine
+from nlp.evidence_extractor import extract_evidence
 
 
 class TomatoExpertSystem:
@@ -138,30 +139,13 @@ class TomatoExpertSystem:
             )
         }
 
+    def extract_evidence(self, user_text):
+        """Return positive, negative, uncertain, and contradictory symptom mentions."""
+        return extract_evidence(user_text, self.symptom_terms)
+
     def extract_symptoms(self, user_text):
-        text = self._normalize(user_text)
-        found = set()
-        # Longest terms first avoids short phrases obscuring more specific phrases.
-        for phrase, canonical in sorted(
-            self.symptom_terms.items(),
-            key=lambda item: len(item[0]),
-            reverse=True
-        ):
-            phrase_norm = self._normalize(phrase)
-            if phrase_norm and phrase_norm in text:
-                # Ignore explicitly negated observations (e.g. "no yellowing").
-                start = text.find(phrase_norm)
-                prefix = text[max(0, start - 24):start].split()
-                if prefix and prefix[-1] in {
-                    "no", "not", "without", "never", "isnt", "aren't"
-                }:
-                    continue
-                if len(prefix) >= 2 and prefix[-2:] in (
-                    ["does", "not"], ["do", "not"]
-                ):
-                    continue
-                found.add(canonical)
-        return found
+        """Return only confirmed positive symptoms for backward compatibility."""
+        return set(self.extract_evidence(user_text)["confirmed_facts"])
 
     def forward_chain(self, observed):
         """Run the modular inference engine and preserve the legacy return shape."""
