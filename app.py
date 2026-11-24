@@ -3,6 +3,7 @@ import streamlit as st
 from expert_system import TomatoExpertSystem
 from core.consultation import ConsultationEngine
 from services.response_builder import build_consultation_response
+from knowledge_base.manager import KnowledgeBaseManager
 
 st.set_page_config(
     page_title="Tomato Plant Disease Expert",
@@ -24,7 +25,7 @@ st.caption("An educational, rule-based tool for tomato symptom screening and dis
 
 mode = st.sidebar.radio(
     "Choose a service",
-    ["Interactive consultation", "Quick symptom check", "Ask about a disease"]
+    ["Interactive consultation", "Quick symptom check", "Ask about a disease", "Manage knowledge base"]
 )
 
 
@@ -195,3 +196,142 @@ with st.sidebar:
     st.metric("Assertions / facts", counts["assertion_count"])
     st.caption("Crop covered: Tomato")
     st.caption("Student expert-system prototype")
+
+
+else:
+    st.header("Knowledge base management")
+    st.write("Review and maintain IF-THEN rules and profile facts. Every change is validated before it is saved.")
+    manager = KnowledgeBaseManager()
+    data = manager.load()
+    counts = st.columns(3)
+    counts[0].metric("Rules", len(data["rules"]))
+    counts[1].metric("Assertions", len(data["assertions"]))
+    counts[2].metric("Profiles", len({fact["subject"] for fact in data["assertions"]}))
+
+    tab_rules, tab_facts, tab_transfer = st.tabs(["Manage rules", "Edit profile facts", "Import / export"])
+
+    with tab_rules:
+        st.subheader("Existing rules")
+        rule_ids = [rule["id"] for rule in data["rules"]]
+        selected_id = st.selectbox("Select a rule", rule_ids)
+        selected_rule = next(rule for rule in data["rules"] if rule["id"] == selected_id)
+        with st.form("edit_rule_form"):
+            edit_name = st.text_input("Rule name", selected_rule["name"])
+            edit_conditions = st.text_area("Required symptoms (one per line)", "\\n".join(selected_rule["if_all_symptoms"]))
+            edit_conclusion = st.selectbox(
+                "Diagnosis profile", sorted({fact["subject"] for fact in data["assertions"]}),
+                index=sorted({fact["subject"] for fact in data["assertions"]}).index(selected_rule["then_diagnosis"])
+            )
+            edit_weight = st.number_input("Heuristic weight (0–1)", 0.0, 1.0, float(selected_rule["weight"]), 0.01)
+            edit_priority = st.number_input("Priority (0–1)", 0.0, 1.0, float(selected_rule.get("priority", selected_rule["weight"])), 0.01)
+            edit_explanation = st.text_area("Explanation", selected_rule["explanation"])
+            save_rule = st.form_submit_button("Save rule changes", type="primary")
+        if save_rule:
+            updated = dict(selected_rule)
+            updated.update({
+                "name": edit_name.strip(),
+                "if_all_symptoms": [line.strip() for line in edit_conditions.splitlines() if line.strip()],
+                "then_diagnosis": edit_conclusion,
+                "weight": edit_weight,
+                "priority": edit_priority,
+                "explanation": edit_explanation.strip()
+            })
+            try:
+                manager.update_rule(selected_id, updated)
+                st.success("Rule saved. The knowledge base passed validation.")
+                st.cache_resource.clear()
+                st.rerun()
+            except (ValueError, KeyError) as error:
+                st.error(str(error))
+
+        with st.expander("Add a new rule"):
+            with st.form("add_rule_form"):
+                new_id = st.text_input("New rule ID (example: R101)")
+                new_name = st.text_input("New rule name")
+                new_conditions = st.text_area("Required symptoms (one per line)")
+                profile_ids = sorted({fact["subject"] for fact in data["assertions"]})
+                new_conclusion = st.selectbox("Conclusion profile", profile_ids, key="new_rule_profile")
+                new_weight = st.number_input("Heuristic weight", 0.0, 1.0, 0.7, 0.01, key="new_rule_weight")
+                new_priority = st.number_input("Priority", 0.0, 1.0, 0.7, 0.01, key="new_rule_priority")
+                new_explanation = st.text_area("Explanation", key="new_rule_explanation")
+                add_rule = st.form_submit_button("Add rule")
+            if add_rule:
+                new_rule = {
+                    "id": new_id.strip(), "name": new_name.strip(),
+                    "if_all_symptoms": [line.strip() for line in new_conditions.splitlines() if line.strip()],
+                    "then_diagnosis": new_conclusion, "weight": new_weight,
+                    "priority": new_priority, "category": "symptom_pattern",
+                    "explanation": new_explanation.strip()
+                }
+                try:
+                    manager.add_rule(new_rule)
+                    st.success("New rule added and validated.")
+                    st.cache_resource.clear()
+                    st.rerun()
+                except ValueError as error:
+                    st.error(str(error))
+
+        with st.expander("Delete selected rule"):
+            st.warning("Deleting a rule changes which symptom patterns the system can recognize.")
+            confirm_delete = st.checkbox("I understand and want to delete " + selected_id, key="confirm_delete_rule")
+            if st.button("Delete rule", disabled=not confirm_delete):
+                try:
+                    manager.delete_rule(selected_id)
+                    st.success("Rule deleted. Remaining knowledge base is valid.")
+                    st.cache_resource.clear()
+                    st.rerun()
+                except (ValueError, KeyError) as error:
+                    st.error(str(error))
+
+    with tab_facts:
+        st.subheader("Edit disease / disorder profile facts")
+        subjects = sorted({fact["subject"] for fact in data["assertions"]})
+        selected_subject = st.selectbox("Select a profile", subjects)
+        profile_facts = [fact for fact in data["assertions"] if fact["subject"] == selected_subject]
+        selected_fact_id = st.selectbox(
+            "Select a profile field",
+            [fact["id"] for fact in profile_facts],
+            format_func=lambda fact_id: next(
+                fact["predicate"] for fact in profile_facts if fact["id"] == fact_id
+            )
+        )
+        selected_fact = next(fact for fact in profile_facts if fact["id"] == selected_fact_id)
+        st.caption("Subject: " + selected_fact["subject"] + " · Field: " + selected_fact["predicate"])
+        with st.form("edit_profile_fact"):
+            fact_value = st.text_area("Value", str(selected_fact["value"]))
+            save_fact = st.form_submit_button("Save profile field", type="primary")
+        if save_fact:
+            try:
+                manager.update_assertion(selected_fact_id, fact_value)
+                st.success("Profile field updated and knowledge base validated.")
+                st.cache_resource.clear()
+                st.rerun()
+            except (ValueError, KeyError) as error:
+                st.error(str(error))
+
+    with tab_transfer:
+        st.subheader("Export knowledge base")
+        st.download_button(
+            "Download knowledge_base.json",
+            data=manager.export_json(),
+            file_name="knowledge_base.json",
+            mime="application/json"
+        )
+        st.divider()
+        st.subheader("Import a knowledge base")
+        st.caption("Only a complete JSON file that passes all structural and reference checks can replace the current data.")
+        uploaded = st.file_uploader("Choose a JSON knowledge-base file", type=["json"])
+        if uploaded is not None:
+            if st.button("Validate and import JSON", type="primary"):
+                try:
+                    raw = uploaded.getvalue().decode("utf-8")
+                    report = manager.import_json(raw)
+                    st.success("Import successful. The new knowledge base passed validation.")
+                    st.json(report["summary"])
+                    st.cache_resource.clear()
+                    st.rerun()
+                except (UnicodeDecodeError, ValueError) as error:
+                    st.error(str(error))
+        current_report = manager.validate(data)
+        if current_report["warnings"]:
+            st.warning("Review warnings: " + " ".join(current_report["warnings"][:5]))
