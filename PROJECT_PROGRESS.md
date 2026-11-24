@@ -18,7 +18,7 @@
 | 2 | Knowledge base engineering and validation | Complete — validator and full test workflow passed on GitHub Actions |
 | 3 | Modular inference engine | Complete — chaining, priority/category metadata, input validation, traces, regression tests, and CI passed |
 | 4 | Natural-language processing and evidence handling | Complete — phrase extraction, negation, uncertainty, contradiction handling, integration, tests, and CI passed |
-| 5 | Consultation and response engine | In progress — interactive evidence collection, focused follow-up questions, and plain-language response builder committed; CI pending |
+| 5 | Consultation and response engine | Complete — interactive evidence collection, follow-up questions, response builder, tests, and CI passed |
 | 6 | Professional Streamlit UI | Not started |
 | 7 | Knowledge base management | Not started |
 | 8 | Testing, explainability, and rule analyzer | Not started |
@@ -278,3 +278,7 @@ The consultation currently selects follow-up questions from rules that already h
 ### Verification status
 
 GitHub Actions run https://github.com/ullahmujeeb046-max/plantsystem/actions/runs/45429920128 was triggered by the consultation tests. Phase 5 remains in progress until the workflow completes successfully.
+
+### Phase 5 — Verification completed
+
+GitHub Actions run https://github.com/ullahmujeeb046-max/plantsystem/actions/runs/45429920128 completed successfully. The knowledge-base validation and full unittest discovery steps passed. Phase 5 is marked complete based on this CI result.
