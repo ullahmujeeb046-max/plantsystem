@@ -3,8 +3,9 @@ import re
 from pathlib import Path
 from collections import defaultdict
 
+
 class TomatoExpertSystem:
-    """Forward-chaining, rule-based expert system for tomato plant symptoms."""
+    """Rule-based expert system for tomato symptoms and disease questions."""
 
     def __init__(self, knowledge_base_path=None):
         if knowledge_base_path is None:
@@ -24,11 +25,11 @@ class TomatoExpertSystem:
 
     def _build_symptom_terms(self):
         terms = {}
-        for pid, profile in self.profiles.items():
+        for profile in self.profiles.values():
             for i in range(1, 6):
                 symptom = profile[f"symptom_{i}"]
                 terms[symptom] = symptom
-        # Common language variants and abbreviations
+
         aliases = {
             "yellow leaves": "yellowing lower leaves",
             "leaves turning yellow": "yellowing lower leaves",
@@ -80,19 +81,82 @@ class TomatoExpertSystem:
         text = re.sub(r"[^a-z0-9\s]", " ", text)
         return re.sub(r"\s+", " ", text).strip()
 
+    def get_disease_information(self, user_text):
+        """Answer questions about conditions stored in the knowledge base."""
+        text = self._normalize(user_text)
+        question_words = (
+            "what is", "tell me", "explain", "information", "details",
+            "symptoms", "treatment", "treat", "management", "prevent",
+            "prevention", "about", "cause", "causes"
+        )
+        is_question = any(word in text for word in question_words)
+        matched_profile = None
+
+        for pid, profile in self.profiles.items():
+            common_name = profile.get("has_common_name", "")
+            name = self._normalize(common_name)
+            profile_id = self._normalize(pid.replace("_", " "))
+            if (name and name in text) or (profile_id and profile_id in text):
+                matched_profile = (pid, profile)
+                break
+
+        # A disease name by itself is also treated as a request for information.
+        if matched_profile is None and not is_question:
+            return None
+
+        if matched_profile is None:
+            names = sorted(
+                profile.get("has_common_name", pid.replace("_", " ").title())
+                for pid, profile in self.profiles.items()
+            )
+            return {
+                "found": False,
+                "requested": user_text,
+                "available_diseases": names
+            }
+
+        pid, profile = matched_profile
+        symptoms = [
+            profile[f"symptom_{i}"]
+            for i in range(1, 6)
+            if profile.get(f"symptom_{i}")
+        ]
+        return {
+            "found": True,
+            "id": pid,
+            "name": profile.get("has_common_name", pid.replace("_", " ").title()),
+            "symptoms": symptoms,
+            "management": profile.get(
+                "management",
+                "No management advice is available in the knowledge base."
+            ),
+            "prevention": profile.get(
+                "prevention",
+                "No prevention advice is available in the knowledge base."
+            )
+        }
+
     def extract_symptoms(self, user_text):
         text = self._normalize(user_text)
         found = set()
         # Longest terms first avoids short phrases obscuring more specific phrases.
-        for phrase, canonical in sorted(self.symptom_terms.items(), key=lambda item: len(item[0]), reverse=True):
+        for phrase, canonical in sorted(
+            self.symptom_terms.items(),
+            key=lambda item: len(item[0]),
+            reverse=True
+        ):
             phrase_norm = self._normalize(phrase)
             if phrase_norm and phrase_norm in text:
                 # Ignore explicitly negated observations (e.g. "no yellowing").
                 start = text.find(phrase_norm)
                 prefix = text[max(0, start - 24):start].split()
-                if prefix and prefix[-1] in {"no", "not", "without", "never", "isnt", "aren't"}:
+                if prefix and prefix[-1] in {
+                    "no", "not", "without", "never", "isnt", "aren't"
+                }:
                     continue
-                if len(prefix) >= 2 and prefix[-2:] in (["does", "not"], ["do", "not"]):
+                if len(prefix) >= 2 and prefix[-2:] in (
+                    ["does", "not"], ["do", "not"]
+                ):
                     continue
                 found.add(canonical)
         return found
@@ -114,7 +178,7 @@ class TomatoExpertSystem:
         ranked = []
         for pid, matched_rules in conclusions.items():
             profile = self.profiles[pid]
-            # Score reflects matched rule weights, capped at 99; it is not a clinical probability.
+            # This is a heuristic evidence score, not a clinical probability.
             raw = sum(rule["weight"] for rule in matched_rules) / len(matched_rules)
             coverage = min(1.0, len(matched_rules) / 3.0)
             score = round(min(0.99, raw * (0.65 + 0.35 * coverage)) * 100)
@@ -122,12 +186,15 @@ class TomatoExpertSystem:
                 "id": pid,
                 "name": profile["has_common_name"],
                 "score": score,
-                "matched_rules": [r["id"] for r in matched_rules],
+                "matched_rules": [rule["id"] for rule in matched_rules],
                 "explanation": matched_rules[0]["explanation"],
                 "management": profile["management"],
                 "prevention": profile["prevention"]
             })
-        ranked.sort(key=lambda item: (item["score"], len(item["matched_rules"])), reverse=True)
+        ranked.sort(
+            key=lambda item: (item["score"], len(item["matched_rules"])),
+            reverse=True
+        )
         return {
             "recognized_symptoms": sorted(observed),
             "fired_rule_count": len(fired),
@@ -138,8 +205,12 @@ class TomatoExpertSystem:
         return {
             "rule_count": len(self.rules),
             "assertion_count": len(self.assertions),
-            "unique_rule_ids": len({r["id"] for r in self.rules}),
-            "unique_assertion_ids": len({a["id"] for a in self.assertions}),
-            "all_rules_have_antecedents": all(r.get("if_all_symptoms") for r in self.rules),
-            "all_rules_have_conclusions": all(r.get("then_diagnosis") for r in self.rules)
+            "unique_rule_ids": len({rule["id"] for rule in self.rules}),
+            "unique_assertion_ids": len({fact["id"] for fact in self.assertions}),
+            "all_rules_have_antecedents": all(
+                rule.get("if_all_symptoms") for rule in self.rules
+            ),
+            "all_rules_have_conclusions": all(
+                rule.get("then_diagnosis") for rule in self.rules
+            )
         }
