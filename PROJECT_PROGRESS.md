@@ -22,7 +22,7 @@
 | 6 | Professional Streamlit UI | Complete — three service pages, consultation integration, compile check, unit tests, and CI passed; browser visual review remains outstanding |
 | 7 | Knowledge base management | Complete — validated rule/profile editing, safe JSON import/export, isolated tests, and full CI passed |
 | 8 | Testing, explainability, and rule analyzer | Complete — explanation reports, UI evidence trace, regression tests, compile check, and full CI passed; browser end-to-end tests and real-world accuracy validation remain future work |
-| 9 | History, reports, and storage | Not started |
+| 9 | History, reports, and storage | In progress — local JSON history, save/review/delete, Markdown reports, JSON export, and isolated tests implemented; full CI verification pending |
 | 10 | Final audit, documentation, and deployment readiness | Not started |
 
 A phase is not marked complete until its implementation and required verification are finished. Phase 1 is complete because it is a repository inspection and planning phase; no feature implementation is claimed here.
@@ -357,3 +357,30 @@ GitHub Actions run https://github.com/ullahmujeeb046-max/plantsystem/actions/run
 ### Phase 8 — Verification completed
 
 GitHub Actions run https://github.com/ullahmujeeb046-max/plantsystem/actions/runs/45431181004 completed successfully. The knowledge-base validator, application compile check, and complete unit-test suite passed. The interface has not been manually browser-tested, and the project has no independent field/laboratory dataset for accuracy evaluation. These remain explicit limitations.
+
+
+## Phase 9 — History, Reports, and Storage (implementation in progress)
+
+### Implemented
+
+- Added `services/history_store.py` for local JSON-based consultation history.
+- Users can explicitly save an interactive consultation or quick symptom check.
+- A saved consultation can be updated under the same session ID as follow-up answers are collected, avoiding duplicate records.
+- History stores structured positive, negative, uncertain, and contradictory evidence; possible conditions; matched rule IDs; and general management/prevention text.
+- Original free-text plant descriptions are deliberately not stored.
+- Added history listing, individual record review, record deletion, JSON export, and Markdown report generation.
+- Added a Streamlit **History & reports** service.
+- The local store uses atomic file replacement and retains at most 500 records by default.
+- Added `tests/test_history_store.py` covering persistence, updates, privacy boundary, deletion, retention limit, and report content.
+- Updated README with history and storage behavior.
+
+### Storage and privacy boundaries
+
+- Storage is local to `data/consultation_history.json`; it is not a shared multi-user database.
+- Hosting platforms with ephemeral filesystems may lose records after restarts or redeployments. Users should download the JSON backup if they need to retain records.
+- Only structured screening evidence and results are saved; the original free-text description is excluded.
+- History is not encrypted and there is no account-based access control in this phase. Do not store sensitive personal information in it.
+
+### Verification status
+
+The Phase 9 implementation has been committed. The full GitHub Actions workflow must pass before this phase is marked complete.
