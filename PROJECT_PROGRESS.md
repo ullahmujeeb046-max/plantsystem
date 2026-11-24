@@ -19,7 +19,7 @@
 | 3 | Modular inference engine | Complete — chaining, priority/category metadata, input validation, traces, regression tests, and CI passed |
 | 4 | Natural-language processing and evidence handling | Complete — phrase extraction, negation, uncertainty, contradiction handling, integration, tests, and CI passed |
 | 5 | Consultation and response engine | Complete — interactive evidence collection, follow-up questions, response builder, tests, and CI passed |
-| 6 | Professional Streamlit UI | Not started |
+| 6 | Professional Streamlit UI | In progress — interactive consultation, quick symptom check, and disease-information pages implemented; CI verification pending |
 | 7 | Knowledge base management | Not started |
 | 8 | Testing, explainability, and rule analyzer | Not started |
 | 9 | History, reports, and storage | Not started |
@@ -282,3 +282,26 @@ GitHub Actions run https://github.com/ullahmujeeb046-max/plantsystem/actions/run
 ### Phase 5 — Verification completed
 
 GitHub Actions run https://github.com/ullahmujeeb046-max/plantsystem/actions/runs/45429920128 completed successfully. The knowledge-base validation and full unittest discovery steps passed. Phase 5 is marked complete based on this CI result.
+
+## Phase 6 — Professional Streamlit UI (implementation in progress)
+
+### Implemented
+
+- Reworked `app.py` into a wide, three-service interface:
+  1. Interactive consultation with follow-up questions and Yes/No/Unsure answers.
+  2. Quick symptom check with example descriptions and evidence-state display.
+  3. Disease information lookup from the existing knowledge base.
+- Added reusable display helpers for evidence and possible diagnoses.
+- Added sidebar knowledge-base counts and clearer educational disclaimers.
+- Connected the consultation UI to `ConsultationEngine` and `build_consultation_response`.
+- Added `diagnose_from_facts()` to `expert_system.py` so confirmed evidence collected across follow-up turns can be evaluated directly, without reparsing the original description.
+- Added `tests/test_diagnose_from_facts.py`.
+- Extended GitHub Actions with a Python compile check for the application, core, NLP, and service modules.
+
+### Limitations
+
+The UI has been implemented in source code but has not been manually launched in a browser or visually reviewed in Streamlit Community Cloud. Session state is local to the active Streamlit session; persistent consultation history is not part of this phase. The application remains an educational screening prototype, not a confirmed agricultural diagnosis.
+
+### Verification status
+
+The latest GitHub Actions workflow was triggered by the UI and compile-check changes. Phase 6 remains in progress until the latest workflow completes successfully.
