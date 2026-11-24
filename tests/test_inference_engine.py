@@ -2,6 +2,7 @@
 import unittest
 
 from core.inference import InferenceEngine
+from knowledge_base.validator import load_knowledge_base
 
 
 class InferenceEngineTests(unittest.TestCase):
@@ -88,6 +89,19 @@ class InferenceEngineTests(unittest.TestCase):
         ]
         result = InferenceEngine(rules).forward_chain({"spots"})
         self.assertEqual(result["selected_rules"]["x"]["id"], "B")
+
+    def test_real_knowledge_base_early_blight_regression(self):
+        kb = load_knowledge_base()
+        engine = InferenceEngine(kb["rules"])
+        result = engine.forward_chain({"dark brown spots", "concentric rings"})
+        self.assertIn("early_blight", result["conclusions"])
+        self.assertTrue(result["selected_rules"]["early_blight"]["id"].startswith("R"))
+
+    def test_all_production_rules_have_category_and_priority(self):
+        kb = load_knowledge_base()
+        self.assertTrue(all(rule.get("category") == "symptom_pattern" for rule in kb["rules"]))
+        self.assertTrue(all(isinstance(rule.get("priority"), (int, float))
+                            for rule in kb["rules"]))
 
 
 if __name__ == "__main__":
