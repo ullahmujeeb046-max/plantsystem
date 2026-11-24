@@ -1,6 +1,7 @@
 import unittest
 from expert_system import TomatoExpertSystem
 
+
 class ExpertSystemTests(unittest.TestCase):
     def setUp(self):
         self.system = TomatoExpertSystem()
@@ -25,6 +26,28 @@ class ExpertSystemTests(unittest.TestCase):
         )
         names = [d["name"] for d in result["diagnoses"]]
         self.assertIn("Powdery mildew", names)
+
+    def test_disease_information_by_name(self):
+        result = self.system.get_disease_information("What is Early blight?")
+        self.assertTrue(result["found"])
+        self.assertEqual(result["name"], "Early blight")
+        self.assertTrue(result["symptoms"])
+        self.assertTrue(result["management"])
+        self.assertTrue(result["prevention"])
+
+    def test_disease_information_by_prevention_question(self):
+        result = self.system.get_disease_information(
+            "How can I prevent Powdery mildew?"
+        )
+        self.assertTrue(result["found"])
+        self.assertEqual(result["name"], "Powdery mildew")
+        self.assertTrue(result["prevention"])
+
+    def test_unknown_disease_question(self):
+        result = self.system.get_disease_information("What is potato blight?")
+        self.assertFalse(result["found"])
+        self.assertTrue(result["available_diseases"])
+
 
 if __name__ == "__main__":
     unittest.main()
