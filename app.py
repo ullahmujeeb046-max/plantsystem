@@ -246,7 +246,7 @@ elif mode == "Ask about a disease":
             st.warning("This is general educational information, not a confirmed diagnosis. Ask a local agricultural specialist before applying treatments.")
 
 
-else:
+elif mode == "Manage knowledge base":
     st.header("Knowledge base management")
     st.write("Review and maintain IF-THEN rules and profile facts. Every change is validated before it is saved.")
     manager = KnowledgeBaseManager()
