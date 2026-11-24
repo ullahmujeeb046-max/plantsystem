@@ -156,7 +156,7 @@ elif mode == "Quick symptom check":
         st.warning("Educational screening only. This is not a confirmed diagnosis. Consult an agricultural specialist for serious or spreading symptoms.")
 
 
-else:
+elif mode == "Ask about a disease":
     st.header("Disease information")
     st.write("Ask about a condition included in the current knowledge base.")
     question = st.text_input(
