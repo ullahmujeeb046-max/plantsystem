@@ -17,7 +17,7 @@
 | 1 | Repository audit and architecture roadmap | Complete (audit and plan only) |
 | 2 | Knowledge base engineering and validation | Complete — validator and full test workflow passed on GitHub Actions |
 | 3 | Modular inference engine | Complete — chaining, priority/category metadata, input validation, traces, regression tests, and CI passed |
-| 4 | Natural-language processing and evidence handling | Not started |
+| 4 | Natural-language processing and evidence handling | In progress — lightweight phrase NLP, negation, uncertainty, contradiction detection, and tests committed; latest CI run pending |
 | 5 | Consultation and response engine | Not started |
 | 6 | Professional Streamlit UI | Not started |
 | 7 | Knowledge base management | Not started |
@@ -234,3 +234,25 @@ Phase 3 is marked complete based on the successful CI run.
 ### Known scope boundary
 
 The current backward-chaining implementation is goal-directed over direct symptom-to-diagnosis rules. It does not yet recursively prove intermediate facts because the existing tomato knowledge base contains direct symptom antecedents and diagnosis conclusions rather than a multi-level fact dependency graph. Contradictory positive/negative evidence is also deferred to the NLP/evidence phases. Conflict resolution selects a primary supporting rule per conclusion; it does not choose one diagnosis over another when separate diagnoses both have matching rules.
+
+
+## Phase 4 — Natural Language Processing and Evidence Handling (implementation in progress)
+
+### Implemented
+
+- `nlp/normalizer.py`: Unicode normalization, lowercase/punctuation cleanup, whitespace normalization, and tokenization.
+- `nlp/evidence_extractor.py`: transparent phrase-dictionary matching with word boundaries and longest-phrase-first matching.
+- Evidence is separated into positive, negative, uncertain, and contradictory mentions. Only confirmed positive facts are passed into the existing diagnosis inference path.
+- Negation patterns include phrases such as "no", "not", "without", "does not", and common contractions.
+- Uncertainty cues such as "maybe", "possibly", "might", and "unsure" prevent a mention from being treated as confirmed.
+- Unknown phrases do not create new facts.
+- `expert_system.py` delegates symptom extraction to the new NLP module and preserves the existing `extract_symptoms()` set-returning interface for compatibility.
+- `tests/test_nlp.py`: tests normalization, tokenization, positive phrase extraction, negation, uncertainty, contradiction detection, unknown input, and integration with the expert-system wrapper.
+
+### Limitations
+
+This is lightweight dictionary-based NLP, not unrestricted natural-language understanding. It recognizes only phrases in the symptom dictionary and a limited set of English negation/uncertainty constructions. Negation scope is local and may misread complex sentences or multiple clauses. It does not yet ask follow-up questions; that belongs to the consultation phase.
+
+### Verification status
+
+GitHub Actions run https://github.com/ullahmujeeb046-max/plantsystem/actions/runs/45429118207 was triggered by the NLP test commit. At the time of this update, the run is still in progress. Phase 4 is therefore not complete until the workflow finishes successfully and any failures are fixed.
