@@ -1,8 +1,4 @@
-"""Explainable forward- and backward-chaining for the tomato knowledge base.
-
-The engine is domain-agnostic: it consumes rules with if_all_symptoms and
-then_diagnosis fields and never invents facts or conclusions.
-"""
+"""Explainable forward- and backward-chaining for the tomato knowledge base."""
 from __future__ import annotations
 
 from collections import defaultdict
@@ -10,7 +6,7 @@ from typing import Any, Iterable
 
 
 class InferenceEngine:
-    """Evaluate the project's IF-THEN rules against explicit evidence."""
+    """Evaluate IF-THEN rules against explicit, confirmed symptom facts."""
 
     def __init__(self, rules: list[dict[str, Any]]) -> None:
         self.rules = list(rules)
@@ -22,21 +18,28 @@ class InferenceEngine:
 
     @staticmethod
     def _priority(rule: dict[str, Any]) -> float:
-        """Use explicit priority when introduced; retain legacy weight otherwise."""
+        """Use explicit priority; legacy weight remains a compatible fallback."""
         value = rule.get("priority", rule.get("weight", 0))
         try:
             return float(value)
         except (TypeError, ValueError):
             return 0.0
 
-    def forward_chain(self, facts: Iterable[str]) -> dict[str, Any]:
-        """Fire every rule whose complete antecedent is present.
+    @staticmethod
+    def _normalize_facts(facts: Iterable[str]) -> set[str]:
+        if isinstance(facts, (str, bytes)):
+            raise TypeError("Facts must be an iterable of fact strings, not one text value.")
+        try:
+            values = set(facts)
+        except TypeError as exc:
+            raise TypeError("Facts must be an iterable of strings.") from exc
+        if any(not isinstance(value, str) or not value.strip() for value in values):
+            raise ValueError("Every observed fact must be a non-empty string.")
+        return {value.strip() for value in values}
 
-        If several rules support the same conclusion, the highest-priority
-        matched rule is selected as the primary explanation; all matched rules
-        remain visible in the trace.
-        """
-        known = set(facts)
+    def forward_chain(self, facts: Iterable[str]) -> dict[str, Any]:
+        """Fire every rule whose complete antecedent is present and trace evaluation."""
+        known = self._normalize_facts(facts)
         fired: list[dict[str, Any]] = []
         conclusions: dict[str, list[dict[str, Any]]] = defaultdict(list)
         evaluated: list[dict[str, Any]] = []
@@ -48,6 +51,9 @@ class InferenceEngine:
             evaluated.append({
                 "rule_id": rule.get("id", "UNKNOWN"),
                 "conclusion": rule.get("then_diagnosis"),
+                "category": rule.get("category", "uncategorized"),
+                "priority": self._priority(rule),
+                "explanation": rule.get("explanation", ""),
                 "matched": matched,
                 "matched_conditions": sorted(conditions & known),
                 "missing_conditions": missing,
@@ -56,29 +62,28 @@ class InferenceEngine:
                 fired.append(rule)
                 conclusions[rule["then_diagnosis"]].append(rule)
 
-        selected = {}
-        for conclusion, matched_rules in conclusions.items():
-            selected[conclusion] = max(
+        selected = {
+            conclusion: max(
                 matched_rules,
                 key=lambda rule: (self._priority(rule), rule.get("id", "")),
             )
-
+            for conclusion, matched_rules in conclusions.items()
+        }
         return {
             "facts": sorted(known),
             "fired_rules": fired,
             "conclusions": dict(conclusions),
             "selected_rules": selected,
             "trace": evaluated,
+            "evaluated_rule_count": len(evaluated),
         }
 
     def backward_chain(self, goal: str, facts: Iterable[str]) -> dict[str, Any]:
-        """Try to prove a requested diagnosis from observed symptom facts.
-
-        This is goal-directed: only rules that conclude the requested goal
-        are examined. Unobserved antecedents are returned as missing evidence,
-        not assumed to be true.
-        """
-        known = set(facts)
+        """Try to prove a requested diagnosis without assuming missing evidence."""
+        known = self._normalize_facts(facts)
+        if not isinstance(goal, str) or not goal.strip():
+            raise ValueError("The backward-chaining goal must be a non-empty string.")
+        goal = goal.strip()
         candidate_rules = self._rules_by_conclusion.get(goal, [])
         proofs = []
         all_missing: set[str] = set()
@@ -91,6 +96,7 @@ class InferenceEngine:
             proofs.append({
                 "rule_id": rule.get("id", "UNKNOWN"),
                 "explanation": rule.get("explanation", ""),
+                "category": rule.get("category", "uncategorized"),
                 "required_conditions": sorted(required),
                 "matched_conditions": matched,
                 "missing_conditions": missing,
@@ -105,6 +111,7 @@ class InferenceEngine:
             "proved": bool(proven),
             "known_facts": sorted(known),
             "candidate_rule_count": len(candidate_rules),
+            "evaluated_rule_count": len(proofs),
             "proofs": proofs,
             "supporting_rule_ids": [item["rule_id"] for item in proven],
             "missing_evidence": sorted(all_missing) if not proven else [],
