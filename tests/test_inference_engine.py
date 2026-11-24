@@ -1,0 +1,66 @@
+"""Tests for symbolic inference engine behavior."""
+import unittest
+
+from core.inference import InferenceEngine
+
+
+class InferenceEngineTests(unittest.TestCase):
+    def setUp(self):
+        self.rules = [
+            {
+                "id": "R1", "if_all_symptoms": ["spots", "rings"],
+                "then_diagnosis": "early_blight", "weight": 0.8,
+                "explanation": "Spots with rings."
+            },
+            {
+                "id": "R2", "if_all_symptoms": ["spots", "yellowing"],
+                "then_diagnosis": "early_blight", "weight": 0.9,
+                "explanation": "Spots with yellowing."
+            },
+            {
+                "id": "R3", "if_all_symptoms": ["white_coating"],
+                "then_diagnosis": "powdery_mildew", "weight": 0.7,
+                "explanation": "White coating."
+            },
+        ]
+        self.engine = InferenceEngine(self.rules)
+
+    def test_forward_chaining_fires_only_complete_rules(self):
+        result = self.engine.forward_chain({"spots", "rings"})
+        self.assertEqual([rule["id"] for rule in result["fired_rules"]], ["R1"])
+        self.assertIn("early_blight", result["conclusions"])
+
+    def test_forward_chaining_can_produce_multiple_conclusions(self):
+        result = self.engine.forward_chain({"spots", "rings", "white_coating"})
+        self.assertEqual(set(result["conclusions"]), {"early_blight", "powdery_mildew"})
+
+    def test_unmatched_rule_trace_lists_missing_evidence(self):
+        result = self.engine.forward_chain({"spots"})
+        row = next(item for item in result["trace"] if item["rule_id"] == "R1")
+        self.assertFalse(row["matched"])
+        self.assertEqual(row["missing_conditions"], ["rings"])
+
+    def test_backward_chaining_proves_goal_from_complete_evidence(self):
+        result = self.engine.backward_chain("early_blight", {"spots", "rings"})
+        self.assertTrue(result["proved"])
+        self.assertEqual(result["supporting_rule_ids"], ["R1"])
+
+    def test_backward_chaining_reports_missing_evidence(self):
+        result = self.engine.backward_chain("early_blight", {"spots"})
+        self.assertFalse(result["proved"])
+        self.assertIn("rings", result["missing_evidence"])
+        self.assertIn("yellowing", result["missing_evidence"])
+
+    def test_backward_chaining_unknown_goal_is_not_invented(self):
+        result = self.engine.backward_chain("unknown_disease", {"spots"})
+        self.assertFalse(result["proved"])
+        self.assertEqual(result["candidate_rule_count"], 0)
+
+    def test_conflict_resolution_selects_highest_weight_support(self):
+        result = self.engine.forward_chain({"spots", "rings", "yellowing"})
+        self.assertEqual(result["selected_rules"]["early_blight"]["id"], "R2")
+        self.assertEqual(len(result["conclusions"]["early_blight"]), 2)
+
+
+if __name__ == "__main__":
+    unittest.main()
