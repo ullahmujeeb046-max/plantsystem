@@ -11,7 +11,9 @@
       ],
       "then_diagnosis": "early_blight",
       "weight": 0.78,
-      "explanation": "Observed symptoms match a known early blight pattern."
+      "explanation": "Observed symptoms match a known early blight pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.78
     },
     {
       "id": "R002",
@@ -22,7 +24,9 @@
       ],
       "then_diagnosis": "early_blight",
       "weight": 0.82,
-      "explanation": "Observed symptoms match a known early blight pattern."
+      "explanation": "Observed symptoms match a known early blight pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.82
     },
     {
       "id": "R003",
@@ -34,7 +38,9 @@
       ],
       "then_diagnosis": "early_blight",
       "weight": 0.88,
-      "explanation": "Observed symptoms match a known early blight pattern."
+      "explanation": "Observed symptoms match a known early blight pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.88
     },
     {
       "id": "R004",
@@ -46,7 +52,9 @@
       ],
       "then_diagnosis": "early_blight",
       "weight": 0.84,
-      "explanation": "Observed symptoms match a known early blight pattern."
+      "explanation": "Observed symptoms match a known early blight pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.84
     },
     {
       "id": "R005",
@@ -58,7 +66,9 @@
       ],
       "then_diagnosis": "early_blight",
       "weight": 0.8,
-      "explanation": "Observed symptoms match a known early blight pattern."
+      "explanation": "Observed symptoms match a known early blight pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.8
     },
     {
       "id": "R006",
@@ -69,7 +79,9 @@
       ],
       "then_diagnosis": "late_blight",
       "weight": 0.78,
-      "explanation": "Observed symptoms match a known late blight pattern."
+      "explanation": "Observed symptoms match a known late blight pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.78
     },
     {
       "id": "R007",
@@ -80,7 +92,9 @@
       ],
       "then_diagnosis": "late_blight",
       "weight": 0.82,
-      "explanation": "Observed symptoms match a known late blight pattern."
+      "explanation": "Observed symptoms match a known late blight pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.82
     },
     {
       "id": "R008",
@@ -92,7 +106,9 @@
       ],
       "then_diagnosis": "late_blight",
       "weight": 0.88,
-      "explanation": "Observed symptoms match a known late blight pattern."
+      "explanation": "Observed symptoms match a known late blight pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.88
     },
     {
       "id": "R009",
@@ -104,7 +120,9 @@
       ],
       "then_diagnosis": "late_blight",
       "weight": 0.84,
-      "explanation": "Observed symptoms match a known late blight pattern."
+      "explanation": "Observed symptoms match a known late blight pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.84
     },
     {
       "id": "R010",
@@ -116,7 +134,9 @@
       ],
       "then_diagnosis": "late_blight",
       "weight": 0.8,
-      "explanation": "Observed symptoms match a known late blight pattern."
+      "explanation": "Observed symptoms match a known late blight pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.8
     },
     {
       "id": "R011",
@@ -127,7 +147,9 @@
       ],
       "then_diagnosis": "septoria_leaf_spot",
       "weight": 0.78,
-      "explanation": "Observed symptoms match a known septoria leaf spot pattern."
+      "explanation": "Observed symptoms match a known septoria leaf spot pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.78
     },
     {
       "id": "R012",
@@ -138,7 +160,9 @@
       ],
       "then_diagnosis": "septoria_leaf_spot",
       "weight": 0.82,
-      "explanation": "Observed symptoms match a known septoria leaf spot pattern."
+      "explanation": "Observed symptoms match a known septoria leaf spot pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.82
     },
     {
       "id": "R013",
@@ -150,7 +174,9 @@
       ],
       "then_diagnosis": "septoria_leaf_spot",
       "weight": 0.88,
-      "explanation": "Observed symptoms match a known septoria leaf spot pattern."
+      "explanation": "Observed symptoms match a known septoria leaf spot pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.88
     },
     {
       "id": "R014",
@@ -162,7 +188,9 @@
       ],
       "then_diagnosis": "septoria_leaf_spot",
       "weight": 0.84,
-      "explanation": "Observed symptoms match a known septoria leaf spot pattern."
+      "explanation": "Observed symptoms match a known septoria leaf spot pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.84
     },
     {
       "id": "R015",
@@ -174,7 +202,9 @@
       ],
       "then_diagnosis": "septoria_leaf_spot",
       "weight": 0.8,
-      "explanation": "Observed symptoms match a known septoria leaf spot pattern."
+      "explanation": "Observed symptoms match a known septoria leaf spot pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.8
     },
     {
       "id": "R016",
@@ -185,7 +215,9 @@
       ],
       "then_diagnosis": "bacterial_spot",
       "weight": 0.78,
-      "explanation": "Observed symptoms match a known bacterial spot pattern."
+      "explanation": "Observed symptoms match a known bacterial spot pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.78
     },
     {
       "id": "R017",
@@ -196,7 +228,9 @@
       ],
       "then_diagnosis": "bacterial_spot",
       "weight": 0.82,
-      "explanation": "Observed symptoms match a known bacterial spot pattern."
+      "explanation": "Observed symptoms match a known bacterial spot pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.82
     },
     {
       "id": "R018",
@@ -208,7 +242,9 @@
       ],
       "then_diagnosis": "bacterial_spot",
       "weight": 0.88,
-      "explanation": "Observed symptoms match a known bacterial spot pattern."
+      "explanation": "Observed symptoms match a known bacterial spot pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.88
     },
     {
       "id": "R019",
@@ -220,7 +256,9 @@
       ],
       "then_diagnosis": "bacterial_spot",
       "weight": 0.84,
-      "explanation": "Observed symptoms match a known bacterial spot pattern."
+      "explanation": "Observed symptoms match a known bacterial spot pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.84
     },
     {
       "id": "R020",
@@ -232,7 +270,9 @@
       ],
       "then_diagnosis": "bacterial_spot",
       "weight": 0.8,
-      "explanation": "Observed symptoms match a known bacterial spot pattern."
+      "explanation": "Observed symptoms match a known bacterial spot pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.8
     },
     {
       "id": "R021",
@@ -243,7 +283,9 @@
       ],
       "then_diagnosis": "bacterial_wilt",
       "weight": 0.78,
-      "explanation": "Observed symptoms match a known bacterial wilt pattern."
+      "explanation": "Observed symptoms match a known bacterial wilt pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.78
     },
     {
       "id": "R022",
@@ -254,7 +296,9 @@
       ],
       "then_diagnosis": "bacterial_wilt",
       "weight": 0.82,
-      "explanation": "Observed symptoms match a known bacterial wilt pattern."
+      "explanation": "Observed symptoms match a known bacterial wilt pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.82
     },
     {
       "id": "R023",
@@ -266,7 +310,9 @@
       ],
       "then_diagnosis": "bacterial_wilt",
       "weight": 0.88,
-      "explanation": "Observed symptoms match a known bacterial wilt pattern."
+      "explanation": "Observed symptoms match a known bacterial wilt pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.88
     },
     {
       "id": "R024",
@@ -278,7 +324,9 @@
       ],
       "then_diagnosis": "bacterial_wilt",
       "weight": 0.84,
-      "explanation": "Observed symptoms match a known bacterial wilt pattern."
+      "explanation": "Observed symptoms match a known bacterial wilt pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.84
     },
     {
       "id": "R025",
@@ -290,7 +338,9 @@
       ],
       "then_diagnosis": "bacterial_wilt",
       "weight": 0.8,
-      "explanation": "Observed symptoms match a known bacterial wilt pattern."
+      "explanation": "Observed symptoms match a known bacterial wilt pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.8
     },
     {
       "id": "R026",
@@ -301,7 +351,9 @@
       ],
       "then_diagnosis": "fusarium_wilt",
       "weight": 0.78,
-      "explanation": "Observed symptoms match a known fusarium wilt pattern."
+      "explanation": "Observed symptoms match a known fusarium wilt pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.78
     },
     {
       "id": "R027",
@@ -312,7 +364,9 @@
       ],
       "then_diagnosis": "fusarium_wilt",
       "weight": 0.82,
-      "explanation": "Observed symptoms match a known fusarium wilt pattern."
+      "explanation": "Observed symptoms match a known fusarium wilt pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.82
     },
     {
       "id": "R028",
@@ -324,7 +378,9 @@
       ],
       "then_diagnosis": "fusarium_wilt",
       "weight": 0.88,
-      "explanation": "Observed symptoms match a known fusarium wilt pattern."
+      "explanation": "Observed symptoms match a known fusarium wilt pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.88
     },
     {
       "id": "R029",
@@ -336,7 +392,9 @@
       ],
       "then_diagnosis": "fusarium_wilt",
       "weight": 0.84,
-      "explanation": "Observed symptoms match a known fusarium wilt pattern."
+      "explanation": "Observed symptoms match a known fusarium wilt pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.84
     },
     {
       "id": "R030",
@@ -348,7 +406,9 @@
       ],
       "then_diagnosis": "fusarium_wilt",
       "weight": 0.8,
-      "explanation": "Observed symptoms match a known fusarium wilt pattern."
+      "explanation": "Observed symptoms match a known fusarium wilt pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.8
     },
     {
       "id": "R031",
@@ -359,7 +419,9 @@
       ],
       "then_diagnosis": "verticillium_wilt",
       "weight": 0.78,
-      "explanation": "Observed symptoms match a known verticillium wilt pattern."
+      "explanation": "Observed symptoms match a known verticillium wilt pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.78
     },
     {
       "id": "R032",
@@ -370,7 +432,9 @@
       ],
       "then_diagnosis": "verticillium_wilt",
       "weight": 0.82,
-      "explanation": "Observed symptoms match a known verticillium wilt pattern."
+      "explanation": "Observed symptoms match a known verticillium wilt pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.82
     },
     {
       "id": "R033",
@@ -382,7 +446,9 @@
       ],
       "then_diagnosis": "verticillium_wilt",
       "weight": 0.88,
-      "explanation": "Observed symptoms match a known verticillium wilt pattern."
+      "explanation": "Observed symptoms match a known verticillium wilt pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.88
     },
     {
       "id": "R034",
@@ -394,7 +460,9 @@
       ],
       "then_diagnosis": "verticillium_wilt",
       "weight": 0.84,
-      "explanation": "Observed symptoms match a known verticillium wilt pattern."
+      "explanation": "Observed symptoms match a known verticillium wilt pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.84
     },
     {
       "id": "R035",
@@ -406,7 +474,9 @@
       ],
       "then_diagnosis": "verticillium_wilt",
       "weight": 0.8,
-      "explanation": "Observed symptoms match a known verticillium wilt pattern."
+      "explanation": "Observed symptoms match a known verticillium wilt pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.8
     },
     {
       "id": "R036",
@@ -417,7 +487,9 @@
       ],
       "then_diagnosis": "powdery_mildew",
       "weight": 0.78,
-      "explanation": "Observed symptoms match a known powdery mildew pattern."
+      "explanation": "Observed symptoms match a known powdery mildew pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.78
     },
     {
       "id": "R037",
@@ -428,7 +500,9 @@
       ],
       "then_diagnosis": "powdery_mildew",
       "weight": 0.82,
-      "explanation": "Observed symptoms match a known powdery mildew pattern."
+      "explanation": "Observed symptoms match a known powdery mildew pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.82
     },
     {
       "id": "R038",
@@ -440,7 +514,9 @@
       ],
       "then_diagnosis": "powdery_mildew",
       "weight": 0.88,
-      "explanation": "Observed symptoms match a known powdery mildew pattern."
+      "explanation": "Observed symptoms match a known powdery mildew pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.88
     },
     {
       "id": "R039",
@@ -452,7 +528,9 @@
       ],
       "then_diagnosis": "powdery_mildew",
       "weight": 0.84,
-      "explanation": "Observed symptoms match a known powdery mildew pattern."
+      "explanation": "Observed symptoms match a known powdery mildew pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.84
     },
     {
       "id": "R040",
@@ -464,7 +542,9 @@
       ],
       "then_diagnosis": "powdery_mildew",
       "weight": 0.8,
-      "explanation": "Observed symptoms match a known powdery mildew pattern."
+      "explanation": "Observed symptoms match a known powdery mildew pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.8
     },
     {
       "id": "R041",
@@ -475,7 +555,9 @@
       ],
       "then_diagnosis": "gray_mold",
       "weight": 0.78,
-      "explanation": "Observed symptoms match a known gray mold pattern."
+      "explanation": "Observed symptoms match a known gray mold pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.78
     },
     {
       "id": "R042",
@@ -486,7 +568,9 @@
       ],
       "then_diagnosis": "gray_mold",
       "weight": 0.82,
-      "explanation": "Observed symptoms match a known gray mold pattern."
+      "explanation": "Observed symptoms match a known gray mold pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.82
     },
     {
       "id": "R043",
@@ -498,7 +582,9 @@
       ],
       "then_diagnosis": "gray_mold",
       "weight": 0.88,
-      "explanation": "Observed symptoms match a known gray mold pattern."
+      "explanation": "Observed symptoms match a known gray mold pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.88
     },
     {
       "id": "R044",
@@ -510,7 +596,9 @@
       ],
       "then_diagnosis": "gray_mold",
       "weight": 0.84,
-      "explanation": "Observed symptoms match a known gray mold pattern."
+      "explanation": "Observed symptoms match a known gray mold pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.84
     },
     {
       "id": "R045",
@@ -522,7 +610,9 @@
       ],
       "then_diagnosis": "gray_mold",
       "weight": 0.8,
-      "explanation": "Observed symptoms match a known gray mold pattern."
+      "explanation": "Observed symptoms match a known gray mold pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.8
     },
     {
       "id": "R046",
@@ -533,7 +623,9 @@
       ],
       "then_diagnosis": "anthracnose",
       "weight": 0.78,
-      "explanation": "Observed symptoms match a known anthracnose pattern."
+      "explanation": "Observed symptoms match a known anthracnose pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.78
     },
     {
       "id": "R047",
@@ -544,7 +636,9 @@
       ],
       "then_diagnosis": "anthracnose",
       "weight": 0.82,
-      "explanation": "Observed symptoms match a known anthracnose pattern."
+      "explanation": "Observed symptoms match a known anthracnose pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.82
     },
     {
       "id": "R048",
@@ -556,7 +650,9 @@
       ],
       "then_diagnosis": "anthracnose",
       "weight": 0.88,
-      "explanation": "Observed symptoms match a known anthracnose pattern."
+      "explanation": "Observed symptoms match a known anthracnose pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.88
     },
     {
       "id": "R049",
@@ -568,7 +664,9 @@
       ],
       "then_diagnosis": "anthracnose",
       "weight": 0.84,
-      "explanation": "Observed symptoms match a known anthracnose pattern."
+      "explanation": "Observed symptoms match a known anthracnose pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.84
     },
     {
       "id": "R050",
@@ -580,7 +678,9 @@
       ],
       "then_diagnosis": "anthracnose",
       "weight": 0.8,
-      "explanation": "Observed symptoms match a known anthracnose pattern."
+      "explanation": "Observed symptoms match a known anthracnose pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.8
     },
     {
       "id": "R051",
@@ -591,7 +691,9 @@
       ],
       "then_diagnosis": "target_spot",
       "weight": 0.78,
-      "explanation": "Observed symptoms match a known target spot pattern."
+      "explanation": "Observed symptoms match a known target spot pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.78
     },
     {
       "id": "R052",
@@ -602,7 +704,9 @@
       ],
       "then_diagnosis": "target_spot",
       "weight": 0.82,
-      "explanation": "Observed symptoms match a known target spot pattern."
+      "explanation": "Observed symptoms match a known target spot pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.82
     },
     {
       "id": "R053",
@@ -614,7 +718,9 @@
       ],
       "then_diagnosis": "target_spot",
       "weight": 0.88,
-      "explanation": "Observed symptoms match a known target spot pattern."
+      "explanation": "Observed symptoms match a known target spot pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.88
     },
     {
       "id": "R054",
@@ -626,7 +732,9 @@
       ],
       "then_diagnosis": "target_spot",
       "weight": 0.84,
-      "explanation": "Observed symptoms match a known target spot pattern."
+      "explanation": "Observed symptoms match a known target spot pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.84
     },
     {
       "id": "R055",
@@ -638,7 +746,9 @@
       ],
       "then_diagnosis": "target_spot",
       "weight": 0.8,
-      "explanation": "Observed symptoms match a known target spot pattern."
+      "explanation": "Observed symptoms match a known target spot pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.8
     },
     {
       "id": "R056",
@@ -649,7 +759,9 @@
       ],
       "then_diagnosis": "tomato_mosaic_virus",
       "weight": 0.78,
-      "explanation": "Observed symptoms match a known tomato mosaic virus pattern."
+      "explanation": "Observed symptoms match a known tomato mosaic virus pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.78
     },
     {
       "id": "R057",
@@ -660,7 +772,9 @@
       ],
       "then_diagnosis": "tomato_mosaic_virus",
       "weight": 0.82,
-      "explanation": "Observed symptoms match a known tomato mosaic virus pattern."
+      "explanation": "Observed symptoms match a known tomato mosaic virus pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.82
     },
     {
       "id": "R058",
@@ -672,7 +786,9 @@
       ],
       "then_diagnosis": "tomato_mosaic_virus",
       "weight": 0.88,
-      "explanation": "Observed symptoms match a known tomato mosaic virus pattern."
+      "explanation": "Observed symptoms match a known tomato mosaic virus pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.88
     },
     {
       "id": "R059",
@@ -684,7 +800,9 @@
       ],
       "then_diagnosis": "tomato_mosaic_virus",
       "weight": 0.84,
-      "explanation": "Observed symptoms match a known tomato mosaic virus pattern."
+      "explanation": "Observed symptoms match a known tomato mosaic virus pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.84
     },
     {
       "id": "R060",
@@ -696,7 +814,9 @@
       ],
       "then_diagnosis": "tomato_mosaic_virus",
       "weight": 0.8,
-      "explanation": "Observed symptoms match a known tomato mosaic virus pattern."
+      "explanation": "Observed symptoms match a known tomato mosaic virus pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.8
     },
     {
       "id": "R061",
@@ -707,7 +827,9 @@
       ],
       "then_diagnosis": "tomato_yellow_leaf_curl_virus",
       "weight": 0.78,
-      "explanation": "Observed symptoms match a known tomato yellow leaf curl virus pattern."
+      "explanation": "Observed symptoms match a known tomato yellow leaf curl virus pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.78
     },
     {
       "id": "R062",
@@ -718,7 +840,9 @@
       ],
       "then_diagnosis": "tomato_yellow_leaf_curl_virus",
       "weight": 0.82,
-      "explanation": "Observed symptoms match a known tomato yellow leaf curl virus pattern."
+      "explanation": "Observed symptoms match a known tomato yellow leaf curl virus pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.82
     },
     {
       "id": "R063",
@@ -730,7 +854,9 @@
       ],
       "then_diagnosis": "tomato_yellow_leaf_curl_virus",
       "weight": 0.88,
-      "explanation": "Observed symptoms match a known tomato yellow leaf curl virus pattern."
+      "explanation": "Observed symptoms match a known tomato yellow leaf curl virus pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.88
     },
     {
       "id": "R064",
@@ -742,7 +868,9 @@
       ],
       "then_diagnosis": "tomato_yellow_leaf_curl_virus",
       "weight": 0.84,
-      "explanation": "Observed symptoms match a known tomato yellow leaf curl virus pattern."
+      "explanation": "Observed symptoms match a known tomato yellow leaf curl virus pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.84
     },
     {
       "id": "R065",
@@ -754,7 +882,9 @@
       ],
       "then_diagnosis": "tomato_yellow_leaf_curl_virus",
       "weight": 0.8,
-      "explanation": "Observed symptoms match a known tomato yellow leaf curl virus pattern."
+      "explanation": "Observed symptoms match a known tomato yellow leaf curl virus pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.8
     },
     {
       "id": "R066",
@@ -765,7 +895,9 @@
       ],
       "then_diagnosis": "spotted_wilt_virus",
       "weight": 0.78,
-      "explanation": "Observed symptoms match a known tomato spotted wilt pattern."
+      "explanation": "Observed symptoms match a known tomato spotted wilt pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.78
     },
     {
       "id": "R067",
@@ -776,7 +908,9 @@
       ],
       "then_diagnosis": "spotted_wilt_virus",
       "weight": 0.82,
-      "explanation": "Observed symptoms match a known tomato spotted wilt pattern."
+      "explanation": "Observed symptoms match a known tomato spotted wilt pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.82
     },
     {
       "id": "R068",
@@ -788,7 +922,9 @@
       ],
       "then_diagnosis": "spotted_wilt_virus",
       "weight": 0.88,
-      "explanation": "Observed symptoms match a known tomato spotted wilt pattern."
+      "explanation": "Observed symptoms match a known tomato spotted wilt pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.88
     },
     {
       "id": "R069",
@@ -800,7 +936,9 @@
       ],
       "then_diagnosis": "spotted_wilt_virus",
       "weight": 0.84,
-      "explanation": "Observed symptoms match a known tomato spotted wilt pattern."
+      "explanation": "Observed symptoms match a known tomato spotted wilt pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.84
     },
     {
       "id": "R070",
@@ -812,7 +950,9 @@
       ],
       "then_diagnosis": "spotted_wilt_virus",
       "weight": 0.8,
-      "explanation": "Observed symptoms match a known tomato spotted wilt pattern."
+      "explanation": "Observed symptoms match a known tomato spotted wilt pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.8
     },
     {
       "id": "R071",
@@ -823,7 +963,9 @@
       ],
       "then_diagnosis": "root_knot_nematode",
       "weight": 0.78,
-      "explanation": "Observed symptoms match a known root-knot nematode pattern."
+      "explanation": "Observed symptoms match a known root-knot nematode pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.78
     },
     {
       "id": "R072",
@@ -834,7 +976,9 @@
       ],
       "then_diagnosis": "root_knot_nematode",
       "weight": 0.82,
-      "explanation": "Observed symptoms match a known root-knot nematode pattern."
+      "explanation": "Observed symptoms match a known root-knot nematode pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.82
     },
     {
       "id": "R073",
@@ -846,7 +990,9 @@
       ],
       "then_diagnosis": "root_knot_nematode",
       "weight": 0.88,
-      "explanation": "Observed symptoms match a known root-knot nematode pattern."
+      "explanation": "Observed symptoms match a known root-knot nematode pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.88
     },
     {
       "id": "R074",
@@ -858,7 +1004,9 @@
       ],
       "then_diagnosis": "root_knot_nematode",
       "weight": 0.84,
-      "explanation": "Observed symptoms match a known root-knot nematode pattern."
+      "explanation": "Observed symptoms match a known root-knot nematode pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.84
     },
     {
       "id": "R075",
@@ -870,7 +1018,9 @@
       ],
       "then_diagnosis": "root_knot_nematode",
       "weight": 0.8,
-      "explanation": "Observed symptoms match a known root-knot nematode pattern."
+      "explanation": "Observed symptoms match a known root-knot nematode pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.8
     },
     {
       "id": "R076",
@@ -881,7 +1031,9 @@
       ],
       "then_diagnosis": "gray_leaf_spot",
       "weight": 0.78,
-      "explanation": "Observed symptoms match a known gray leaf spot pattern."
+      "explanation": "Observed symptoms match a known gray leaf spot pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.78
     },
     {
       "id": "R077",
@@ -892,7 +1044,9 @@
       ],
       "then_diagnosis": "gray_leaf_spot",
       "weight": 0.82,
-      "explanation": "Observed symptoms match a known gray leaf spot pattern."
+      "explanation": "Observed symptoms match a known gray leaf spot pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.82
     },
     {
       "id": "R078",
@@ -904,7 +1058,9 @@
       ],
       "then_diagnosis": "gray_leaf_spot",
       "weight": 0.88,
-      "explanation": "Observed symptoms match a known gray leaf spot pattern."
+      "explanation": "Observed symptoms match a known gray leaf spot pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.88
     },
     {
       "id": "R079",
@@ -916,7 +1072,9 @@
       ],
       "then_diagnosis": "gray_leaf_spot",
       "weight": 0.84,
-      "explanation": "Observed symptoms match a known gray leaf spot pattern."
+      "explanation": "Observed symptoms match a known gray leaf spot pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.84
     },
     {
       "id": "R080",
@@ -928,7 +1086,9 @@
       ],
       "then_diagnosis": "gray_leaf_spot",
       "weight": 0.8,
-      "explanation": "Observed symptoms match a known gray leaf spot pattern."
+      "explanation": "Observed symptoms match a known gray leaf spot pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.8
     },
     {
       "id": "R081",
@@ -939,7 +1099,9 @@
       ],
       "then_diagnosis": "southern_blight",
       "weight": 0.78,
-      "explanation": "Observed symptoms match a known southern blight pattern."
+      "explanation": "Observed symptoms match a known southern blight pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.78
     },
     {
       "id": "R082",
@@ -950,7 +1112,9 @@
       ],
       "then_diagnosis": "southern_blight",
       "weight": 0.82,
-      "explanation": "Observed symptoms match a known southern blight pattern."
+      "explanation": "Observed symptoms match a known southern blight pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.82
     },
     {
       "id": "R083",
@@ -962,7 +1126,9 @@
       ],
       "then_diagnosis": "southern_blight",
       "weight": 0.88,
-      "explanation": "Observed symptoms match a known southern blight pattern."
+      "explanation": "Observed symptoms match a known southern blight pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.88
     },
     {
       "id": "R084",
@@ -974,7 +1140,9 @@
       ],
       "then_diagnosis": "southern_blight",
       "weight": 0.84,
-      "explanation": "Observed symptoms match a known southern blight pattern."
+      "explanation": "Observed symptoms match a known southern blight pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.84
     },
     {
       "id": "R085",
@@ -986,7 +1154,9 @@
       ],
       "then_diagnosis": "southern_blight",
       "weight": 0.8,
-      "explanation": "Observed symptoms match a known southern blight pattern."
+      "explanation": "Observed symptoms match a known southern blight pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.8
     },
     {
       "id": "R086",
@@ -997,7 +1167,9 @@
       ],
       "then_diagnosis": "bacterial_canker",
       "weight": 0.78,
-      "explanation": "Observed symptoms match a known bacterial canker pattern."
+      "explanation": "Observed symptoms match a known bacterial canker pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.78
     },
     {
       "id": "R087",
@@ -1008,7 +1180,9 @@
       ],
       "then_diagnosis": "bacterial_canker",
       "weight": 0.82,
-      "explanation": "Observed symptoms match a known bacterial canker pattern."
+      "explanation": "Observed symptoms match a known bacterial canker pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.82
     },
     {
       "id": "R088",
@@ -1020,7 +1194,9 @@
       ],
       "then_diagnosis": "bacterial_canker",
       "weight": 0.88,
-      "explanation": "Observed symptoms match a known bacterial canker pattern."
+      "explanation": "Observed symptoms match a known bacterial canker pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.88
     },
     {
       "id": "R089",
@@ -1032,7 +1208,9 @@
       ],
       "then_diagnosis": "bacterial_canker",
       "weight": 0.84,
-      "explanation": "Observed symptoms match a known bacterial canker pattern."
+      "explanation": "Observed symptoms match a known bacterial canker pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.84
     },
     {
       "id": "R090",
@@ -1044,7 +1222,9 @@
       ],
       "then_diagnosis": "bacterial_canker",
       "weight": 0.8,
-      "explanation": "Observed symptoms match a known bacterial canker pattern."
+      "explanation": "Observed symptoms match a known bacterial canker pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.8
     },
     {
       "id": "R091",
@@ -1055,7 +1235,9 @@
       ],
       "then_diagnosis": "blossom_end_rot",
       "weight": 0.78,
-      "explanation": "Observed symptoms match a known blossom-end rot (physiological disorder) pattern."
+      "explanation": "Observed symptoms match a known blossom-end rot (physiological disorder) pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.78
     },
     {
       "id": "R092",
@@ -1066,7 +1248,9 @@
       ],
       "then_diagnosis": "blossom_end_rot",
       "weight": 0.82,
-      "explanation": "Observed symptoms match a known blossom-end rot (physiological disorder) pattern."
+      "explanation": "Observed symptoms match a known blossom-end rot (physiological disorder) pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.82
     },
     {
       "id": "R093",
@@ -1078,7 +1262,9 @@
       ],
       "then_diagnosis": "blossom_end_rot",
       "weight": 0.88,
-      "explanation": "Observed symptoms match a known blossom-end rot (physiological disorder) pattern."
+      "explanation": "Observed symptoms match a known blossom-end rot (physiological disorder) pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.88
     },
     {
       "id": "R094",
@@ -1090,7 +1276,9 @@
       ],
       "then_diagnosis": "blossom_end_rot",
       "weight": 0.84,
-      "explanation": "Observed symptoms match a known blossom-end rot (physiological disorder) pattern."
+      "explanation": "Observed symptoms match a known blossom-end rot (physiological disorder) pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.84
     },
     {
       "id": "R095",
@@ -1102,7 +1290,9 @@
       ],
       "then_diagnosis": "blossom_end_rot",
       "weight": 0.8,
-      "explanation": "Observed symptoms match a known blossom-end rot (physiological disorder) pattern."
+      "explanation": "Observed symptoms match a known blossom-end rot (physiological disorder) pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.8
     },
     {
       "id": "R096",
@@ -1113,7 +1303,9 @@
       ],
       "then_diagnosis": "sunscald",
       "weight": 0.78,
-      "explanation": "Observed symptoms match a known sunscald (physiological disorder) pattern."
+      "explanation": "Observed symptoms match a known sunscald (physiological disorder) pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.78
     },
     {
       "id": "R097",
@@ -1124,7 +1316,9 @@
       ],
       "then_diagnosis": "sunscald",
       "weight": 0.82,
-      "explanation": "Observed symptoms match a known sunscald (physiological disorder) pattern."
+      "explanation": "Observed symptoms match a known sunscald (physiological disorder) pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.82
     },
     {
       "id": "R098",
@@ -1136,7 +1330,9 @@
       ],
       "then_diagnosis": "sunscald",
       "weight": 0.88,
-      "explanation": "Observed symptoms match a known sunscald (physiological disorder) pattern."
+      "explanation": "Observed symptoms match a known sunscald (physiological disorder) pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.88
     },
     {
       "id": "R099",
@@ -1148,7 +1344,9 @@
       ],
       "then_diagnosis": "sunscald",
       "weight": 0.84,
-      "explanation": "Observed symptoms match a known sunscald (physiological disorder) pattern."
+      "explanation": "Observed symptoms match a known sunscald (physiological disorder) pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.84
     },
     {
       "id": "R100",
@@ -1160,7 +1358,9 @@
       ],
       "then_diagnosis": "sunscald",
       "weight": 0.8,
-      "explanation": "Observed symptoms match a known sunscald (physiological disorder) pattern."
+      "explanation": "Observed symptoms match a known sunscald (physiological disorder) pattern.",
+      "category": "symptom_pattern",
+      "priority": 0.8
     }
   ],
   "assertions": [
