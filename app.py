@@ -23,11 +23,6 @@ mode = st.radio(
 )
 
 if mode == "Diagnose from symptoms":
-    st.info(
-        "Describe the visible symptoms of your tomato plant. "
-        "The system will match them with its IF-THEN rules."
-    )
-
     examples = [
         "The lower leaves have dark brown spots with concentric rings and yellowing.",
         "There is a white powdery coating on the leaves and the leaves are curling.",
