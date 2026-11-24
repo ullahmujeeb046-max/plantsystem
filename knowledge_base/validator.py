@@ -187,6 +187,17 @@ def validate_knowledge_base(data: dict[str, Any]) -> dict[str, Any]:
         elif not 0 <= weight <= 1:
             errors.append(f"Rule {rule_id} weight must be between 0 and 1.")
 
+        if "category" in rule and (
+            not isinstance(rule["category"], str) or not rule["category"].strip()
+        ):
+            errors.append(f"Rule {rule_id} category must be a non-empty string.")
+        if "priority" in rule:
+            priority = rule["priority"]
+            if isinstance(priority, bool) or not isinstance(priority, (int, float)):
+                errors.append(f"Rule {rule_id} priority must be a number from 0 to 1.")
+            elif not 0 <= priority <= 1:
+                errors.append(f"Rule {rule_id} priority must be between 0 and 1.")
+
         rule_signatures.append((tuple(sorted(conditions)), str(conclusion)))
 
     duplicate_rule_ids = sorted(
