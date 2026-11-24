@@ -5,6 +5,7 @@ from core.consultation import ConsultationEngine
 from services.response_builder import build_consultation_response
 from knowledge_base.manager import KnowledgeBaseManager
 from services.explainability import build_explanation_report
+from services.history_store import HistoryStore, build_markdown_report
 
 st.set_page_config(
     page_title="Tomato Plant Disease Expert",
@@ -26,7 +27,7 @@ st.caption("An educational, rule-based tool for tomato symptom screening and dis
 
 mode = st.sidebar.radio(
     "Choose a service",
-    ["Interactive consultation", "Quick symptom check", "Ask about a disease", "Manage knowledge base"]
+    ["Interactive consultation", "Quick symptom check", "Ask about a disease", "Manage knowledge base", "History & reports"]
 )
 
 
@@ -105,6 +106,7 @@ if mode == "Interactive consultation":
     if start:
         try:
             st.session_state["consultation_turn"] = consultation.start(description)
+            st.session_state.pop("consultation_history_id", None)
         except ValueError as error:
             st.warning(str(error))
 
@@ -132,6 +134,16 @@ if mode == "Interactive consultation":
         else:
             st.success("No further rule-based follow-up question is available.")
         st.caption(response["disclaimer"])
+        if st.button("Save consultation to history", type="secondary"):
+            try:
+                store = HistoryStore()
+                saved = store.save_turn(
+                    turn, st.session_state.get("consultation_history_id")
+                )
+                st.session_state["consultation_history_id"] = saved["id"]
+                st.success("Consultation saved to local history.")
+            except (ValueError, OSError) as error:
+                st.error(f"Could not save consultation: {error}")
         if st.button("Start a new consultation"):
             st.session_state.pop("consultation_turn", None)
             st.rerun()
@@ -182,6 +194,24 @@ elif mode == "Quick symptom check":
             st.warning("Conflicting observations: " + ", ".join(evidence["contradictions"]))
         show_diagnoses(result)
         st.warning("Educational screening only. This is not a confirmed diagnosis. Consult an agricultural specialist for serious or spreading symptoms.")
+        if st.button("Save quick check to history"):
+            try:
+                evidence = st.session_state.get("quick_evidence", {})
+                quick_turn = {
+                    "complete": True,
+                    "evidence": {
+                        "positive": evidence.get("confirmed_facts", []),
+                        "negative": evidence.get("negative_facts", []),
+                        "uncertain": evidence.get("uncertain_facts", []),
+                        "contradictions": evidence.get("contradictions", [])
+                    },
+                    "diagnosis": result,
+                    "next_question": None
+                }
+                HistoryStore().save_turn(quick_turn)
+                st.success("Quick check saved to local history.")
+            except (ValueError, OSError) as error:
+                st.error(f"Could not save quick check: {error}")
 
 
 elif mode == "Ask about a disease":
@@ -363,3 +393,70 @@ with st.sidebar:
     st.metric("Assertions / facts", counts["assertion_count"])
     st.caption("Crop covered: Tomato")
     st.caption("Student expert-system prototype")
+
+
+else:
+    st.header("Consultation history and reports")
+    st.write("Review saved screening sessions and download individual reports or a JSON backup.")
+    store = HistoryStore()
+    try:
+        records = store.list_records()
+    except ValueError as error:
+        st.error(str(error))
+        records = []
+
+    st.caption("History is stored in a local JSON file. On hosting platforms with temporary storage, records may be lost after a restart or redeployment.")
+    left, right = st.columns(2)
+    left.metric("Saved sessions", len(records))
+    right.metric("Maximum retained sessions", store.max_records)
+
+    st.download_button(
+        "Download all history (JSON)",
+        data=store.export_json(),
+        file_name="tomato_consultation_history.json",
+        mime="application/json",
+        disabled=not records
+    )
+    if records:
+        options = {f"{row.get('created_at', '')[:19]} UTC · {row['id'][:8]} · {row.get('status', '')}": row["id"] for row in records}
+        selected_label = st.selectbox("Choose a saved session", list(options))
+        selected_record = store.get(options[selected_label])
+        st.divider()
+        st.subheader("Saved screening details")
+        evidence = selected_record.get("evidence", {})
+        show_evidence(evidence)
+        if selected_record.get("diagnoses"):
+            st.write("**Possible conditions**")
+            for item in selected_record["diagnoses"]:
+                st.markdown(f"**{item.get('name', 'Unspecified condition')}**")
+                if item.get("score") is not None:
+                    st.caption(f"Rule evidence score: {item['score']} (not a disease probability)")
+                if item.get("matched_rules"):
+                    st.write("Matched rules: " + ", ".join(item["matched_rules"]))
+                if item.get("explanation"):
+                    st.write(item["explanation"])
+                if item.get("management"):
+                    st.write("General management: " + item["management"])
+                if item.get("prevention"):
+                    st.write("Prevention: " + item["prevention"])
+        else:
+            st.info("No complete diagnosis rule was recorded for this session.")
+        report = build_markdown_report(selected_record)
+        st.download_button(
+            "Download this report (Markdown)",
+            data=report,
+            file_name=f"tomato_screening_{selected_record['id'][:8]}.md",
+            mime="text/markdown"
+        )
+        with st.expander("Delete saved session"):
+            st.warning("This permanently removes the selected local history record.")
+            confirm = st.checkbox("I want to delete this saved session", key="confirm_history_delete")
+            if st.button("Delete session", disabled=not confirm):
+                try:
+                    store.delete(selected_record["id"])
+                    st.success("Saved session deleted.")
+                    st.rerun()
+                except (KeyError, ValueError, OSError) as error:
+                    st.error(str(error))
+    else:
+        st.info("No saved consultations yet. Save a consultation or quick symptom check to see it here.")
