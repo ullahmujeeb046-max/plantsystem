@@ -2,6 +2,7 @@ import json
 import re
 from pathlib import Path
 from collections import defaultdict
+from core.inference import InferenceEngine
 
 
 class TomatoExpertSystem:
@@ -13,6 +14,7 @@ class TomatoExpertSystem:
         with open(knowledge_base_path, "r", encoding="utf-8") as f:
             self.kb = json.load(f)
         self.rules = self.kb["rules"]
+        self.inference_engine = InferenceEngine(self.rules)
         self.assertions = self.kb["assertions"]
         self.profiles = self._build_profiles()
         self.symptom_terms = self._build_symptom_terms()
@@ -162,15 +164,13 @@ class TomatoExpertSystem:
         return found
 
     def forward_chain(self, observed):
-        """Fire every rule whose antecedent symptoms are all present."""
-        fired = []
-        conclusions = defaultdict(list)
-        for rule in self.rules:
-            required = set(rule["if_all_symptoms"])
-            if required.issubset(observed):
-                fired.append(rule)
-                conclusions[rule["then_diagnosis"]].append(rule)
-        return fired, conclusions
+        """Run the modular inference engine and preserve the legacy return shape."""
+        result = self.inference_engine.forward_chain(observed)
+        return result["fired_rules"], result["conclusions"]
+
+    def backward_chain(self, goal, observed):
+        """Attempt to prove a diagnosis from observed symptoms and show gaps."""
+        return self.inference_engine.backward_chain(goal, observed)
 
     def diagnose(self, user_text):
         observed = self.extract_symptoms(user_text)
