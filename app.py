@@ -7,9 +7,56 @@ st.set_page_config(
     layout="centered"
 )
 
+
 @st.cache_resource
 def load_system():
     return TomatoExpertSystem()
+
+
+def get_disease_information(system, user_text):
+    """
+    Compatibility-safe disease lookup.
+    Uses the class method when available; otherwise reads the loaded profiles.
+    """
+    lookup = getattr(system, "get_disease_information", None)
+    if callable(lookup):
+        return lookup(user_text)
+
+    import re
+
+    normalize = lambda value: re.sub(
+        r"\s+", " ", re.sub(r"[^a-z0-9\s]", " ", str(value).lower().replace("-", " "))
+    ).strip()
+    text = normalize(user_text)
+
+    for pid, profile in system.profiles.items():
+        common_name = profile.get("has_common_name", "")
+        profile_id = normalize(pid.replace("_", " "))
+        name = normalize(common_name)
+        if (name and name in text) or (profile_id and profile_id in text):
+            return {
+                "found": True,
+                "id": pid,
+                "name": common_name or pid.replace("_", " ").title(),
+                "symptoms": [
+                    profile.get(f"symptom_{i}")
+                    for i in range(1, 6)
+                    if profile.get(f"symptom_{i}")
+                ],
+                "management": profile.get(
+                    "management", "No management advice is available in the knowledge base."
+                ),
+                "prevention": profile.get(
+                    "prevention", "No prevention advice is available in the knowledge base."
+                ),
+            }
+
+    available = sorted(
+        profile.get("has_common_name", pid.replace("_", " ").title())
+        for pid, profile in system.profiles.items()
+    )
+    return {"found": False, "requested": user_text, "available_diseases": available}
+
 
 system = load_system()
 
@@ -47,8 +94,10 @@ if mode == "Diagnose from symptoms":
         if not user_text.strip():
             st.warning("Please enter a description of at least one symptom.")
         else:
-            result = system.diagnose(user_text)
-            st.session_state["diagnosis_result"] = result
+            try:
+                st.session_state["diagnosis_result"] = system.diagnose(user_text)
+            except Exception as error:
+                st.error(f"Could not complete diagnosis: {error}")
 
     result = st.session_state.get("diagnosis_result")
 
@@ -109,7 +158,12 @@ else:
         if not question.strip():
             st.warning("Please enter a disease name or question.")
         else:
-            st.session_state["disease_information"] = system.get_disease_information(question)
+            try:
+                st.session_state["disease_information"] = get_disease_information(
+                    system, question
+                )
+            except Exception as error:
+                st.error(f"Could not load disease information: {error}")
 
     info = st.session_state.get("disease_information")
     if info is not None:
