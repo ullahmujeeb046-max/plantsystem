@@ -20,7 +20,7 @@
 | 4 | Natural-language processing and evidence handling | Complete — phrase extraction, negation, uncertainty, contradiction handling, integration, tests, and CI passed |
 | 5 | Consultation and response engine | Complete — interactive evidence collection, follow-up questions, response builder, tests, and CI passed |
 | 6 | Professional Streamlit UI | Complete — three service pages, consultation integration, compile check, unit tests, and CI passed; browser visual review remains outstanding |
-| 7 | Knowledge base management | In progress — validated rule/profile editing and JSON import/export implemented; UI workflow verification pending |
+| 7 | Knowledge base management | Complete — validated rule/profile editing, safe JSON import/export, isolated tests, and full CI passed |
 | 8 | Testing, explainability, and rule analyzer | Not started |
 | 9 | History, reports, and storage | Not started |
 | 10 | Final audit, documentation, and deployment readiness | Not started |
@@ -331,4 +331,24 @@ The latest GitHub Actions workflow was triggered by the UI and compile-check cha
 ### Verification status
 
 - Knowledge-base manager service and its test suite passed in separate GitHub Actions runs.
-- The full workflow including the new Streamlit page is running. Phase 7 remains in progress until that workflow completes successfully.
+- GitHub Actions run https://github.com/ullahmujeeb046-max/plantsystem/actions/runs/45430830402 completed successfully. Knowledge-base validation, Python compilation, and the full unit-test suite passed. Phase 7 is complete.
+
+
+## Phase 8 — Testing and Explainability (implementation in progress)
+
+### Implemented
+
+- Added `services/explainability.py` to turn inference traces into readable explanation reports.
+- Reports distinguish fully supporting rules from incomplete rules and list the symptom evidence still missing for related rules.
+- Integrated an expandable **Why did the system suggest this?** section under each possible diagnosis in Streamlit.
+- The UI reports evaluated and fully matched rule counts, supporting rule IDs, matched conditions, rule explanations, and missing evidence.
+- Added `tests/test_explainability.py` for supported and unsupported conclusions, missing evidence, and a regression test using the production knowledge base.
+- Updated README documentation for explainability and safe knowledge-base editing.
+
+### Testing scope
+
+Automated tests cover knowledge-base integrity, inference behavior, NLP evidence extraction, consultation flow, management operations, and explanation reports. The project does not yet have browser-based end-to-end tests or an independently curated agricultural ground-truth dataset; therefore no real-world diagnostic accuracy claim is made.
+
+### Verification status
+
+Phase 8 changes have been committed and the latest full GitHub Actions workflow is pending. Phase 8 remains in progress until CI completes successfully.
