@@ -74,6 +74,69 @@ class TomatoExpertSystem:
             "black patch on bottom of fruit": "dark sunken patch at blossom end",
             "gray mold": "gray fuzzy mold",
             "grey mold": "gray fuzzy mold",
+            # Natural ways people commonly describe tomato symptoms.
+            "dark spots": "dark brown spots",
+            "brown marks on leaves": "dark brown spots",
+            "brown patches on leaves": "dark brown spots",
+            "black spots on leaves": "dark brown spots",
+            "round brown spots": "dark brown spots",
+            "target like spots": "concentric rings",
+            "target pattern": "concentric rings",
+            "rings inside the spots": "concentric rings",
+            "yellow ring around spots": "yellow halos around spots",
+            "yellow circles around spots": "yellow halos around spots",
+            "leaves are yellow": "yellowing lower leaves",
+            "lower leaves are yellow": "yellowing lower leaves",
+            "old leaves turning yellow": "yellowing lower leaves",
+            "bottom leaves falling": "leaf drop",
+            "leaves are falling off": "leaf drop",
+            "leaves dropping": "leaf drop",
+            "falling leaves": "leaf drop",
+            "spots on the stem": "stem lesions",
+            "marks on stems": "stem lesions",
+            "stem has lesions": "stem lesions",
+            "gray middle of spots": "gray centers in leaf spots",
+            "grey centres": "gray centers in leaf spots",
+            "wet looking spots": "water-soaked lesions",
+            "water soaked leaves": "water-soaked leaf lesions",
+            "brown areas spreading quickly": "rapidly spreading brown patches",
+            "plant is bending down": "sudden plant wilting",
+            "plant looks weak and droopy": "sudden plant wilting",
+            "leaves are drooping": "sudden plant wilting",
+            "leaves are twisted": "leaf curling",
+            "leaves are curled": "leaf curling",
+            "leaves curling upwards": "upward leaf curling",
+            "white dusty layer": "white powdery leaf coating",
+            "powdery stuff on leaves": "white powdery leaf coating",
+            "fuzzy white stuff": "white fuzzy growth underside",
+            "white cotton like growth": "white fungal growth at soil line",
+            "lumps on roots": "root galls",
+            "bumps on roots": "root galls",
+            "roots look swollen": "knotted swollen roots",
+            "tomatoes have black bottoms": "dark sunken patch at blossom end",
+            "black rotten area under tomato": "dark sunken patch at blossom end",
+            "fruit has a sunken bottom": "dark sunken patch at blossom end",
+            "green and yellow mosaic": "mosaic light and dark green leaves",
+            "leaves have mosaic": "mosaic light and dark green leaves",
+            "new leaves are small": "small leaves",
+            "plant is not growing": "stunted plant growth",
+            "stunted growth": "stunted plant growth",
+            "fruit is not forming": "poor fruit set",
+            "fruit does not set": "poor fruit set",
+            "spots between leaf veins": "rectangular spots between veins",
+            "small gray spots": "small gray leaf lesions",
+            "small grey spots": "small gray leaf lesions",
+            "white growth near soil": "white fungal growth at soil line",
+            "fungus near stem base": "white fungal growth at soil line",
+            "stem rotting near ground": "stem rot near soil",
+            "stem is rotting at soil level": "stem rot near soil",
+            "one side of plant wilting": "one-sided leaf wilting",
+            "veins turning brown": "vascular discoloration",
+            "brown veins": "vascular discoloration",
+            "dark rings on tomatoes": "dark rings on fruit",
+            "fruit has dark rings": "dark rings on fruit",
+            "sunburn on fruit": "pale white patch on exposed fruit",
+            "white patch on tomato": "pale white patch on exposed fruit",
         }
         terms.update(aliases)
         return terms
@@ -88,9 +151,11 @@ class TomatoExpertSystem:
         """Answer questions about conditions stored in the knowledge base."""
         text = self._normalize(user_text)
         question_words = (
-            "what is", "tell me", "explain", "information", "details",
-            "symptoms", "treatment", "treat", "management", "prevent",
-            "prevention", "about", "cause", "causes"
+            "what", "why", "how", "when", "where", "can i", "should i",
+            "tell me", "explain", "information", "details", "symptom",
+            "treatment", "treat", "manage", "management", "prevent",
+            "prevention", "about", "cause", "causes", "help", "fix",
+            "cure", "control", "identify", "diagnose", "problem"
         )
         is_question = any(word in text for word in question_words)
         matched_profile = None
@@ -115,6 +180,12 @@ class TomatoExpertSystem:
             return {
                 "found": False,
                 "requested": user_text,
+                "message": (
+                    "Sorry, this exact answer is not available in my current "
+                    "tomato knowledge base. I do not want to guess. You can ask "
+                    "about one of the listed conditions, its symptoms, general "
+                    "management, or prevention."
+                ),
                 "available_diseases": names
             }
 
