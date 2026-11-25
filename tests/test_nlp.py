@@ -50,6 +50,25 @@ class NLPTests(unittest.TestCase):
         self.assertIn("dark brown spots", evidence["negative_facts"])
         self.assertNotIn("dark brown spots", system.extract_symptoms("No dark brown spots, but concentric rings."))
 
+    def test_natural_sentence_variants_are_recognized(self):
+        system = TomatoExpertSystem()
+        evidence = system.extract_evidence(
+            "My tomato plant has black spots on its leaves and the bottom leaves are falling off."
+        )
+        self.assertIn("dark brown spots", evidence["confirmed_facts"])
+        self.assertIn("leaf drop", evidence["confirmed_facts"])
+
+    def test_plural_symptom_phrase_is_recognized(self):
+        result = extract_evidence("The leaves have concentric rings.", self.phrases)
+        self.assertIn("concentric rings", result["confirmed_facts"])
+
+    def test_unknown_question_returns_human_friendly_message(self):
+        system = TomatoExpertSystem()
+        result = system.get_disease_information("How can I fix a tomato plant with an unknown problem?")
+        self.assertIsNotNone(result)
+        self.assertFalse(result["found"])
+        self.assertIn("not available", result["message"])
+
 
 if __name__ == "__main__":
     unittest.main()
