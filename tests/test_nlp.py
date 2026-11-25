@@ -4,6 +4,7 @@ import unittest
 from nlp.normalizer import normalize_text, tokenize
 from nlp.evidence_extractor import extract_evidence
 from expert_system import TomatoExpertSystem
+from services.response_builder import build_consultation_response
 
 
 class NLPTests(unittest.TestCase):
@@ -69,6 +70,26 @@ class NLPTests(unittest.TestCase):
         self.assertIsNotNone(result)
         self.assertFalse(result["found"])
         self.assertIn("not available", result["message"])
+
+    def test_unknown_short_query_also_returns_knowledge_base_message(self):
+        system = TomatoExpertSystem()
+        result = system.get_disease_information("brown edges")
+        self.assertIsNotNone(result)
+        self.assertFalse(result["found"])
+        self.assertIn("not available", result["message"])
+
+    def test_unrecognized_consultation_explains_what_is_missing(self):
+        turn = {
+            "evidence": {
+                "positive": [], "negative": [], "uncertain": [],
+                "contradictions": [], "unknown_input": True
+            },
+            "diagnosis": {"diagnoses": []},
+            "next_question": None
+        }
+        result = build_consultation_response(turn)
+        self.assertIn("could not recognize", result["summary"])
+        self.assertIn("knowledge base", result["summary"])
 
 
 if __name__ == "__main__":
