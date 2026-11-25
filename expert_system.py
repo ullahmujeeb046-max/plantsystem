@@ -173,10 +173,8 @@ class TomatoExpertSystem:
                 matched_profile = (pid, profile)
                 break
 
-        # A disease name by itself is also treated as a request for information.
-        if matched_profile is None and not is_question:
-            return None
-
+        # In the disease-information service, every non-empty query must receive
+        # either a knowledge-base answer or an explicit "not available" response.
         if matched_profile is None:
             names = sorted(
                 profile.get("has_common_name", pid.replace("_", " ").title())
