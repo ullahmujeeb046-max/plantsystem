@@ -82,6 +82,7 @@ class TomatoExpertSystem:
             "roots have swollen lumps": "knotted swollen roots",
             "swollen lumps on roots": "knotted swollen roots",
             "swollen lumps on its roots": "knotted swollen roots",
+            "swollen lumps": "knotted swollen roots",
             "black sunken patch on the bottom of the tomato": "dark sunken patch at blossom end",
             "black sunken patch on bottom of tomatoes": "dark sunken patch at blossom end",
             "bottom of my tomatoes has a black sunken patch": "dark sunken patch at blossom end",
