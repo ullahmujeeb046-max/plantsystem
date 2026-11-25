@@ -230,7 +230,7 @@ elif mode == "Ask about a disease":
     if info:
         st.divider()
         if not info["found"]:
-            st.warning("I could not find that condition in the current knowledge base.")
+            st.warning(info.get("message", "I could not find that condition in the current knowledge base."))
             st.write("**Available conditions:**")
             for name in info["available_diseases"]:
                 st.write("- " + name)
