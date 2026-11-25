@@ -91,6 +91,11 @@ def show_evidence(evidence):
         st.write("**Uncertain symptoms:** " + ", ".join(evidence["uncertain"]))
     if evidence.get("contradictions"):
         st.warning("Conflicting observations: " + ", ".join(evidence["contradictions"]))
+    if evidence.get("unknown_input"):
+        st.warning(
+            "No symptom phrase was recognized. This description may not be "
+            "covered by the current symptom knowledge base."
+        )
 
 
 if mode == "Interactive consultation":
