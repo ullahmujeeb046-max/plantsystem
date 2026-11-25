@@ -89,6 +89,10 @@ class ConsultationEngine:
                 "negative": sorted(session["negative_facts"]),
                 "uncertain": sorted(session["uncertain_facts"]),
                 "contradictions": sorted(session["contradictions"]),
+                "unknown_input": not bool(
+                    session["positive_facts"] or session["negative_facts"]
+                    or session["uncertain_facts"] or session["contradictions"]
+                ),
             },
             "diagnosis": diagnosis,
             "next_question": (
