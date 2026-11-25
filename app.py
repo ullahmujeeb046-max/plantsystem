@@ -122,7 +122,10 @@ if mode == "Interactive consultation":
         show_evidence(turn["evidence"])
         response = build_consultation_response(turn)
         st.info(response["summary"])
-        show_diagnoses(turn["diagnosis"])
+        # Avoid showing a second, misleading diagnosis-rule message when no
+        # symptom was recognized at all.
+        if not turn.get("evidence", {}).get("unknown_input"):
+            show_diagnoses(turn["diagnosis"])
 
         if turn.get("next_question"):
             question = turn["next_question"]
