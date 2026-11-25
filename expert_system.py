@@ -75,6 +75,16 @@ class TomatoExpertSystem:
             "gray mold": "gray fuzzy mold",
             "grey mold": "gray fuzzy mold",
             # Natural ways people commonly describe tomato symptoms.
+            # Additional natural-language descriptions tested in consultation.
+            "white powder on its leaves": "white powdery leaf coating",
+            "white powder on the leaves": "white powdery leaf coating",
+            "white powder on leaves": "white powdery leaf coating",
+            "roots have swollen lumps": "knotted swollen roots",
+            "swollen lumps on roots": "knotted swollen roots",
+            "swollen lumps on its roots": "knotted swollen roots",
+            "black sunken patch on the bottom of the tomato": "dark sunken patch at blossom end",
+            "black sunken patch on bottom of tomatoes": "dark sunken patch at blossom end",
+            "bottom of my tomatoes has a black sunken patch": "dark sunken patch at blossom end",
             "dark spots": "dark brown spots",
             "brown marks on leaves": "dark brown spots",
             "brown patches on leaves": "dark brown spots",
