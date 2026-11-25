@@ -53,9 +53,10 @@ class NLPTests(unittest.TestCase):
     def test_natural_sentence_variants_are_recognized(self):
         system = TomatoExpertSystem()
         evidence = system.extract_evidence(
-            "My tomato plant has black spots on its leaves and the bottom leaves are falling off."
+            "My tomato plant has black spots on its leaves, yellow circles around the spots, and the bottom leaves are falling off."
         )
         self.assertIn("dark brown spots", evidence["confirmed_facts"])
+        self.assertIn("yellow halos around spots", evidence["confirmed_facts"])
         self.assertIn("leaf drop", evidence["confirmed_facts"])
 
     def test_plural_symptom_phrase_is_recognized(self):
